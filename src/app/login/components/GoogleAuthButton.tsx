@@ -5,9 +5,13 @@ import { FcGoogle } from 'react-icons/fc';
 import { signIn } from 'next-auth/react';
 import { useState } from 'react';
 
+import { useSession } from 'next-auth/react';
+
 const GoogleAuthButton = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const { data: sessionData, status } = useSession();
   const handleGoogleSignIn = async () => {
     try {
       setIsLoading(true);
@@ -32,20 +36,24 @@ const GoogleAuthButton = () => {
 
   return (
     <div>
-      <motion.button
-        type="button"
-        onClick={handleGoogleSignIn}
-        disabled={isLoading}
-        whileHover={{ scale: isLoading ? 1 : 1.02 }}
-        whileTap={{ scale: isLoading ? 1 : 0.98 }}
-        className={`mt-6 w-full cursor-pointer flex justify-center items-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ${
-          isLoading ? 'opacity-50 cursor-not-allowed' : ''
-        }`}
-      >
-        <FcGoogle className="mr-2" />
-        {isLoading ? 'Signing in...' : 'Continue with Google'}
-      </motion.button>
-      {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
+      {!sessionData?.user?.email && (
+        <>
+          <motion.button
+            type="button"
+            onClick={handleGoogleSignIn}
+            disabled={isLoading}
+            whileHover={{ scale: isLoading ? 1 : 1.02 }}
+            whileTap={{ scale: isLoading ? 1 : 0.98 }}
+            className={`mt-6 w-full cursor-pointer flex justify-center items-center py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 ${
+              isLoading ? 'opacity-50 cursor-not-allowed' : ''
+            }`}
+          >
+            <FcGoogle className="mr-2" />
+            {isLoading ? 'Signing in...' : 'Continue with Google'}
+          </motion.button>
+          {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
+        </>
+      )}
     </div>
   );
 };

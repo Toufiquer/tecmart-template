@@ -41,12 +41,12 @@ export default function UserProfileCard({ userData }: { userData: SessionDataTyp
 
         <div className="flex justify-between items-center mt-3">
           <span className="text-gray-600">Subscription Expires</span>
-          <span className="font-medium">{formatExpiryDate()}</span>
+          <span className="font-medium">{formatExpiryDate() || ''}</span>
         </div>
 
         <div className="mt-5 bg-blue-50 p-4 rounded-lg">
           <p className="text-blue-800">
-            <span className="font-bold">{getDaysRemaining()}</span> days remaining in your subscription
+            <span className="font-bold">{getDaysRemaining() || ''}</span> days remaining in your subscription
           </p>
         </div>
 
