@@ -74,7 +74,6 @@ const navData = {
     { id: 1, title: 'Project', url: '/project' },
     { id: 2, title: 'Blog', url: '/blog' },
     { id: 3, title: 'Contact', url: '/contact' },
-    { id: 4, title: 'Log In', url: '/login' },
   ],
 };
 export default navData;

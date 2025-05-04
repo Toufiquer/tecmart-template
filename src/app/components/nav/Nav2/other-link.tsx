@@ -5,19 +5,22 @@
 | @copyright: Toufiquer, May, 2024
 |-----------------------------------------
 */
-import Link from "next/link";
-import navData from "./nav-data";
+import Link from 'next/link';
+import navData from './nav-data';
+import LogInDashboardButton from './LogInDashboardButton';
 
 const { othersLink } = navData || {};
 
 const OtherLink = () => {
   return (
     <>
-      {othersLink.map((curr) => (
+      {othersLink.map(curr => (
         <Link key={curr.id} href={curr.url}>
           {curr.title}
         </Link>
       ))}
+
+      <LogInDashboardButton />
     </>
   );
 };

@@ -15,7 +15,7 @@ const Nav = () => {
     <>
       <CustomNav1 />
       {isFixedToTop ? (
-        <div className="sticky top-0 z-50 w-full bg-opacity-60 md:bg-opacity-40 backdrop-blur bg-slate-100">
+        <div className="sticky top-0 z-50 w-full bg-opacity-60 md:bg-opacity-40 backdrop-blur bg-slate-100 border-b-1">
           <div className="mx-auto max-w-7xl flex flex-col px-4">
             <CustomNav2 />
           </div>
