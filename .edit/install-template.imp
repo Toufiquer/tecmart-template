@@ -1,0 +1,7 @@
+1. Install NextJs => npx create-next-app@latest
+2. Update => public/manifest.json [copy and Past]
+3. Update => public/icon/ [6 image with resize]
+4. Update => package.json [dependencies,devDependencies]
+5. Update => next.config.js [all file]
+6. Update => global.d.ts
+7. Update => eslint.config.mjs

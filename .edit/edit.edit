@@ -1,0 +1,47 @@
+1. Users = _1_template_
+2. users = _2_template_
+3. User  = _3_template_
+4. user  = _4_template_
+5. Users = _5_template_tags_ [Tags, redux invalidation]
+6. users = template6 [folder name]
+7. users = filename7 [file name, Small  ]
+8. Users = Filename8 [file name, Capital, React-components]
+9. User  = __role9__ [edit custom role] 
+
+## handle  selector
+10. __custom_selector_arr__ = ['user', 'admin', 'moderator'];
+11. __I_custom_selector_Type__ = 'user' | 'admin' | 'moderator'
+12. __default_selector__ = 'user'
+
+You have to edit those file.
+
+folder path 
+  0. folder name
+  1. api/v1/[NAME]
+  2. app/[NAME]
+  3. app/redux/features/[NAME]
+  4. app/redux/api/ [edit tags]
+
+
+1. api/v1/users/route
+2. api/v1/users/userController
+3. api/v1/users/useModel
+
+1. app/redux/api/apiSlice
+2. app/redux/app/store
+3. app/redux/features/users/usersApi
+4. app/redux/features/users/usersSlice
+
+1. app/users-redux/page
+2. app/users-redux/components/AddUser
+3. app/users-redux/components/BulkDeleteUser
+4. app/users-redux/components/BulkEditUser
+5. app/users-redux/components/DeleteUser
+6. app/users-redux/components/EditUser
+7. app/users-redux/components/Pagination
+8. app/users-redux/components/ViewUser
+9. app/users-redux/components/ViewUsersTable
+
+1. app/users-redux/store/userStore
+2. app/users-redux/store/StoreConstants
+3. app/users-redux/store/userStoreType
