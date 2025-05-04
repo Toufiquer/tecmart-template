@@ -16,7 +16,7 @@ export default function AuthCheckingComponent({ redirectUrl = '/' as string, chi
     if (status === 'unauthenticated') {
       router.replace('/login?callbackUrl=' + redirectUrl);
     }
-  }, [status, router]);
+  }, [status, router, redirectUrl]);
 
   if (status === 'loading') {
     return <p>Loading session...</p>;

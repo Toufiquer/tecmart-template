@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { FcGoogle } from 'react-icons/fc';
 import { signIn, useSession } from 'next-auth/react';
-import { useState, useEffect, Suspense } from 'react';
+import { useState, useEffect } from 'react';
 import { DefaultSession } from 'next-auth';
 import { generateCryptoToken } from '@/lib/cryptoTokenGenerator';
 import { useSearchParams } from 'next/navigation';
@@ -17,18 +17,15 @@ declare module 'next-auth' {
   }
 }
 
-// Create a separate component that uses useSearchParams
-const GoogleAuthButtonContent = () => {
+const GoogleAuthButton = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const { data: sessionData } = useSession();
 
-  const searchParams = useSearchParams();
-  const callbackUrlPath = searchParams.get('callbackUrl');
+  const callbackUrlPath = useSearchParams().get('callbackUrl');
 
   console.log('params ', callbackUrlPath);
-
   // Log the token whenever the session changes
   useEffect(() => {
     if (sessionData?.accessToken) {
@@ -37,7 +34,6 @@ const GoogleAuthButtonContent = () => {
   }, [sessionData]);
 
   const randomToken = generateCryptoToken();
-
   const handleGoogleSignIn = async () => {
     try {
       setIsLoading(true);
@@ -91,18 +87,9 @@ const GoogleAuthButtonContent = () => {
   );
 };
 
-// Fallback component while the content is loading
-const LoadingFallback = () => {
-  return <div className="mt-6 w-full py-2 px-4 border border-gray-300 rounded-md shadow-sm bg-white text-center">Loading...</div>;
-};
-
-// Main component with Suspense boundary
-const GoogleAuthButton = () => {
-  return (
-    <Suspense fallback={<LoadingFallback />}>
-      <GoogleAuthButtonContent />
-    </Suspense>
-  );
-};
-
 export default GoogleAuthButton;
+
+// for more info
+// https://next-auth.js.org/providers/google
+// https://developers.google.com/identity/protocols/oauth2
+// https://console.cloud.google.com/apis/credentials
