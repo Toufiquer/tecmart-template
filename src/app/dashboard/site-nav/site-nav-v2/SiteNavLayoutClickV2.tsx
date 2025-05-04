@@ -15,7 +15,7 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { IoSettingsOutline } from 'react-icons/io5';
 import { X } from 'lucide-react';
 
-const SiteNavLayoutClickV2 = () => {
+const SiteNavLayoutClickV2 = ({ children = null as React.ReactNode }) => {
   const [toggle, setToggle] = useState(false);
   const [mobileToggle, setMobileToggle] = useState(false);
   const handleToggle = () => setToggle(pre => !pre);
@@ -54,7 +54,7 @@ const SiteNavLayoutClickV2 = () => {
 
         <div className="h-[calc(100vh_-_62px)] w-full border-l border-slate-200">
           <ScrollArea className="h-[calc(100vh_-_62px)] ">
-            <div className="w-full min-h-screen flex items-center justify-center">First Load Component V2</div>
+            {children ? children : <div className="w-full min-h-screen flex items-center justify-center">First Load Component V2</div>}
           </ScrollArea>
         </div>
       </div>

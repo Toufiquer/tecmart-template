@@ -1,18 +1,22 @@
 /*
 |-----------------------------------------
-| setting up Page for the App
+| setting up Layout for the App
 | @author: Toufiquer Rahman<toufiquer.0@gmail.com>
 | @copyright: tecmart-template, May, 2025
 |-----------------------------------------
 */
 
 import AuthCheckingComponent from '../components/auth/AuthChecking';
+import SiteNavLayoutClickV2 from './site-nav/site-nav-v2/SiteNavLayoutClickV2';
 
-const Page = () => {
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <AuthCheckingComponent redirectUrl="/dashboard">
-      <div>Home Dashboard</div>
+      <SiteNavLayoutClickV2> {children}</SiteNavLayoutClickV2>;
     </AuthCheckingComponent>
   );
-};
-export default Page;
+}

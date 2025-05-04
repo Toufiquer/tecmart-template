@@ -5,14 +5,7 @@
 | @copyright: tecmart-template, May, 2025
 |-----------------------------------------
 */
-
-import AuthCheckingComponent from '../components/auth/AuthChecking';
-
 const Page = () => {
-  return (
-    <AuthCheckingComponent redirectUrl="/dashboard">
-      <div>Home Dashboard</div>
-    </AuthCheckingComponent>
-  );
+  return <main>Post Page</main>;
 };
 export default Page;
