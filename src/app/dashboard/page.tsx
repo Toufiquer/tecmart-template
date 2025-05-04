@@ -10,7 +10,7 @@ import SiteNavLayoutClick from './site-nav-layout-click';
 
 const Page = () => {
   return (
-    <main className="bg-slate-700 text-white">
+    <main>
       <SiteNavLayoutClick />
     </main>
   );

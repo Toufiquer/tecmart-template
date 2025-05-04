@@ -6,61 +6,31 @@
 |-----------------------------------------
 */
 
-'use client'
+'use client';
 
-import { ReactNode, useState } from 'react'
-import Link from 'next/link'
+import { ReactNode, useState } from 'react';
+import Link from 'next/link';
 
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from './accordion'
-import { GoTriangleDown, GoTriangleRight } from 'react-icons/go'
-import { BiPieChartAlt } from 'react-icons/bi'
-import { Badge } from '@/components/ui/badge'
-import { LINKTYPE, SIDEBARTYPE } from './sidebar-data'
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from './accordion';
+import { GoTriangleDown, GoTriangleRight } from 'react-icons/go';
+import { BiPieChartAlt } from 'react-icons/bi';
+import { Badge } from '@/components/ui/badge';
+import { LINKTYPE, SIDEBARTYPE } from './sidebar-data';
 
-const SidebarAccordion = ({
-  children,
-  data,
-  className,
-}: {
-  children?: ReactNode | null
-  data?: ReactNode | null | SIDEBARTYPE
-  className?: string | null
-}) => {
-  const [toggle, setToggle] = useState(false)
-  const {
-    name,
-    icon,
-    isDropdown = true,
-    isActive = false,
-    content,
-    link = '',
-  } = data as SIDEBARTYPE
+const SidebarAccordion = ({ data, className }: { children?: ReactNode | null; data?: ReactNode | null | SIDEBARTYPE; className?: string | null }) => {
+  const [toggle, setToggle] = useState(false);
+  const { name, icon, isActive = false, content, link = '' } = data as SIDEBARTYPE;
   const handleToggle = () => {
-    setToggle(!toggle)
-  }
+    setToggle(!toggle);
+  };
   return (
     <Accordion type="single" collapsible>
-      <AccordionItem
-        value="item-1"
-        className={`max-w-[220px] border-b-0 ${className}`}
-      >
-        <AccordionTrigger
-          onClick={handleToggle}
-          className="w-[248px] rounded-[.5rem] py-[.35rem] hover:bg-[#eff2f6] hover:no-underline pr-2"
-        >
+      <AccordionItem value="item-1" className={`max-w-[220px] border-b-0 ${className}`}>
+        <AccordionTrigger onClick={handleToggle} className="w-[248px] rounded-[.5rem] py-[.35rem] hover:bg-[#eff2f6] hover:no-underline pr-2">
           <div className="w-full">
             <div className="flex items-center justify-start gap-2 pl-4 text-[.8rem]">
               <span className="flex">
-                <span
-                  className={`${content.length > 0 ? 'visible' : 'invisible'}`}
-                >
-                  {toggle ? <GoTriangleDown /> : <GoTriangleRight />}
-                </span>
+                <span className={`${content.length > 0 ? 'visible' : 'invisible'}`}>{toggle ? <GoTriangleDown /> : <GoTriangleRight />}</span>
                 {icon || <BiPieChartAlt />}
               </span>
               <div className="relative">
@@ -71,9 +41,7 @@ const SidebarAccordion = ({
                 ) : (
                   <h2 className="w-full">{name}</h2>
                 )}
-                {isActive && (
-                  <div className="absolute right-[-10px] top-[2px] h-[6px] w-[6px] rounded-full bg-[#3874ff]" />
-                )}
+                {isActive && <div className="absolute right-[-10px] top-[2px] h-[6px] w-[6px] rounded-full bg-[#3874ff]" />}
               </div>
             </div>
           </div>
@@ -92,26 +60,23 @@ const SidebarAccordion = ({
                       {curr.icon} {curr.name}{' '}
                     </span>
                     {curr.badge && (
-                      <Badge
-                        variant="outline"
-                        className="rounded-[.25rem] border border-[#96d9ff] bg-[#c7ebff] py-0 text-[.60rem] text-[#005585]"
-                      >
+                      <Badge variant="outline" className="rounded-[.25rem] border border-[#96d9ff] bg-[#c7ebff] py-0 text-[.60rem] text-[#005585]">
                         {curr.badge}
                       </Badge>
                     )}
                   </Link>
-                )
+                );
               })}
             </div>
           </AccordionContent>
         )}
       </AccordionItem>
     </Accordion>
-  )
-}
-export default SidebarAccordion
+  );
+};
+export default SidebarAccordion;
 SidebarAccordion.defaultProps = {
   children: '',
   data: '',
   className: '',
-}
+};

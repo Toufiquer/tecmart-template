@@ -6,41 +6,22 @@
 |-----------------------------------------
 */
 
-"use client";
+'use client';
 
-import Link from "next/link";
-import { ReactNode } from "react";
-import { Badge } from "@/components/ui/badge";
-import { LINKTYPE } from "./sidebar-data";
-import { SIDEBARTYPE } from "./sidebar-data";
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "@/components/ui/hover-card";
+import Link from 'next/link';
+import { ReactNode } from 'react';
+import { Badge } from '@/components/ui/badge';
+import { LINKTYPE } from './sidebar-data';
+import { SIDEBARTYPE } from './sidebar-data';
+import { HoverCard, HoverCardContent, HoverCardTrigger } from '@/components/ui/hover-card';
 
-const SidebarHoverItem = ({
-  children,
-  data,
-  className,
-}: {
-  children?: ReactNode | null;
-  data?: ReactNode | null | SIDEBARTYPE;
-  className?: string | null;
-}) => {
-  const {
-    name,
-    icon,
-    isDropdown = true,
-    isActive = false,
-    content,
-    link = "/",
-  } = data as SIDEBARTYPE;
+const SidebarHoverItem = ({ data }: { children?: ReactNode | null; data?: ReactNode | null | SIDEBARTYPE; className?: string | null }) => {
+  const { name, icon, isActive = false, content, link = '/' } = data as SIDEBARTYPE;
 
   const cardContent = (
     <>
-      <div className={`${content.length > 0 && "border-b"} min-py-2`}>
-        {link !== "" ? (
+      <div className={`${content.length > 0 && 'border-b'} min-py-2`}>
+        {link !== '' ? (
           <Link href={`${link}`}>
             <h2 className="w-full py-2 pl-4">{name}</h2>
           </Link>
@@ -59,13 +40,10 @@ const SidebarHoverItem = ({
                 className="flex items-center justify-start gap-2 rounded py-[.35rem] pl-[35px] hover:bg-[#eff2f6] hover:text-[#3874ff]"
               >
                 <span className="flex items-center gap-2">
-                  {curr.icon} {curr.name}{" "}
+                  {curr.icon} {curr.name}{' '}
                 </span>
                 {curr.badge && (
-                  <Badge
-                    variant="outline"
-                    className="rounded-[.25rem] border border-[#96d9ff] bg-[#c7ebff] py-0 text-[.60rem] text-[#005585]"
-                  >
+                  <Badge variant="outline" className="rounded-[.25rem] border border-[#96d9ff] bg-[#c7ebff] py-0 text-[.60rem] text-[#005585]">
                     {curr.badge}
                   </Badge>
                 )}
@@ -82,17 +60,13 @@ const SidebarHoverItem = ({
         <div className=" flex min-h-[22px] w-full cursor-pointer items-center justify-center rounded-[.5rem] py-2 hover:bg-[#eff2f6]">
           <div className="relative py-1">
             {icon}
-            {isActive && (
-              <div className="absolute right-[-3px] top-[-3px] h-[6px] w-[6px] rounded-full bg-[#3874ff]"></div>
-            )}
+            {isActive && <div className="absolute right-[-3px] top-[-3px] h-[6px] w-[6px] rounded-full bg-[#3874ff]"></div>}
           </div>
         </div>
       </HoverCardTrigger>
-      <HoverCardContent className=" -top-[45px] left-[30px] block animate-none rounded-lg p-0 py-2 text-[.8rem] md:absolute">
-        {cardContent}
-      </HoverCardContent>
+      <HoverCardContent className=" -top-[45px] left-[30px] block animate-none rounded-lg p-0 py-2 text-[.8rem] md:absolute">{cardContent}</HoverCardContent>
     </HoverCard>
   );
 };
 export default SidebarHoverItem;
-SidebarHoverItem.defaultProps = { children: "", data: "", className: "" };
+SidebarHoverItem.defaultProps = { children: '', data: '', className: '' };
