@@ -16,6 +16,7 @@ const CustomNav1 = () => {
     { name: 'Home', url: '/' },
     { name: 'Login', url: '/login' },
     { name: 'SignUp', url: '/signup' },
+    { name: 'Auth', url: '/auth' },
     { name: 'Template 6', url: '/template6' },
     { name: 'Zustand', url: '/zustand' },
     { name: 'Dashboard', url: '/dashboard' },

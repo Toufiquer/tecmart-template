@@ -6,12 +6,10 @@
 |-----------------------------------------
 */
 
-import AuthManagement from '@/app/components/auth/AuthManagement';
-
 const Page = () => {
   return (
-    <main className="bg-slate-800 text-white flex items-center justify-center w-full mn-h-screen flex-col p-12">
-      <AuthManagement />
+    <main className="bg-slate-800 text-white flex items-center justify-center w-full min-h-screen flex-col p-12">
+      <p>Home page display Products</p>
     </main>
   );
 };
