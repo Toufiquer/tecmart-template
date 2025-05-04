@@ -6,15 +6,16 @@
 |-----------------------------------------
 */
 
-import TextSession from '@/provider/TextSession';
+import ClientComponent from './ClientComponent';
+import ServerComponent from './ServerComponent';
 
 const Page = () => {
   return (
     <main className="bg-slate-800 text-white flex items-center justify-center w-full h-screen flex-col ">
-      <div className="w-full">
-        <TextSession />
+      <div className="w-full flex gap-4 h-screen items-center justify-center">
+        <ClientComponent />
+        <ServerComponent />
       </div>
-      <p className="w-full text-center">Home page</p>
     </main>
   );
 };
