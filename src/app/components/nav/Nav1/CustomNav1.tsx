@@ -1,5 +1,3 @@
-import CustomLink from './CustomLink';
-
 /*
 |-----------------------------------------
 | setting up CustomNav1 for the App
@@ -7,6 +5,9 @@ import CustomLink from './CustomLink';
 | @copyright: tecmart-template, May, 2025
 |-----------------------------------------
 */
+
+import CustomLink from '@/app/components/nav/CustomLink';
+
 const CustomNav1 = () => {
   type links = {
     name: string;
