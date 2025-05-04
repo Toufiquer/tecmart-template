@@ -5,6 +5,7 @@ import { FcGoogle } from 'react-icons/fc';
 import { signIn, useSession } from 'next-auth/react';
 import { useState, useEffect } from 'react';
 import { DefaultSession } from 'next-auth';
+import { generateCryptoToken } from '@/lib/cryptoTokenGenerator';
 
 declare module 'next-auth' {
   interface Session {
@@ -28,6 +29,7 @@ const GoogleAuthButton = () => {
     }
   }, [sessionData]);
 
+  const randomToken = generateCryptoToken();
   const handleGoogleSignIn = async () => {
     try {
       setIsLoading(true);
@@ -72,7 +74,7 @@ const GoogleAuthButton = () => {
       ) : (
         <div>
           <p>Signed in as: {sessionData.user.email}</p>
-          <button onClick={() => console.log('Current token:', sessionData.accessToken)} className="text-blue-500 hover:underline">
+          <button onClick={() => console.log('Current randomToken:', randomToken)} className="text-blue-500 hover:underline">
             Log Token
           </button>
         </div>
