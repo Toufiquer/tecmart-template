@@ -2,32 +2,16 @@
 
 import { motion } from 'framer-motion';
 import { FcGoogle } from 'react-icons/fc';
-import { signIn, useSession } from 'next-auth/react';
-import { useState, useEffect } from 'react';
-import { DefaultSession } from 'next-auth';
+import { signIn } from 'next-auth/react';
+import { useState } from 'react';
 
-declare module 'next-auth' {
-  interface Session {
-    accessToken?: string;
-    user: {
-      id?: string;
-    } & DefaultSession['user'];
-  }
-}
+import { useSession } from 'next-auth/react';
 
 const GoogleAuthButton = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const { data: sessionData } = useSession();
-
-  // Log the token whenever the session changes
-  useEffect(() => {
-    if (sessionData?.accessToken) {
-      console.log('Access Token:', sessionData.accessToken);
-    }
-  }, [sessionData]);
-
   const handleGoogleSignIn = async () => {
     try {
       setIsLoading(true);
@@ -35,7 +19,7 @@ const GoogleAuthButton = () => {
 
       const result = await signIn('google', {
         callbackUrl: '/',
-        redirect: false,
+        redirect: false, // Changed to false to handle the response
       });
 
       if (result?.error) {
@@ -52,7 +36,7 @@ const GoogleAuthButton = () => {
 
   return (
     <div>
-      {!sessionData?.user?.email ? (
+      {!sessionData?.user?.email && (
         <>
           <motion.button
             type="button"
@@ -69,21 +53,9 @@ const GoogleAuthButton = () => {
           </motion.button>
           {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
         </>
-      ) : (
-        <div>
-          <p>Signed in as: {sessionData.user.email}</p>
-          <button onClick={() => console.log('Current token:', sessionData.accessToken)} className="text-blue-500 hover:underline">
-            Log Token
-          </button>
-        </div>
       )}
     </div>
   );
 };
 
 export default GoogleAuthButton;
-
-// for more info
-// https://next-auth.js.org/providers/google
-// https://developers.google.com/identity/protocols/oauth2
-// https://console.cloud.google.com/apis/credentials
