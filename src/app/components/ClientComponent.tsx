@@ -36,6 +36,7 @@ const ClientComponent = () => {
   };
 
   console.log('--client sessionData', sessionData);
+
   return (
     <main className="min-w-[400px] min-h-[200px] flex items-center justify-start flex-col border-1 pb-12">
       <p className="border-b-1 w-full text-center p-2">Client Component</p>
