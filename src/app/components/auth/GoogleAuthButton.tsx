@@ -6,6 +6,7 @@ import { signIn, useSession } from 'next-auth/react';
 import { useState, useEffect } from 'react';
 import { DefaultSession } from 'next-auth';
 import { generateCryptoToken } from '@/lib/cryptoTokenGenerator';
+import { useSearchParams } from 'next/navigation';
 
 declare module 'next-auth' {
   interface Session {
@@ -22,6 +23,9 @@ const GoogleAuthButton = () => {
 
   const { data: sessionData } = useSession();
 
+  const callbackUrlPath = useSearchParams().get('callbackUrl');
+
+  console.log('params ', callbackUrlPath);
   // Log the token whenever the session changes
   useEffect(() => {
     if (sessionData?.accessToken) {
@@ -36,7 +40,7 @@ const GoogleAuthButton = () => {
       setError(null);
 
       const result = await signIn('google', {
-        callbackUrl: '/',
+        callbackUrl: callbackUrlPath || '/',
         redirect: false,
       });
 

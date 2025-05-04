@@ -4,7 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import ContinuousSvgAnimation from './ContinuousSvgAnimationProps';
-import GoogleAuthButton from './components/GoogleAuthButton';
+import GoogleAuthButton from '../components/auth/GoogleAuthButton';
 import SignInForm from './components/SignInForm';
 
 const SignInPage: React.FC = () => {

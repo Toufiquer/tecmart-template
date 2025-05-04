@@ -7,13 +7,12 @@
 */
 
 import AuthCheckingComponent from '../components/auth/AuthChecking';
-import SiteNavLayoutClick from './site-nav-layout-click';
 
 const Page = () => {
   return (
-    <AuthCheckingComponent redirectUrl="/dashboard">
-      <SiteNavLayoutClick />
-    </AuthCheckingComponent>
+    <main>
+      <AuthCheckingComponent redirectUrl="/route-check">Page</AuthCheckingComponent>
+    </main>
   );
 };
 export default Page;

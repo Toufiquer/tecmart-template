@@ -6,10 +6,10 @@
 |-----------------------------------------
 */
 
-import GoogleAuthButton from '@/app/login/components/GoogleAuthButton';
-
 import ClientComponent from './ClientComponent';
 import ServerComponent from './ServerComponent';
+
+import GoogleAuthButtonParent from './GoogleAuthButtonParent';
 
 const AuthManagement = () => {
   return (
@@ -18,7 +18,7 @@ const AuthManagement = () => {
         <ClientComponent />
         <ServerComponent />
       </div>
-      <GoogleAuthButton />
+      <GoogleAuthButtonParent />
     </main>
   );
 };

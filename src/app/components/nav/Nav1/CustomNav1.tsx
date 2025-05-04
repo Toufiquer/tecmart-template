@@ -15,6 +15,7 @@ const CustomNav1 = () => {
   }[];
   const links: links = [
     { name: 'Home', url: '/' },
+    { name: 'Route Check', url: '/route-check' },
     { name: 'Login', url: '/login' },
     { name: 'SignUp', url: '/signup' },
     { name: 'Auth', url: '/auth' },
