@@ -6,8 +6,8 @@
 |-----------------------------------------
 */
 
-import ClientComponent from './ClientComponent';
-import ServerComponent from './ServerComponent';
+import ClientComponent from './components/ClientComponent';
+import ServerComponent from './components/ServerComponent';
 
 const Page = () => {
   return (

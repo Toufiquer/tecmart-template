@@ -28,15 +28,19 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'kanerdul.com',
-      },
-      {
-        protocol: 'https',
         hostname: 'i.ibb.co',
       },
       {
         protocol: 'https',
         hostname: 'i.ibb.co.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent',
+      },
+      {
+        protocol: 'https',
+        hostname: 'lh3.googleusercontent.com',
       },
     ],
   },
