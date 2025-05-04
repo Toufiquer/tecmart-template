@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { SessionDataType } from './ClientComponent';
 import Image from 'next/image';
 
