@@ -6,6 +6,10 @@
 |-----------------------------------------
 */
 const Page = () => {
-  return <main>Page</main>;
+  return (
+    <main className="bg-slate-800 text-white flex items-center justify-center w-full min-h-screen flex-col p-12">
+      <p>Dashboard</p>
+    </main>
+  );
 };
 export default Page;

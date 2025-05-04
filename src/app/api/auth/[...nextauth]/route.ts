@@ -24,10 +24,10 @@ const handler = NextAuth({
       }
       return token;
     },
-    async session({ session, token }) {
+    async session({ session }) {
       return session;
     },
-    async signIn({ user, account, profile }) {
+    async signIn() {
       return true;
     },
   },
