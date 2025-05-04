@@ -15,11 +15,6 @@ const CustomLink = ({ i }: { i: { name: string; url: string } }) => {
   const pathname = usePathname();
   const currPath = pathname.split('/')[1];
   const iPath = i.url.split('/')[1];
-  console.log('');
-  console.log('');
-  console.log('i', i);
-  console.log('iPath', iPath);
-  console.log('currPath', currPath);
 
   const pathStyle = currPath === iPath ? ' text-white ' : ' text-slate-400 ';
   return (
