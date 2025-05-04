@@ -5,7 +5,7 @@
 | @copyright: Toufiquer, May, 2024
 |-----------------------------------------
 */
-import SidebarAccordion from "./sidebar-accordion";
+import SidebarAccordion from './sidebar-accordion';
 import {
   sidebarDataHome,
   sidebarDataECommerce,
@@ -20,21 +20,13 @@ import {
   sidebarDataProjectStarter,
   sidebarDataProjectFaq,
   sidebarDataProjectLoading,
-} from "./sidebar-data";
+} from './sidebar-data';
 
-import { CgArrowLongLeft, CgArrowLongRight } from "react-icons/cg";
-import SidebarHoverItem from "./sidebar-hover-item";
-import { ScrollArea } from "@/components/ui/scroll-area";
+import { CgArrowLongLeft, CgArrowLongRight } from 'react-icons/cg';
+import SidebarHoverItem from './sidebar-hover-item';
+import { ScrollArea } from '@/components/ui/scroll-area';
 
-const Sidebar = ({
-  toggle,
-  handleToggle,
-  toggleButton = false,
-}: {
-  toggleButton?: boolean;
-  toggle: boolean;
-  handleToggle: () => void;
-}) => {
+const Sidebar = ({ toggle, handleToggle, toggleButton = false }: { toggleButton?: boolean; toggle: boolean; handleToggle: () => void }) => {
   return (
     <div className="h-screen relative">
       <div className="relative text-slate-600">
@@ -83,10 +75,7 @@ const Sidebar = ({
         {!toggleButton && (
           <>
             {toggle ? (
-              <div
-                onClick={handleToggle}
-                className="bottom-[-60px] left-0 block w-[253px] md:absolute"
-              >
+              <div onClick={handleToggle} className="bottom-[-60px] left-0 block w-[253px] md:absolute">
                 <h3 className="flex w-full cursor-pointer items-center justify-start gap-4 border-t border-slate-200 bg-slate-50 py-4 text-[.8rem]">
                   <span className="ml-4">
                     <CgArrowLongLeft />
@@ -95,10 +84,7 @@ const Sidebar = ({
                 </h3>
               </div>
             ) : (
-              <div
-                onClick={handleToggle}
-                className="bottom-[-60px] left-0 block w-[63px] md:absolute"
-              >
+              <div onClick={handleToggle} className="bottom-[-60px] left-0 block w-[63px] md:absolute">
                 <h3 className="flex w-full cursor-pointer items-center justify-center border-t border-slate-200 bg-slate-50 pb-[17px] pt-[18px]">
                   <span className="">
                     <CgArrowLongRight />

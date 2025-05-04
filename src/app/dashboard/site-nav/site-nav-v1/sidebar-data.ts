@@ -5,8 +5,8 @@
 | @copyright: Toufiquer, May, 2024
 |-----------------------------------------
 */
-import { Url } from "url";
-import { ReactNode } from "react";
+import { Url } from 'url';
+import { ReactNode } from 'react';
 
 export type LINKTYPE = {
   name: string;
@@ -48,72 +48,72 @@ import {
   iconMdEdit,
   iconAiOutlineExclamationCircle,
   iconBsTrash,
-} from "./side-nav-react-icons";
+} from './side-nav-react-icons';
 
 export const sidebarDataHome: SIDEBARTYPE = {
-  name: "Home",
+  name: 'Home',
   icon: iconBiPieChartAlt,
   content: [
-    { icon: iconMdOutlineManageAccounts, name: "E commerce", link: "#", id: 1 },
-    { icon: iconMdOutlineManageAccounts, name: "Marketing", link: "#", id: 2 },
+    { icon: iconMdOutlineManageAccounts, name: 'E commerce', link: '#', id: 1 },
+    { icon: iconMdOutlineManageAccounts, name: 'Marketing', link: '#', id: 2 },
     {
       icon: iconMdOutlineManageAccounts,
-      name: "CRM",
-      link: "#",
-      badge: "NEW",
+      name: 'CRM',
+      link: '#',
+      badge: 'NEW',
       id: 3,
     },
     {
       icon: iconMdOutlineManageAccounts,
-      name: "Social feed",
-      link: "#",
+      name: 'Social feed',
+      link: '#',
       id: 4,
     },
   ],
 };
 export const sidebarDataECommerce: SIDEBARTYPE = {
-  name: "E commerce",
+  name: 'E commerce',
   icon: iconAiOutlineShoppingCart,
   content: [
     {
       icon: iconBsCartPlus,
-      name: "Product management",
-      link: "/dashboard/product-management",
+      name: 'Product management',
+      link: '/dashboard/product-management',
       id: 1,
     },
     {
       icon: iconBiCategory,
-      name: "Category",
-      link: "/dashboard/product-management/category",
+      name: 'Category',
+      link: '/dashboard/product-management/category',
       id: 2,
     },
     {
       icon: iconMdOutlineCategory,
-      name: "Sub Category",
-      link: "/dashboard/product-management/sub-category",
+      name: 'Sub Category',
+      link: '/dashboard/product-management/sub-category',
       id: 3,
     },
     {
       icon: iconMdOutlineManageAccounts,
-      name: "Orders",
-      link: "/dashboard/orders",
+      name: 'Orders',
+      link: '/dashboard/orders',
       id: 4,
     },
   ],
 };
 export const sidebarDataCRM: SIDEBARTYPE = {
-  name: "CRM",
+  name: 'CRM',
   icon: iconIoCallOutline,
   content: [
     {
-      name: "Customers",
-      link: "/dashboard/customers",
+      name: 'Customers',
+      link: '/dashboard/customers',
       id: 1,
       icon: iconMdOutlineManageAccounts,
     },
     {
-      name: "Analytics",
-      link: "/dashboard/analytics",
+      name: 'Analytics',
+      link: '/dashboard/analytics',
       id: 2,
       icon: iconTbDeviceAnalytics,
     },
@@ -121,93 +121,93 @@ export const sidebarDataCRM: SIDEBARTYPE = {
   isActive: true,
 };
 export const sidebarDataProjectManagement: SIDEBARTYPE = {
-  name: "Project management",
+  name: 'Project management',
   icon: iconBsClipboard,
   content: [],
 };
 export const sidebarDataProjectChat: SIDEBARTYPE = {
-  name: "Chat",
+  name: 'Chat',
   icon: iconBsChatLeft,
   content: [],
   isDropdown: false,
 };
 export const sidebarDataProjectEmail: SIDEBARTYPE = {
-  name: "Email",
+  name: 'Email',
   icon: iconHiOutlineMail,
   content: [
-    { id: 1, name: "Inbox", link: "/dashboard/inbox", icon: iconHiOutlineMail },
+    { id: 1, name: 'Inbox', link: '/dashboard/inbox', icon: iconHiOutlineMail },
     {
       id: 2,
-      name: "Sent",
-      link: "/dashboard/inbox",
+      name: 'Sent',
+      link: '/dashboard/inbox',
       icon: iconCiLocationArrow1,
     },
-    { id: 3, name: "Draft", link: "/dashboard/inbox", icon: iconMdEdit },
+    { id: 3, name: 'Draft', link: '/dashboard/inbox', icon: iconMdEdit },
     {
       id: 4,
-      name: "Spam",
-      link: "/dashboard/inbox",
+      name: 'Spam',
+      link: '/dashboard/inbox',
       icon: iconAiOutlineExclamationCircle,
     },
-    { id: 5, name: "Trash", link: "/dashboard/inbox", icon: iconBsTrash },
+    { id: 5, name: 'Trash', link: '/dashboard/inbox', icon: iconBsTrash },
   ],
 };
 export const sidebarDataProjectEvents: SIDEBARTYPE = {
-  name: "Events",
+  name: 'Events',
   icon: iconBsBookmark,
   content: [
     {
-      name: "Create an event",
-      link: "/create-an-event",
+      name: 'Create an event',
+      link: '/create-an-event',
       id: 2,
       icon: iconMdOutlineEventAvailable,
     },
     {
-      name: "Event Details",
-      link: "/event-details",
+      name: 'Event Details',
+      link: '/event-details',
       id: 2,
       icon: iconBsCalendar4Event,
     },
   ],
 };
 export const sidebarDataProjectKanban: SIDEBARTYPE = {
-  name: "Kanban",
+  name: 'Kanban',
   icon: iconMdOutlineViewKanban,
   content: [],
   isActive: true,
 };
 export const sidebarDataProjectSocial: SIDEBARTYPE = {
-  name: "Social",
+  name: 'Social',
   icon: iconIoShareSocialOutline,
   content: [],
 };
 export const sidebarDataProjectCalendar: SIDEBARTYPE = {
-  name: "Calendar",
+  name: 'Calendar',
   icon: iconAiOutlineShoppingCart,
   content: [],
 };
 export const sidebarDataProjectStarter: SIDEBARTYPE = {
-  name: "Starter",
+  name: 'Starter',
   icon: iconFiCompass,
   content: [],
   isDropdown: false,
-  link: "/#",
+  link: '/#',
 };
 export const sidebarDataProjectFaq: SIDEBARTYPE = {
-  name: "Faq",
+  name: 'Faq',
   icon: iconBsQuestionCircle,
   content: [],
   isActive: true,
-  link: "/faq",
+  link: '/faq',
 };
 export const sidebarDataProjectLoading: SIDEBARTYPE = {
-  name: "Loading",
+  name: 'Loading',
   icon: iconBsGlobe2,
   content: [
-    { name: "Dashboard", link: "/dashboard", id: 1 },
-    { name: "Product management", link: "#", id: 2 },
-    { name: "CRM", link: "#", badge: "NEW", id: 3 },
-    { name: "Social feed", link: "#", id: 4 },
+    { name: 'Dashboard', link: '/dashboard', id: 1 },
+    { name: 'Product management', link: '#', id: 2 },
+    { name: 'CRM', link: '#', badge: 'NEW', id: 3 },
+    { name: 'Social feed', link: '#', id: 4 },
   ],
   isActive: true,
 };

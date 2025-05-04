@@ -6,14 +6,14 @@
 |-----------------------------------------
 */
 
-"use client";
+'use client';
 
-import { useEffect, useState } from "react";
-import Sidebar from "./sidebar";
+import { useEffect, useState } from 'react';
+import Sidebar from './sidebar';
 
 const SiteNav = ({ isOpen = false }: { isOpen: boolean }) => {
   const [toggle, setToggle] = useState(true);
-  const handleToggle = () => setToggle((pre) => !pre);
+  const handleToggle = () => setToggle(pre => !pre);
   useEffect(() => {
     setToggle(isOpen);
   }, [isOpen]);
