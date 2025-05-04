@@ -1,5 +1,3 @@
-import CustomLink from './CustomLink';
-
 /*
 |-----------------------------------------
 | setting up Nav for the App
@@ -7,26 +5,14 @@ import CustomLink from './CustomLink';
 | @copyright: tecmart-template, May, 2025
 |-----------------------------------------
 */
-const Nav = () => {
-  type links = {
-    name: string;
-    url: string;
-  }[];
-  const links: links = [
-    { name: 'Home', url: '/' },
-    { name: 'Login', url: '/login' },
-    { name: 'SignUp', url: '/signup' },
-    { name: 'Template 6', url: '/template6' },
-    { name: 'Zustand', url: '/zustand' },
-    { name: 'Dashboard', url: '/dashboard' },
-  ];
 
+import CustomNav1 from './CustomNav1';
+
+const Nav = () => {
   return (
-    <nav className="w-full flex gap-4 items-center justify-end text-center px-4 bg-slate-700 text-slate-400">
-      {links.map((i, idx) => (
-        <CustomLink i={i} key={i.name + idx} />
-      ))}
-    </nav>
+    <div>
+      <CustomNav1 />
+    </div>
   );
 };
 export default Nav;
