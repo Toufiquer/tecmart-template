@@ -7,6 +7,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import NextAuthProvider from '@/provider/SessionProvider';
 import Nav from '@/app/components/nav/Template-Nav/nav';
+import MainFooter from '@/components/common/footer/MainFooter';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -40,7 +41,7 @@ export default function RootLayout({
             <div className="w-full flex flex-col">
               <Nav />
               {children}
-              <footer className="flex items-center justify-center w-full h-[500px]">Footer</footer>
+              <MainFooter />
             </div>
           </ReduxProvider>
         </NextAuthProvider>
