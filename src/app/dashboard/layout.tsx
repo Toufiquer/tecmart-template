@@ -7,8 +7,8 @@
 */
 
 import AuthCheckingComponent from '../components/auth/AuthChecking';
-import SiteNavLayoutClickV1 from './site-nav/site-nav-v1/SiteNavLayoutClickV1';
-import SiteNavLayoutClickV2 from './site-nav/site-nav-v2/SiteNavLayoutClickV2';
+// import SiteNavLayoutClickV1 from './site-nav/site-nav-v1/SiteNavLayoutClickV1';
+// import SiteNavLayoutClickV2 from './site-nav/site-nav-v2/SiteNavLayoutClickV2';
 import SiteNavLayoutClickV3 from './site-nav/site-nav-v3/SiteNavLayoutClickV3';
 import SiteNavLayoutClickV4 from './site-nav/site-nav-v4/SiteNavLayoutClickV4';
 
@@ -19,8 +19,8 @@ export default function RootLayout({
 }>) {
   return (
     <AuthCheckingComponent redirectUrl="/dashboard">
-      {/* <SiteNavLayoutClickV1> {children}</SiteNavLayoutClickV1> */}
-      {/* <SiteNavLayoutClickV2> {children}</SiteNavLayoutClickV2> */}
+      {/* <SiteNavLayoutClickV1> {children}</SiteNavLayoutClickV1>
+      <SiteNavLayoutClickV2> {children}</SiteNavLayoutClickV2> */}
       <SiteNavLayoutClickV3> {children}</SiteNavLayoutClickV3>
       {/* <SiteNavLayoutClickV4> {children}</SiteNavLayoutClickV4> */}
     </AuthCheckingComponent>

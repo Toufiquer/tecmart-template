@@ -23,7 +23,6 @@ const data: CustomButtonType[] = [
     parentTitle: 'Users',
     children: [
       { id: 101, title: 'All Users', url: '/dashboard/users/all' },
-      { id: 102, title: 'Trash Users', url: '/dashboard/users/trash' },
     ],
   },
   {
@@ -31,7 +30,6 @@ const data: CustomButtonType[] = [
     parentTitle: 'Shops',
     children: [
       { id: 201, title: 'All Shops', url: '/dashboard/shops/all' },
-      { id: 202, title: 'Trash Shops', url: '/dashboard/shops/trash' },
       { id: 203, title: 'Digital Shops', url: '/dashboard/shops/digital' },
       { id: 204, title: 'Physical Shops', url: '/dashboard/shops/physical' },
     ],
@@ -41,7 +39,6 @@ const data: CustomButtonType[] = [
     parentTitle: 'Products',
     children: [
       { id: 301, title: 'All Products', url: '/dashboard/products/all' },
-      { id: 302, title: 'Trash Products', url: '/dashboard/products/trash' },
       { id: 303, title: 'Digital Products', url: '/dashboard/products/digital' },
       { id: 304, title: 'Physical Products', url: '/dashboard/products/physical' },
     ],
@@ -51,7 +48,6 @@ const data: CustomButtonType[] = [
     parentTitle: 'Orders',
     children: [
       { id: 401, title: 'All Orders', url: '/dashboard/orders/all' },
-      { id: 402, title: 'Trash Orders', url: '/dashboard/orders/trash' },
     ],
   },
   {
@@ -59,7 +55,6 @@ const data: CustomButtonType[] = [
     parentTitle: 'Category',
     children: [
       { id: 501, title: 'All Category', url: '/dashboard/category/all' },
-      { id: 502, title: 'Trash Category', url: '/dashboard/category/trash' },
     ],
   },
   {
@@ -67,7 +62,6 @@ const data: CustomButtonType[] = [
     parentTitle: 'Pickup Points',
     children: [
       { id: 601, title: 'All Pickup Points', url: '/dashboard/pickup-points/all' },
-      { id: 602, title: 'Trash Pickup Points', url: '/dashboard/pickup-points/trash' },
     ],
   },
   {
@@ -75,7 +69,6 @@ const data: CustomButtonType[] = [
     parentTitle: 'Blogs',
     children: [
       { id: 701, title: 'All Blogs', url: '/dashboard/blogs/all' },
-      { id: 702, title: 'Trash Blogs', url: '/dashboard/blogs/trash' },
     ],
   },
   {
@@ -83,7 +76,6 @@ const data: CustomButtonType[] = [
     parentTitle: 'Files',
     children: [
       { id: 801, title: 'All Files', url: '/dashboard/files/all' },
-      { id: 802, title: 'Trash Files', url: '/dashboard/files/trash' },
     ],
   },
   {
@@ -91,7 +83,6 @@ const data: CustomButtonType[] = [
     parentTitle: 'Marketing',
     children: [
       { id: 901, title: 'All Marketing', url: '/dashboard/marketing/all' },
-      { id: 902, title: 'Trash Marketing', url: '/dashboard/marketing/trash' },
     ],
   },
   {
@@ -99,7 +90,6 @@ const data: CustomButtonType[] = [
     parentTitle: 'Support',
     children: [
       { id: 1001, title: 'All Support', url: '/dashboard/support/all' },
-      { id: 1002, title: 'Trash Support', url: '/dashboard/support/trash' },
     ],
   },
   {
@@ -107,7 +97,6 @@ const data: CustomButtonType[] = [
     parentTitle: 'Coupon',
     children: [
       { id: 1101, title: 'All Coupon', url: '/dashboard/coupon/all' },
-      { id: 1102, title: 'Trash Coupon', url: '/dashboard/coupon/trash' },
     ],
   },
   {
@@ -115,7 +104,6 @@ const data: CustomButtonType[] = [
     parentTitle: 'Reports',
     children: [
       { id: 1201, title: 'All Reports', url: '/dashboard/reports/all' },
-      { id: 1202, title: 'Trash Reports', url: '/dashboard/reports/trash' },
     ],
   },
   {
@@ -123,7 +111,6 @@ const data: CustomButtonType[] = [
     parentTitle: 'Landing Page',
     children: [
       { id: 1301, title: 'All Landing Page', url: '/dashboard/landing-page/all' },
-      { id: 1302, title: 'Trash Landing Page', url: '/dashboard/landing-page/trash' },
     ],
   },
   {
@@ -131,7 +118,6 @@ const data: CustomButtonType[] = [
     parentTitle: 'Banners',
     children: [
       { id: 1401, title: 'All Banners', url: '/dashboard/banners/all' },
-      { id: 1402, title: 'Trash Banners', url: '/dashboard/banners/trash' },
     ],
   },
   {
@@ -139,7 +125,6 @@ const data: CustomButtonType[] = [
     parentTitle: 'Payments Gateway',
     children: [
       { id: 1501, title: 'All Payments Gateway', url: '/dashboard/payments-gateway/all' },
-      { id: 1502, title: 'Trash Payments Gateway', url: '/dashboard/payments-gateway/trash' },
     ],
   },
   {
@@ -147,7 +132,6 @@ const data: CustomButtonType[] = [
     parentTitle: 'Site Setting',
     children: [
       { id: 1601, title: 'All Site Setting', url: '/dashboard/site-setting/all' },
-      { id: 1602, title: 'Trash Site Setting', url: '/dashboard/site-setting/trash' },
     ],
   },
   {
@@ -156,7 +140,6 @@ const data: CustomButtonType[] = [
     parentTitle: 'Landing Products',
     children: [
       { id: 1701, title: 'All Landing Products', url: '/dashboard/landing-products/all' },
-      { id: 1702, title: 'Trash Landing Products', url: '/dashboard/landing-products/trash' },
     ],
   },
 ];
