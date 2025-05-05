@@ -3,13 +3,14 @@
 import React, { useState, useMemo } from 'react';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Button } from '@/components/ui/button';
-import { EyeIcon, PencilIcon, TrashIcon } from 'lucide-react';
+import { EyeIcon, PencilIcon, TrashIcon, Vault } from 'lucide-react';
 import { format } from 'date-fns';
 import { I_3_template_ } from '@/app/api/v1/template6/filename7Model';
 import LoadingComponent from '@/components/common/Loading';
 import ErrorMessageComponent from '@/components/common/Error';
 import { useGet_1_template_Query } from '@/redux/features/template6/filename7Api';
 import { use_3_template_Store } from '@/app/template6/store/filename7Store';
+import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 import Pagination from '@/app/template6/components/Pagination';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -17,13 +18,31 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { pageLimitArr } from '@/app/template6/store/filename7StoreConstants';
 
 const View_1_template_Table: React.FC = () => {
-  const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(pageLimitArr[0]);
+  // Add state for search query, page, and limit
+  const [searchParams, setSearchParams] = useState({
+    q: '',
+    page: 1,
+    limit: 2,
+  });
   const [sortConfig, setSortConfig] = useState<{ key: keyof I_3_template_; direction: 'asc' | 'desc' } | null>(null);
   const { setSelected_3_template_, toggleBulkEditModal, toggleViewModal, toggleEditModal, toggleDeleteModal, bulkData, setBulkData, toggleBulkDeleteModal } =
     use_3_template_Store();
 
-  const { data: getResponseData, isLoading, isError, error } = useGet_1_template_Query({ page, limit });
+  // const { data: getResponseData, isLoading, isError, error } = useGet_1_template_Query({ page, limit });
+  const {
+    data: getResponseData,
+    isLoading,
+    isError,
+    error,
+  } = useGet_1_template_Query(searchParams, {
+    selectFromResult: ({ data, isError, error, isLoading }) => ({
+      data,
+      isLoading,
+      isError,
+      error,
+    }),
+  });
+
   const getAll_1_template_Data = useMemo(() => getResponseData?.data?._2_template_ || [], [getResponseData]);
 
   const formatDate = (date?: Date) => (date ? format(date, 'MMM dd, yyyy') : 'N/A');
@@ -151,17 +170,22 @@ const View_1_template_Table: React.FC = () => {
         </TableHeader>
         <TableBody>{renderTableRows()}</TableBody>
       </Table>
-      <Pagination currentPage={page} itemsPerPage={limit} onPageChange={setPage} totalItems={getResponseData?.data?.total} />
+      <Pagination
+        currentPage={searchParams.page}
+        itemsPerPage={searchParams.limit}
+        onPageChange={e => setSearchParams(pre => ({ ...pre, page: e }))}
+        totalItems={getResponseData?.data?.total}
+      />
       <div className="max-w-[380px] flex items-center justify-between pl-2 gap-4 border-1 border-slate-200 rounded-xl w-full mx-auto mt-8">
         <Label htmlFor="set-limit" className="text-right text-slate-500 font-thin pl-2">
           _3_template_ per page
         </Label>
         <Select
           onValueChange={value => {
-            setLimit(Number(value));
-            setPage(1);
+            setSearchParams(pre => ({ ...pre, limit: Number(value) }));
+            setSearchParams(pre => ({ ...pre, page: Number(1) }));
           }}
-          defaultValue={limit.toString()}
+          defaultValue={searchParams.limit.toString()}
         >
           <SelectTrigger className="col-span-4">
             <SelectValue placeholder="Select a limit" />

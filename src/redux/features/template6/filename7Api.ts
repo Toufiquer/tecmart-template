@@ -14,10 +14,17 @@ import { handleError, handleSuccess } from '@/app/template6/components/utils';
 export const _2_template_Api = apiSlice.injectEndpoints({
   endpoints: builder => ({
     get_1_template_: builder.query({
-      query: ({ page, limit }) => `/api/v1/template6?page=${page || 1}&limit=${limit || 2}`,
+      query: ({ page, limit, q }) => {
+        let url = `/api/v1/template6?page=${page || 1}&limit=${limit || 10}`;
+        if (q) {
+          url += `&q=${encodeURIComponent(q)}`;
+        }
+        return url;
+      },
       providesTags: [{ type: '_5_template_tags_', id: 'LIST' }],
       async onQueryStarted() {
         try {
+          // You can add any additional logic here
         } catch (e: unknown) {
           handleError(e);
         }

@@ -10,7 +10,7 @@ interface SearchBoxProps {
   debounceTime?: number;
 }
 
-export default function SearchBox({ onSearch, placeholder = 'Search...', autoFocus = false, debounceTime = 500 }: SearchBoxProps) {
+export default function SearchBox({ onSearch, placeholder = 'Search...', autoFocus = false, debounceTime = 1000 }: SearchBoxProps) {
   const [query, setQuery] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);

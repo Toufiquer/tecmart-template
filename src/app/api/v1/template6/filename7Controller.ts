@@ -54,8 +54,25 @@ export async function get_1_template_(req: Request) {
     const limit = parseInt(url.searchParams.get('limit') || '10', 10);
     const skip = (page - 1) * limit;
 
-    const _2_template_ = await _3_template_.find({}).sort({ updatedAt: -1, createdAt: -1 }).skip(skip).limit(limit);
-    const total_1_template_ = await _3_template_.countDocuments();
+    const searchQuery = url.searchParams.get('q');
+
+    let searchFilter = {};
+
+    // Apply search filter only if search query is provided
+    if (searchQuery) {
+      searchFilter = {
+        $or: [
+          { name: { $regex: searchQuery, $options: 'i' } },
+          { email: { $regex: searchQuery, $options: 'i' } },
+          { alias: { $regex: searchQuery, $options: 'i' } },
+        ],
+      };
+    }
+
+    const _2_template_ = await _3_template_.find(searchFilter).sort({ updatedAt: -1, createdAt: -1 }).skip(skip).limit(limit);
+
+    const total_1_template_ = await _3_template_.countDocuments(searchFilter);
+
     return formatResponse({ _2_template_: _2_template_ || [], total: total_1_template_, page, limit }, '_1_template_ fetched successfully', 200);
   });
 }

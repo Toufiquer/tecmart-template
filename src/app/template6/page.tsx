@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { ArrowRightIcon, PlusIcon } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
@@ -17,28 +17,63 @@ import DeleteFilename8 from '@/app/template6/components/DeleteFilename8';
 import BulkDeleteFilename8 from '@/app/template6/components/BulkDeleteFilename8';
 import BulkEditFilename8 from '@/app/template6/components/BulkEditFilename8';
 import TooManyRequests from '@/app/template6/components/TooManyRequest';
-import SearchBoxRender from './components/SearchboxRender';
+import SearchBox from './components/SearchBox';
 
 const Filename8Table: React.FC = () => {
+  const [hashSearchText, setHashSearchText] = useState('');
   const { toggleAddModal } = use_3_template_Store();
   const router = useRouter();
+
+  // Add state for search query, page, and limit
+  const [searchParams, setSearchParams] = useState({
+    q: '',
+    page: 1,
+    limit: 10,
+  });
+
   const {
     data: getResponseData,
     isSuccess,
     status: statusCode,
-  } = useGet_1_template_Query(
-    { page: 1, limit: 1 },
-    {
-      selectFromResult: ({ data, isSuccess, status, error }) => ({
-        data,
-        isSuccess,
-        status: 'status' in (error || {}) ? (error as FetchBaseQueryError).status : status, // Extract HTTP status code
-        error,
-      }),
-    },
-  );
+  } = useGet_1_template_Query(searchParams, {
+    selectFromResult: ({ data, isSuccess, status, error }) => ({
+      data,
+      isSuccess,
+      status: 'status' in (error || {}) ? (error as FetchBaseQueryError).status : status, // Extract HTTP status code
+      error,
+    }),
+  });
+
+  const handleSearch = (query: string) => {
+    if (query !== hashSearchText) {
+      setHashSearchText(query);
+      console.log('Searching for:', query);
+      setSearchParams({
+        ...searchParams,
+        q: query,
+        // Reset to first page when searching
+        page: 1,
+      });
+    }
+  };
+
+  const handlePageChange = (newPage: number) => {
+    setSearchParams({
+      ...searchParams,
+      page: newPage,
+    });
+  };
+
+  const handleLimitChange = (newLimit: number) => {
+    setSearchParams({
+      ...searchParams,
+      limit: newLimit,
+      page: 1, // Reset to first page when changing limit
+    });
+  };
 
   const modals = [AddFilename8, ViewFilename8, BulkDeleteFilename8, BulkEditFilename8, EditFilename8, DeleteFilename8];
+
   let renderUI = (
     <div className="container mx-auto p-4">
       <div className="flex justify-between items-center mb-6">
@@ -56,16 +91,18 @@ const Filename8Table: React.FC = () => {
           </Button>
         </div>
       </div>
-      <SearchBoxRender />
+      <SearchBox onSearch={handleSearch} placeholder="Search here ..." autoFocus={false} />
       <View_1_template_Table />
       {modals.map((ModalComponent, index) => (
         <ModalComponent key={index} />
       ))}
     </div>
   );
+
   if (statusCode === 429) {
     renderUI = <TooManyRequests />;
   }
+
   return renderUI;
 };
 
