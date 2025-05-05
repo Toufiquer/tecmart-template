@@ -17,14 +17,6 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { pageLimitArr } from '@/app/template6/store/filename7StoreConstants';
 
 const View_1_template_Table: React.FC = () => {
-  // Add state for search query, page, and limit
-  // const [searchParams, setSearchParams] = useState({
-  //   q: '',
-  //   page: 1,
-  //   limit: 2,
-  // });
-  // console.log(searchParams);
-
   const [sortConfig, setSortConfig] = useState<{ key: keyof I_3_template_; direction: 'asc' | 'desc' } | null>(null);
   const {
     setSelected_3_template_,
@@ -39,7 +31,6 @@ const View_1_template_Table: React.FC = () => {
     setBulkData,
     setQueryPramsLimit,
     setQueryPramsPage,
-    setQueryPramsQ,
     toggleBulkDeleteModal,
   } = use_3_template_Store();
 

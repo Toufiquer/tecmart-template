@@ -64,7 +64,7 @@ const FooterV1 = () => {
   ];
   const linkStye = 'hover-underline-animation hover:text-green-400 cursor-pointer';
   const mobileLayoutTitleStyle = 'text-xl font-semibold text-slate-800 border-b border-slate-200 mt-4';
-  let TabletLayout = () => (
+  const TabletLayout = () => (
     <div className="mx-auto flex w-full max-w-7xl flex-col items-center justify-center">
       <div className="flex w-full flex-col">
         <div className="grid w-full grid-cols-1 md:grid-cols-2 xl:grid-cols-3">
@@ -132,7 +132,7 @@ const FooterV1 = () => {
       </div>
     </div>
   );
-  let MobileLayout = () => (
+  const MobileLayout = () => (
     <div className="flex w-full flex-col gap-4 pb-8">
       <div className="flex w-full flex-col gap-1 text-slate-600">
         <h2 className={mobileLayoutTitleStyle}>Categories</h2>
