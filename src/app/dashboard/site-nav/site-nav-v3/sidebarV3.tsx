@@ -41,13 +41,16 @@ const SidebarV3 = ({ toggle, handleToggle, toggleButton = false }: { toggleButto
         <ScrollArea className="h-[calc(100vh_-_122px)] top-[50px] border-t-1 pt-2">
           {toggle ? (
             <div className="ml-3">
-              <SidebarAccordion data={sidebarDataHome} />
+              {sidebarDataHome.map((curr, idx) => (
+                <SidebarAccordion data={curr} key={curr.name + idx} />
+              ))}
             </div>
           ) : (
             <div className="flex flex-col p-2">
               <div className="h-4" />
-
-              <SidebarHoverItem data={sidebarDataHome} />
+              {sidebarDataHome.map((curr, idx) => (
+                <SidebarHoverItem data={curr} key={curr.name + idx} />
+              ))}
               <div className="h-16" />
             </div>
           )}

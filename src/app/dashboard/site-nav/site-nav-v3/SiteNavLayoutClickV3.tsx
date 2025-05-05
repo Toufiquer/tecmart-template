@@ -21,7 +21,7 @@ const SiteNavLayoutClickV3 = ({ children = null as React.ReactNode }) => {
   const handleToggle = () => setToggle(pre => !pre);
   const handleMobileToggle = () => setMobileToggle(pre => !pre);
   return (
-    <main className="w-full min-h-screen">
+    <main className="w-full min-h-screen text-slate-700">
       <div className={`grid grid-cols-1 ${toggle ? 'md:grid-cols-[253px_1fr]' : 'md:grid-cols-[63px_1fr]'}`}>
         <ScrollArea className={`w-full block md:hidden ${mobileToggle ? 'h-[60px]' : 'h-screen'}`}>
           <div className="block md:hidden">
