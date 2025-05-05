@@ -1,6 +1,9 @@
 import { I_3_template_ } from '@/app/api/v1/template6/filename7Model';
 
 export interface _3_template_Store {
+  queryPramsLimit: number;
+  queryPramsPage: number;
+  queryPramsQ: string;
   _2_template_: I_3_template_[];
   selected_3_template_: I_3_template_ | null;
   new_3_template_: Partial<I_3_template_>;
@@ -12,6 +15,9 @@ export interface _3_template_Store {
   isBulkEditModalOpen: boolean;
   isBulkDeleteModalOpen: boolean;
   bulkData: I_3_template_[];
+  setQueryPramsLimit: (payload: number) => void;
+  setQueryPramsPage: (payload: number) => void;
+  setQueryPramsQ: (payload: string) => void;
   set_1_template_: (_2_template_: I_3_template_[]) => void;
   setSelected_3_template_: (_4_template_: I_3_template_ | null) => void;
   toggleAddModal: (isOpen: boolean) => void;

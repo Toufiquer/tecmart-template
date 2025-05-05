@@ -1,9 +1,12 @@
 import { create } from 'zustand';
 import { I_3_template_ } from '@/app/api/v1/template6/filename7Model';
 import { _3_template_Store } from '@/app/template6/store/filename7StoreTypes';
-import { baseI_3_template_ } from '@/app/template6/store/filename7StoreConstants';
+import { baseI_3_template_, queryParams } from '@/app/template6/store/filename7StoreConstants';
 
 export const use_3_template_Store = create<_3_template_Store>(set => ({
+  queryPramsLimit: queryParams.limit,
+  queryPramsPage: queryParams.page,
+  queryPramsQ: queryParams.q,
   _2_template_: [],
   selected_3_template_: null,
   new_3_template_: baseI_3_template_,
@@ -14,6 +17,9 @@ export const use_3_template_Store = create<_3_template_Store>(set => ({
   isEditModalOpen: false,
   isDeleteModalOpen: false,
   bulkData: [],
+  setQueryPramsLimit: (payload: number) => set({ queryPramsLimit: payload }),
+  setQueryPramsPage: (payload: number) => set({ queryPramsPage: payload }),
+  setQueryPramsQ: (payload: string) => set({ queryPramsQ: payload }),
   setBulkData: (bulkData: I_3_template_[]) => set({ bulkData }),
   set_1_template_: (_2_template_: I_3_template_[]) => set({ _2_template_ }),
   setSelected_3_template_: _4_template_ => set({ selected_3_template_: _4_template_ }),
