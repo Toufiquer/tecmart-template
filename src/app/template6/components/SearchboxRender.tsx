@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import SearchBox from './SearchBox';
+import Link from 'next/link';
 
 // Define a simplified interface for search results to avoid type issues
 interface SearchResultItem {
@@ -25,6 +26,14 @@ export default function SearchBoxRender() {
 
   // Execute search when query changes
   useEffect(() => {
+    // Clear results if the query is empty
+    if (!searchQuery.trim()) {
+      setSearchResults([]);
+      setTotalResults(0);
+      lastSearchedQuery.current = '';
+      return;
+    }
+
     // Only execute search if the query is different from what was last searched
     if (searchQuery !== lastSearchedQuery.current) {
       executeSearch(searchQuery);
@@ -104,6 +113,9 @@ export default function SearchBoxRender() {
     }
   };
 
+  // Limit displayed results to 3
+  const displayResults = searchResults.slice(0, 3);
+
   return (
     <div className="w-full space-y-4">
       <SearchBox onSearch={handleSearch} placeholder="Search here ..." autoFocus={false} />
@@ -116,21 +128,23 @@ export default function SearchBoxRender() {
 
       {error && <div className="p-4 text-red-700 bg-red-100 rounded-md">{error}</div>}
 
-      {!isLoading && !error && searchResults.length > 0 && (
+      {!isLoading && !error && displayResults.length > 0 && searchQuery.trim().length > 0 && (
         <div>
           <p className="mb-2 text-sm text-gray-600">
             Found {totalResults} result{totalResults !== 1 ? 's' : ''}
           </p>
           <div className="space-y-2">
-            {searchResults.map(item => (
-              <div key={item._id?.toString()} className="p-4 border rounded-md hover:bg-gray-50">
-                <h3 className="font-medium">{String(item.name)}</h3>
-                <p className="text-gray-600">{String(item.email)}</p>
-                <p className="text-sm text-gray-500">
-                  Role: {String(item.role)} | Alias: {String(item.alias)}
-                </p>
-              </div>
+            {displayResults.map(item => (
+              <Link key={item._id?.toString()} href={`/template6/search?query=${searchQuery}`} className="font-medium text-xs p-0">
+                <div className="p-4 py-1 border rounded-md hover:bg-gray-200 cursor-pointer my-1">{String(item.name)}</div>
+              </Link>
             ))}
+
+            {totalResults > 3 && (
+              <Link href={`/template6/search?query=${searchQuery}`} className="font-medium text-xs p-0">
+                <div className="p-4 py-1 border rounded-md hover:bg-gray-200 cursor-pointer my-1">View More...</div>
+              </Link>
+            )}
           </div>
         </div>
       )}
