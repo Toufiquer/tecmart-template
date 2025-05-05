@@ -5,7 +5,14 @@
 | @copyright: tecmart-template, May, 2025
 |-----------------------------------------
 */
+
+import ViewZustandData from '@/zustands/features/data/component-demo/ViewZustandData';
+
 const Page = () => {
-  return <main>Page</main>;
+  return (
+    <main>
+      <ViewZustandData />
+    </main>
+  );
 };
 export default Page;

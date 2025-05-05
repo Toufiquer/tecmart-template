@@ -7,7 +7,7 @@
 */
 
 import AddData from './AddData'
-import ViewData from './ViewData'
+import ViewData from './ViewZustandData'
 
 const NewDemoPage = () => {
   return (
