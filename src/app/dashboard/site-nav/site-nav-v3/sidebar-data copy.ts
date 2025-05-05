@@ -7,7 +7,7 @@
 */
 import { Url } from 'url';
 import { ReactNode } from 'react';
-import { iconBiPieChartAlt } from './side-nav-react-icons';
+import { iconBiPieChartAlt } from '../site-nav-v4/side-nav-react-icons';
 
 export type LINKTYPE = {
   name: string;

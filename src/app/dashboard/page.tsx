@@ -6,13 +6,7 @@
 |-----------------------------------------
 */
 
-import AuthCheckingComponent from '../components/auth/AuthChecking';
-
 const Page = () => {
-  return (
-    <AuthCheckingComponent redirectUrl="/dashboard">
-      <div className="p-12">Home Dashboard</div>
-    </AuthCheckingComponent>
-  );
+  return <div className="p-12">Home Dashboard</div>;
 };
 export default Page;

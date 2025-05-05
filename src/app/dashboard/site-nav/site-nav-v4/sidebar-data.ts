@@ -7,18 +7,18 @@
 */
 import { Url } from 'url';
 import { ReactNode } from 'react';
-import { iconBiPieChartAlt } from '../site-nav-v4/side-nav-react-icons';
+import { iconBiPieChartAlt } from './side-nav-react-icons';
 
 export type LINKTYPE = {
   name: string;
   link: Url | string;
   badge?: string;
-  id?: string | number;
+  id: string | number;
   icon?: ReactNode | string;
 };
 
 export type SIDEBARTYPE = {
-  id?: string | number;
+  id: string | number;
   name: string;
   icon?: ReactNode | null;
   content: Array<LINKTYPE>;

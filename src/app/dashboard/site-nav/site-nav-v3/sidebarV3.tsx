@@ -14,13 +14,13 @@ import SidebarHoverItem from './sidebar-hover-item';
 
 const SidebarV3 = ({ toggle, handleToggle, toggleButton = false }: { toggleButton?: boolean; toggle: boolean; handleToggle: () => void }) => {
   return (
-    <div className="h-screen relative border-slate-500 border-r-1">
+    <div className=" border-slate-500 border-b md:pb-[60px] ">
       <div className="relative text-slate-600">
         {!toggleButton && (
           <>
             {toggle ? (
-              <div onClick={handleToggle} className="top-0 left-0 block w-[253px] md:absolute border-r-1">
-                <h3 className="flex w-full cursor-pointer items-center justify-start gap-4 border-t border-slate-200 bg-slate-50 py-4 text-[.8rem]">
+              <div onClick={handleToggle} className="top-0 left-0 block w-[253px] md:absolute ">
+                <h3 className="flex w-full cursor-pointer items-center justify-start gap-4 md:border-t border-slate-200 bg-slate-50 py-4 text-[.8rem]">
                   <span className="ml-4">
                     <CgArrowLongLeft />
                   </span>
@@ -28,8 +28,8 @@ const SidebarV3 = ({ toggle, handleToggle, toggleButton = false }: { toggleButto
                 </h3>
               </div>
             ) : (
-              <div onClick={handleToggle} className="top-0 left-0 block w-[63px] md:absolute border-r-1">
-                <h3 className="flex w-full cursor-pointer items-center justify-center border-t border-slate-200 bg-slate-50 pb-[17px] pt-[18px]">
+              <div onClick={handleToggle} className="top-0 left-0 block w-[63px] md:absolute ">
+                <h3 className="flex w-full cursor-pointer items-center justify-center md:border-t border-slate-200 bg-slate-50 pb-[17px] pt-[18px]">
                   <span title="View">
                     <CgArrowLongRight />
                   </span>
@@ -38,7 +38,7 @@ const SidebarV3 = ({ toggle, handleToggle, toggleButton = false }: { toggleButto
             )}
           </>
         )}
-        <ScrollArea className="h-[calc(100vh_-_122px)] top-[50px] border-t-1 pt-2">
+        <ScrollArea className="md:h-[calc(100vh_-_122px)] md:top-[50px] md:border-t-1 pt-2">
           {toggle ? (
             <div className="ml-3">
               {sidebarDataHome.map((curr, idx) => (
@@ -47,11 +47,11 @@ const SidebarV3 = ({ toggle, handleToggle, toggleButton = false }: { toggleButto
             </div>
           ) : (
             <div className="flex flex-col p-2">
-              <div className="h-4" />
+              <div className="md:h-4" />
               {sidebarDataHome.map((curr, idx) => (
                 <SidebarHoverItem data={curr} key={curr.name + idx} />
               ))}
-              <div className="h-16" />
+              <div className="md:h-16" />
             </div>
           )}
         </ScrollArea>
