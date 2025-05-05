@@ -11,7 +11,7 @@ import AuthCheckingComponent from '../components/auth/AuthChecking';
 const Page = () => {
   return (
     <AuthCheckingComponent redirectUrl="/dashboard">
-      <div>Home Dashboard</div>
+      <div className="p-12">Home Dashboard</div>
     </AuthCheckingComponent>
   );
 };

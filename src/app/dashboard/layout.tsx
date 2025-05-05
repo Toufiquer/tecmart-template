@@ -7,7 +7,9 @@
 */
 
 import AuthCheckingComponent from '../components/auth/AuthChecking';
+import SiteNavLayoutClickV1 from './site-nav/site-nav-v1/SiteNavLayoutClickV1';
 import SiteNavLayoutClickV2 from './site-nav/site-nav-v2/SiteNavLayoutClickV2';
+import SiteNavLayoutClickV3 from './site-nav/site-nav-v3/SiteNavLayoutClickV3';
 
 export default function RootLayout({
   children,
@@ -16,7 +18,9 @@ export default function RootLayout({
 }>) {
   return (
     <AuthCheckingComponent redirectUrl="/dashboard">
-      <SiteNavLayoutClickV2> {children}</SiteNavLayoutClickV2>;
+      {/* <SiteNavLayoutClickV1> {children}</SiteNavLayoutClickV1>; */}
+      <SiteNavLayoutClickV2> {children}</SiteNavLayoutClickV2>
+      {/* <SiteNavLayoutClickV3> {children}</SiteNavLayoutClickV3>; */}
     </AuthCheckingComponent>
   );
 }

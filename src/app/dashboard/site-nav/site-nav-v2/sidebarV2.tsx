@@ -8,6 +8,9 @@
 
 import { CgArrowLongLeft, CgArrowLongRight } from 'react-icons/cg';
 import { ScrollArea } from '@/components/ui/scroll-area';
+import { sidebarDataHome } from './sidebar-data';
+import SidebarAccordion from './sidebar-accordion';
+import SidebarHoverItem from './sidebar-hover-item';
 
 const SidebarV2 = ({ toggle, handleToggle, toggleButton = false }: { toggleButton?: boolean; toggle: boolean; handleToggle: () => void }) => {
   return (
@@ -37,11 +40,14 @@ const SidebarV2 = ({ toggle, handleToggle, toggleButton = false }: { toggleButto
         )}
         <ScrollArea className="h-[calc(100vh_-_122px)] top-[50px] border-t-1 pt-2">
           {toggle ? (
-            <div className="ml-3">List of data</div>
+            <div className="ml-3">
+              <SidebarAccordion data={sidebarDataHome} />
+            </div>
           ) : (
             <div className="flex flex-col p-2">
               <div className="h-4" />
-              List <br /> of <br /> data
+
+              <SidebarHoverItem data={sidebarDataHome} />
               <div className="h-16" />
             </div>
           )}

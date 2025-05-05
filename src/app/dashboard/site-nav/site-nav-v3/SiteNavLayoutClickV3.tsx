@@ -1,6 +1,6 @@
 /*
 |-----------------------------------------
-| setting up SiteNavLayoutClickV1 for the App
+| setting up SiteNavLayoutClickV3 for the App
 | @author: Toufiquer Rahman<toufiquer.0@gmail.com>
 | @copyright: Toufiquer, May, 2024
 |-----------------------------------------
@@ -15,7 +15,7 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { IoSettingsOutline } from 'react-icons/io5';
 import { X } from 'lucide-react';
 
-const SiteNavLayoutClickV1 = ({ children = null as React.ReactNode }) => {
+const SiteNavLayoutClickV3 = ({ children = null as React.ReactNode }) => {
   console.log('children', children);
   const [toggle, setToggle] = useState(false);
   const [mobileToggle, setMobileToggle] = useState(false);
@@ -64,4 +64,4 @@ const SiteNavLayoutClickV1 = ({ children = null as React.ReactNode }) => {
     </main>
   );
 };
-export default SiteNavLayoutClickV1;
+export default SiteNavLayoutClickV3;
