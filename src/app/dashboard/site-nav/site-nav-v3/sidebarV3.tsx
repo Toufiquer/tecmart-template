@@ -14,7 +14,7 @@ import SidebarHoverItem from './sidebar-hover-item';
 
 const SidebarV3 = ({ toggle, handleToggle, toggleButton = false }: { toggleButton?: boolean; toggle: boolean; handleToggle: () => void }) => {
   return (
-    <div className=" border-slate-500 border-b md:pb-[60px] ">
+    <div className=" border-slate-500 md:border-b md:pb-[60px] ">
       <div className="relative text-slate-600">
         {!toggleButton && (
           <>
@@ -47,11 +47,11 @@ const SidebarV3 = ({ toggle, handleToggle, toggleButton = false }: { toggleButto
             </div>
           ) : (
             <div className="flex flex-col p-2">
-              <div className="md:h-4" />
+              <div className="h-4" />
               {sidebarDataHome.map((curr, idx) => (
                 <SidebarHoverItem data={curr} key={curr.name + idx} />
               ))}
-              <div className="md:h-16" />
+              <div className="h-16" />
             </div>
           )}
         </ScrollArea>

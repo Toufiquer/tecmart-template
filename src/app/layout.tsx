@@ -40,6 +40,7 @@ export default function RootLayout({
             <div className="w-full flex flex-col">
               <Nav />
               {children}
+              <footer className="flex items-center justify-center w-full h-[500px]">Footer</footer>
             </div>
           </ReduxProvider>
         </NextAuthProvider>

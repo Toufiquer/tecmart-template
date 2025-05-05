@@ -7,6 +7,13 @@
 */
 
 const Page = () => {
-  return <div className="p-12">Home Dashboard</div>;
+  return (
+    <div className="p-12 ">
+      Home Dashboard
+      <div className="w-full h-screen flex items-center justify-center">Box 1</div>
+      <div className="w-full h-screen flex items-center justify-center">Box 2</div>
+      <div className="w-full h-screen flex items-center justify-center">Box 3</div>
+    </div>
+  );
 };
 export default Page;

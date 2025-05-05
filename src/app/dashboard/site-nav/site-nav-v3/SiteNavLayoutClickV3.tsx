@@ -21,9 +21,10 @@ const SiteNavLayoutClickV3 = ({ children = null as React.ReactNode }) => {
   const handleToggle = () => setToggle(pre => !pre);
   const handleMobileToggle = () => setMobileToggle(pre => !pre);
   return (
-    <main className="w-full min-h-screen text-slate-700">
+    <main className="w-full text-slate-700 max-h-[90vh] overflow-hidden border-b">
       <div className={`grid grid-cols-1 ${toggle ? 'md:grid-cols-[253px_1fr]' : 'md:grid-cols-[63px_1fr]'}`}>
         <ScrollArea className={`w-full block md:hidden ${mobileToggle ? 'h-[60px]' : 'h-screen'}`}>
+          {/* Mobile */}
           <div className="block md:hidden">
             <div className="p-4 absolute w-full right-0 border-b-1 border-slate-300">
               {mobileToggle ? (
@@ -46,19 +47,25 @@ const SiteNavLayoutClickV3 = ({ children = null as React.ReactNode }) => {
             <SidebarV3 toggle={toggle} handleToggle={handleToggle} />
           </div>
         </ScrollArea>
+        {/* Tablet & desktop */}
         <ScrollArea className={`w-full h-screen hidden md:block`}>
           <div className="hidden md:block">
             <SidebarV3 toggle={toggle} handleToggle={handleToggle} />
           </div>
         </ScrollArea>
-
-        {mobileToggle && (
-          <div className="h-[calc(100vh_-_62px)] w-full border-l border-slate-500">
-            <ScrollArea className="h-[calc(100vh_-_62px)] ">
+        {/* children or content */}
+        <div className=" hidden md:block">
+          <ScrollArea className="h-[calc(100vh_-_62px)] bg-slate-300 border-l">
+            {children ? children : <div className="w-full min-h-screen flex items-center justify-center">First Load Component V2</div>}
+          </ScrollArea>
+        </div>
+        <div className=" md:hidden block">
+          {mobileToggle && (
+            <ScrollArea className="h-[calc(100vh_-_62px)] bg-slate-300">
               {children ? children : <div className="w-full min-h-screen flex items-center justify-center">First Load Component V2</div>}
             </ScrollArea>
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </main>
   );
