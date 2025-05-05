@@ -17,6 +17,7 @@ import DeleteFilename8 from '@/app/template6/components/DeleteFilename8';
 import BulkDeleteFilename8 from '@/app/template6/components/BulkDeleteFilename8';
 import BulkEditFilename8 from '@/app/template6/components/BulkEditFilename8';
 import TooManyRequests from '@/app/template6/components/TooManyRequest';
+import SearchBoxRender from './components/SearchboxRender';
 
 const Filename8Table: React.FC = () => {
   const { toggleAddModal } = use_3_template_Store();
@@ -55,6 +56,7 @@ const Filename8Table: React.FC = () => {
           </Button>
         </div>
       </div>
+      <SearchBoxRender />
       <View_1_template_Table />
       {modals.map((ModalComponent, index) => (
         <ModalComponent key={index} />
