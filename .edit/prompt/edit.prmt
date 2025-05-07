@@ -1,2 +1,9 @@
-Help me to create a prompt. I want to design a SearchBox. The page will have an eye-catching view, responsive for mobile, tablet, desktop. I am using NextJs with typescript. make those as single component. add framer motion to it. also add some features for user satisfaction. input need minimum 3 character if user input less than 3 it will render a small text with red color that say "minimum 3 character need".
+1. Users = _1_template_ 
+2. users = _2_template_
+3. User  = _3_template_
+4. user  = _4_template_
 
+ 1. Users = __101_Users__
+ 2. users = __102_users__
+ 3. User  = __103_User__
+ 4. user  = __104_user__
