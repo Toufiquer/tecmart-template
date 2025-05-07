@@ -7,3 +7,20 @@
  2. users = __102_users__
  3. User  = __103_User__
  4. user  = __104_user__
+
+ path 
+
+ 
+ 
+ need to change
+
+ __role9__ = default_selector__
+
+  1. Users = __101_Users__ = Users_101__
+ 2. users = __102_users__ = users_102__
+ 3. User  = __103_User__ = User_103__
+ 4. user  = __104_user__ = user_104__
+
+ 10. __custom_selector_arr__ = ['user', 'admin', 'moderator'];
+11. __I_custom_selector_Type__ = 'user' | 'admin' | 'moderator'
+12. __default_selector__ = 'user'
