@@ -1,5 +1,6 @@
-import __103_User__ from './Model';
 import connectDB from '@/lib/mongoose';
+
+import __103_User__ from './Model';
 import { IResponse } from './utils';
 
 // Helper to handle database connection and errors
