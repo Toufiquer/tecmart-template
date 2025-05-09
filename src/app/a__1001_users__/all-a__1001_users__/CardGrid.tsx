@@ -7,7 +7,7 @@ import Link from 'next/link';
 
 const __103_Users__Card = ({ __104_Users__ }: { __104_Users__: IUsers_101__ }) => {
   return (
-    <Link href={`/a__1001_rtk_template__/all-a__1001_rtk_template__/${__104_Users__._id as string}`} passHref>
+    <Link href={`/a__1001_users__/all-a__1001_users__/${__104_Users__._id as string}`} passHref>
       <motion.div className="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300" whileHover={{ y: -5 }} layout>
         <div className="relative h-48 w-full">
           {__104_Users__.img ? (
