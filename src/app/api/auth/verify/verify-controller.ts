@@ -30,7 +30,7 @@ export async function invokeAuth(req: Request): Promise<IResponse> {
         } else {
           formatResponse = { data: 'not valid', message: 'not valid', status: 502 };
         }
-      } else {
+      } else if (result.authType === 'verify-token') {
         const reqToken = req.headers.get('authorization');
         console.log('reqToken ', reqToken);
         // ! -- false

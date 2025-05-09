@@ -18,9 +18,9 @@ export async function PUT(req: Request) {
     }
   } catch (err) {
     console.log('err', err);
+    const result: IResponse = { data: [], message: 'some thing wrong', status: 502 };
+    return formatResponse(result.data, result.message, result.status);
   }
   // finally {
-  //   const result: IResponse = { data: [], message: '', status: 201 };
-  //   return formatResponse(result.data, result.message, result.status);
   // }
 }

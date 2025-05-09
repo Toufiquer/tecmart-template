@@ -11,8 +11,6 @@
 import { useSession, signOut } from 'next-auth/react'; // Import signOut
 import { useEffect } from 'react';
 
-const SESSION_STORAGE_TOKEN_KEY = 'authToken';
-
 const SessionAuth = () => {
   const { data: session, status } = useSession();
 
@@ -27,7 +25,7 @@ const SessionAuth = () => {
     }
 
     if (status === 'authenticated' && session) {
-      const tokenFromSessionStorage = sessionStorage.getItem(SESSION_STORAGE_TOKEN_KEY);
+      const tokenFromSessionStorage = sessionStorage.getItem(process.env.NEXTAUTH_SECRET || '_');
       if (tokenFromSessionStorage) {
         console.log('tokenFromSessionStorage: ', tokenFromSessionStorage); // Optional: reduce noise
         console.log('Token found in sessionStorage, doing nothing.'); // Optional: reduce noise
@@ -52,7 +50,7 @@ const SessionAuth = () => {
           .then(data => {
             // This part will only be reached if res.ok was true
             if (data.data && data.status === 201) {
-              sessionStorage.setItem(SESSION_STORAGE_TOKEN_KEY, data.data);
+              sessionStorage.setItem(process.env.NEXTAUTH_SECRET || '_', data.data);
               console.log('Token fetched and saved to sessionStorage:', data.data);
             } else {
               console.error('Failed to get token from API response:', data);
@@ -73,22 +71,20 @@ const SessionAuth = () => {
             // The 502 sign out is specific.
             // However, we should ensure the token is not present if the fetch failed for other reasons.
             // Let's ensure it's cleared if the token wasn't successfully set.
-            if (!sessionStorage.getItem(SESSION_STORAGE_TOKEN_KEY)) {
+            if (!sessionStorage.getItem(process.env.NEXTAUTH_SECRET || '_')) {
               console.log('Ensuring token is cleared from sessionStorage due to fetch/save error.');
-              sessionStorage.removeItem(SESSION_STORAGE_TOKEN_KEY);
+              // sessionStorage.removeItem(process.env.NEXTAUTH_SECRET || '_');
             }
           });
       } else {
         console.warn('Missing email, name, or expires in session data. Cannot fetch token.');
-        // If essential session data is missing, it implies a problem. Clear any stale token.
-        // sessionStorage.removeItem(SESSION_STORAGE_TOKEN_KEY);
       }
     } else if (status === 'loading') {
       console.log('Session loading...');
     } else {
       // User not authenticated, no session data, or session ended
       console.log('User not authenticated or session ended. Clearing token from sessionStorage.');
-      // sessionStorage.removeItem(SESSION_STORAGE_TOKEN_KEY);
+      // sessionStorage.removeItem(process.env.NEXTAUTH_SECRET || '_');
     }
   }, [status, session]); // Dependencies
 
