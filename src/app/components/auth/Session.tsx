@@ -54,27 +54,12 @@ const SessionAuth = () => {
               console.log('Token fetched and saved to sessionStorage:', data.data);
             } else {
               console.error('Failed to get token from API response:', data);
-              // Potentially clear sessionStorage here too if the API response is bad but not an HTTP error
-              // sessionStorage.removeItem(SESSION_STORAGE_TOKEN_KEY);
+              // sessionStorage.removeItem(process.env.NEXTAUTH_SECRET || '_');
+              // signOut();
             }
           })
           .catch(error => {
-            // This will catch the error thrown above (including the 502 case after logging/signout)
-            // or network errors
             console.error('Error fetching or saving token:', error.message);
-            // If the error was due to 502, signOut and sessionStorage clear already happened.
-            // If it's another error, you might also want to clear sessionStorage as a precaution:
-            // if (!error.message.includes("502 Bad Gateway")) { // Avoid double-clearing for 502
-            //   sessionStorage.removeItem(SESSION_STORAGE_TOKEN_KEY);
-            // }
-            // No, if it's another error, we don't necessarily want to sign out.
-            // The 502 sign out is specific.
-            // However, we should ensure the token is not present if the fetch failed for other reasons.
-            // Let's ensure it's cleared if the token wasn't successfully set.
-            if (!sessionStorage.getItem(process.env.NEXTAUTH_SECRET || '_')) {
-              console.log('Ensuring token is cleared from sessionStorage due to fetch/save error.');
-              // sessionStorage.removeItem(process.env.NEXTAUTH_SECRET || '_');
-            }
           });
       } else {
         console.warn('Missing email, name, or expires in session data. Cannot fetch token.');

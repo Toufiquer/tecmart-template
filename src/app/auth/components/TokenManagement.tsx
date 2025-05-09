@@ -8,11 +8,11 @@
 
 'use client';
 
-import { useSession } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 import { useState } from 'react';
 
 const TokenManagement = () => {
-  const [token, setToken] = useState(true);
+  const [token, setToken] = useState(false);
   const { data: session, status } = useSession();
   console.log('session', session, status);
   let tokenFromSessionStorage: string | null = '';
@@ -23,8 +23,30 @@ const TokenManagement = () => {
       console.log('--Token found in sessionStorage, doing nothing.'); // Optional: reduce noise
     }
   }
-    const handleVerify = () => {
-      
+  const handleLogout = async () => {
+    await signOut({ redirect: true, callbackUrl: '/' });
+  };
+  const handleVerify = async () => {
+    console.log('handleVerify');
+    if (tokenFromSessionStorage) {
+      try {
+        const res = await fetch('/api/auth/verify', {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ token: tokenFromSessionStorage }),
+        });
+        const data = await res.json();
+        if (data.data === 'not valid') {
+          sessionStorage.removeItem(process.env.NEXTAUTH_SECRET || '_');
+          console.log('Token is not valid, removing it from sessionStorage');
+          handleLogout();
+        }
+        console.log('data', data);
+        setToken(true);
+      } catch (e) {
+        console.log('e', e);
+      }
+    }
   };
   return (
     <main className="w-full border-1 my-4 p-4" onClick={handleVerify}>

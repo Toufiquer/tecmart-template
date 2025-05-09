@@ -13,9 +13,9 @@ export const apiSlice = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: process.env.baseURL,
     credentials: 'include', // Include credentials for cross-origin requests
-    prepareHeaders: async (headers, { getState }) => {
-      const state = getState() as { auth?: { accessToken?: string } };
-      const token = state.auth?.accessToken;
+    prepareHeaders: async (headers, {}) => {
+      const tokenFromSessionStorage = sessionStorage.getItem(process.env.NEXTAUTH_SECRET || '_');
+      const token = tokenFromSessionStorage;
       if (token) {
         headers.set('Authorization', `Bearer ${token}`);
       }

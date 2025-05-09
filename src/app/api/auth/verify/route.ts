@@ -15,6 +15,8 @@ export async function PUT(req: Request) {
       return formatResponse(data.data, data.message, data.status);
     } else if (data.message === 'not valid' && data.status === 502) {
       return formatResponse(data.data, data.message, data.status);
+    } else {
+      return formatResponse('not valid', 'not valid', 503);
     }
   } catch (err) {
     console.log('err', err);
