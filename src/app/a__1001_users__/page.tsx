@@ -68,6 +68,13 @@ const Filename8Table: React.FC = () => {
         <div className="w-full flex gap-2 item-center justify-end">
           <Button
             className="border-slate-500 hover:border-slate-600 border-1 cursor-pointer"
+            onClick={() => router.push('/a__1001_users__/all-a__1001_users__ssr')}
+          >
+            View SSR
+            <ArrowRightIcon className="w-4 h-4 mr-2" />
+          </Button>
+          <Button
+            className="border-slate-500 hover:border-slate-600 border-1 cursor-pointer"
             onClick={() => router.push('/a__1001_users__/all-a__1001_users__')}
           >
             View Grid
