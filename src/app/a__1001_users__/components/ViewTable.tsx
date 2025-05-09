@@ -114,7 +114,10 @@ const ViewUsers_101__Table: React.FC = () => {
     sortedUsers_101__Data.map((__104_Users__: IUsers_101__, index: number) => (
       <TableRow key={(__104_Users__.email as string) || index}>
         <TableCell>
-          <Checkbox onCheckedChange={checked => handleSelectRow(!!checked, __104_Users__)} checked={bulkData.some(item => item.email === __104_Users__.email)} />
+          <Checkbox
+            onCheckedChange={checked => handleSelectRow(!!checked, __104_Users__)}
+            checked={bulkData.some(item => item.email === __104_Users__.email)}
+          />
         </TableCell>
         <TableCell className="font-medium">{(__104_Users__.name as string) || ''}</TableCell>
         <TableCell className="hidden md:table-cell">{(__104_Users__.email as string) || ''}</TableCell>
@@ -199,7 +202,7 @@ const ViewUsers_101__Table: React.FC = () => {
           <SelectTrigger className="col-span-4">
             <SelectValue placeholder="Select a limit" />
           </SelectTrigger>
-          <SelectContent>
+          <SelectContent className="bg-slate-50">
             {pageLimitArr.map(i => (
               <SelectItem key={i} value={i.toString()} className="cursor-pointer hover:bg-slate-200">
                 {i}
