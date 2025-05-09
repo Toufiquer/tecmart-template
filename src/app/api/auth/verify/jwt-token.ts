@@ -19,7 +19,7 @@ export function createJwt(email: string): string {
 
   const payload: JwtPayload = { email };
 
-  const token = jwt.sign(payload, jwtSecret, { expiresIn: '1m' });
+  const token = jwt.sign(payload, jwtSecret, { expiresIn: '1h' });
   return token;
 }
 
