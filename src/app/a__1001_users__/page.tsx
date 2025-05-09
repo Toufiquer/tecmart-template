@@ -66,7 +66,10 @@ const Filename8Table: React.FC = () => {
           User_103__ Management {isSuccess && <sup className="text-xs">(total:{getResponseData?.data?.total || '00'})</sup>}
         </h1>
         <div className="w-full flex gap-2 item-center justify-end">
-          <Button className="border-slate-500 hover:border-slate-600 border-1 cursor-pointer" onClick={() => router.push('/template6/all-template6')}>
+          <Button
+            className="border-slate-500 hover:border-slate-600 border-1 cursor-pointer"
+            onClick={() => router.push('/a__1001_users__/all-a__1001_users__')}
+          >
             View Grid
             <ArrowRightIcon className="w-4 h-4 mr-2" />
           </Button>
