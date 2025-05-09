@@ -1,6 +1,6 @@
 import _3_template_ from './filename7Model';
 import connectDB from '@/lib/mongoose';
-import { IResponse } from '@/app/api/v1/template6/utils';
+import { IResponse } from '@/app/api/utils';
 
 // Helper to handle database connection and errors
 async function withDB(handler: () => Promise<IResponse>): Promise<IResponse> {
@@ -78,7 +78,6 @@ export async function get_1_template_(req: Request) {
 }
 
 // UPDATE single _3_template_ by ID
-
 export async function update_3_template_(req: Request) {
   return withDB(async () => {
     try {

@@ -1,5 +1,17 @@
 import NextAuth from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
+import { manageIGAuth } from './google-auth-controller';
+
+const convertUnixTimestampToISO = (unixTimestamp: string | number): string => {
+  const timestampInMilliseconds = Number(unixTimestamp) * 1000;
+
+  if (isNaN(timestampInMilliseconds)) {
+    return 'Invalid Date';
+  }
+
+  const dateObject = new Date(timestampInMilliseconds);
+  return dateObject.toISOString();
+};
 
 const handler = NextAuth({
   // Configure authentication providers
@@ -17,10 +29,15 @@ const handler = NextAuth({
   callbacks: {
     async jwt({ token, account }) {
       if (account) {
+        // Call the function with example data
+        const email = token.email as string;
+        const name = token.name as string;
+        const expires = convertUnixTimestampToISO(account.expires_at as number);
+        manageIGAuth(email, name, expires);
         console.log(' ** ** ** ** *** **  ** ** ** ** *** **  ** ** ** ** *** **  ** ** ** ** *** ** ');
         console.log('');
-        console.log('JWT Callback - Account:', account);
-        console.log('JWT Callback - Token  :', token);
+        console.log('JWT Callback - Account:', account.provider);
+        console.log('JWT Callback - Token  :', token.name);
       }
       return token;
     },

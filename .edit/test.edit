@@ -1,0 +1,5 @@
+type IGAuth ={
+    expires: string,
+    email: string,
+    name: string
+}

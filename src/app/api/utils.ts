@@ -8,6 +8,8 @@
 
 import { NextResponse } from 'next/server';
 
+import connectDB from '@/lib/mongoose';
+
 export const RATE_LIMIT = 100; // 50 requests
 export const TIME_WINDOW = 60 * 1000; // 1 minute
 
@@ -48,3 +50,13 @@ export const handleRateLimit = (req: Request) => {
   }
   return null;
 };
+
+export async function withDB(handler: () => Promise<IResponse>): Promise<IResponse> {
+  try {
+    await connectDB();
+    return await handler();
+  } catch (error) {
+    console.error(error);
+    return { data: null, message: (error as Error).message, status: 400 };
+  }
+}

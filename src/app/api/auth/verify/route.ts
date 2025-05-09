@@ -1,45 +1,26 @@
 import { NextResponse } from 'next/server';
 import { OAuth2Client } from 'google-auth-library';
+import { checkEmail } from '../[...nextauth]/google-auth-controller';
+import { handleRateLimit, IResponse } from '../../utils';
+import { invokeAuth } from './verify-controller';
 
-const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
+export const formatResponse = (data: unknown, message: string, status: number) => NextResponse.json({ data, message, status }, { status });
 
-export async function POST(request: Request) {
+export async function PUT(req: Request) {
+  const rateLimitResponse = handleRateLimit(req);
+  if (rateLimitResponse) return rateLimitResponse;
   try {
-    const { tokenType, token } = await request.json();
-    console.log('4 token  ', token);
-    if (tokenType === 'google') {
-      try {
-        console.log('-- -- verifyIdToken', token);
-        const ticket = await client.verifyIdToken({
-          idToken: token,
-          audience: process.env.GOOGLE_CLIENT_ID,
-        });
-        const payload = ticket.getPayload();
-
-        if (!payload) {
-          return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
-        }
-
-        return NextResponse.json({
-          valid: true,
-          user: {
-            email: payload.email,
-            name: payload.name,
-            picture: payload.picture,
-          },
-        });
-      } catch (error) {
-        console.log('error :', error);
-        return NextResponse.json({ error: 'Invalid token' }, { status: 401 });
-      }
-    } else if (tokenType === 'email') {
-      // Implement email token verification logic here
-      return NextResponse.json({ error: 'Not implemented' }, { status: 501 });
+    const data = await invokeAuth(req);
+    if (data.message === 'login Success' && data.status === 201) {
+      return formatResponse(data.data, data.message, data.status);
+    } else if (data.message === 'not valid' && data.status === 502) {
+      return formatResponse(data.data, data.message, data.status);
     }
-
-    return NextResponse.json({ error: 'Invalid token type' }, { status: 400 });
-  } catch (error) {
-    console.log('error :', error);
-    return NextResponse.json({ error: 'Server error' }, { status: 500 });
+  } catch (err) {
+    console.log('err', err);
   }
+  // finally {
+  //   const result: IResponse = { data: [], message: '', status: 201 };
+  //   return formatResponse(result.data, result.message, result.status);
+  // }
 }

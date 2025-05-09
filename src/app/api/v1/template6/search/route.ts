@@ -1,6 +1,6 @@
 import _3_template_ from '../filename7Model';
 import connectDB from '@/lib/mongoose';
-import { formatResponse, handleRateLimit } from '../utils';
+import { formatResponse, handleRateLimit } from '../../../utils';
 
 // Search functionality
 export async function GET(req: Request) {
