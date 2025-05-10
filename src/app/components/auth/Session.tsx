@@ -32,7 +32,7 @@ const SessionAuth = () => {
         fetch('/api/auth/verify', {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, name, expires: sessionExpires }),
+          body: JSON.stringify({ email, name, expires: sessionExpires, authType: 'google' }),
         })
           .then(res => res.json())
           .then(data => {

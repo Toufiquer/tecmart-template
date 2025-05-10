@@ -1,7 +1,6 @@
 import { IResponse, withDB } from '../../utils';
 import { checkEmail } from '../[...nextauth]/google-auth-controller';
 import { createJwt } from './jwt-token';
-// import { formatResponse } from './route';
 let formatResponse = { data: 'try-again', message: 'try-again', status: 202 };
 
 export async function invokeAuth(req: Request): Promise<IResponse> {
@@ -17,7 +16,7 @@ export async function invokeAuth(req: Request): Promise<IResponse> {
           token = createJwt(email);
           formatResponse = { data: token, message: 'login Success', status: 201 };
         } else {
-          formatResponse = { data: 'not valid', message: 'not valid', status: 502 };
+          formatResponse = { data: 'not valid', message: 'not valid', status: 205 };
         }
       } else if (result.authType === 'verify-token') {
         const reqToken = req.headers.get('authorization');

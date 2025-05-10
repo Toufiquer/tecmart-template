@@ -8,10 +8,10 @@ export async function PUT(req: Request) {
     const data = await invokeAuth(req);
     if (data.message === 'login Success' && data.status === 201) {
       return formatResponse(data.data, data.message, data.status);
-    } else if (data.message === 'not valid' && data.status === 502) {
+    } else if (data.message === 'not valid' && data.status === 205) {
       return formatResponse(data.data, data.message, data.status);
     } else {
-      return formatResponse('not valid', 'not valid', 503);
+      return formatResponse('not valid', 'not valid', 206);
     }
   } catch (err) {
     console.log('err', err);
