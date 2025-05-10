@@ -1,10 +1,5 @@
-import { NextResponse } from 'next/server';
-import { OAuth2Client } from 'google-auth-library';
-import { checkEmail } from '../[...nextauth]/google-auth-controller';
-import { handleRateLimit, IResponse } from '../../utils';
+import { formatResponse, handleRateLimit, IResponse } from '../../utils';
 import { invokeAuth } from './verify-controller';
-
-export const formatResponse = (data: unknown, message: string, status: number) => NextResponse.json({ data, message, status }, { status });
 
 export async function PUT(req: Request) {
   const rateLimitResponse = handleRateLimit(req);
@@ -23,6 +18,4 @@ export async function PUT(req: Request) {
     const result: IResponse = { data: [], message: 'some thing wrong', status: 502 };
     return formatResponse(result.data, result.message, result.status);
   }
-  // finally {
-  // }
 }

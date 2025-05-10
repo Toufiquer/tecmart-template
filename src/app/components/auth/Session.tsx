@@ -8,7 +8,7 @@
 
 'use client';
 
-import { useSession, signOut } from 'next-auth/react'; // Import signOut
+import { useSession } from 'next-auth/react';
 import { useEffect } from 'react';
 
 const SessionAuth = () => {
