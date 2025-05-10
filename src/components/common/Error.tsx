@@ -4,8 +4,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { SerializedError } from '@reduxjs/toolkit';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
 
+type CustomErrorType = {
+  data: unknown;
+  message: string;
+  status: number;
+};
 interface ErrorMessageProps {
-  message: string | FetchBaseQueryError | SerializedError;
+  message: string | FetchBaseQueryError | SerializedError | CustomErrorType;
   type?: 'warning' | 'error' | 'critical';
   dismissible?: boolean;
   autoHideDuration?: number | null;
@@ -62,7 +67,42 @@ const ErrorMessageComponent: React.FC<ErrorMessageProps> = ({
       const timer = setTimeout(handleDismiss, autoHideDuration);
       return () => clearTimeout(timer);
     }
-  }, [autoHideDuration, isVisible, handleDismiss]);
+  }, [autoHideDuration, isVisible, handleDismiss]); // Function to extract a displayable message from the error object
+
+  const getDisplayMessage = (error: string | FetchBaseQueryError | SerializedError): string => {
+    if (typeof error === 'object' && error !== null && 'message' in error) {
+      console.log('error: 1');
+      const customErrorMessage = error as CustomErrorType;
+      return `Error: ${customErrorMessage.message}`;
+    }
+    if (typeof error === 'string') {
+      console.log('error: 2');
+      return error;
+    } // Check if it's a FetchBaseQueryError
+
+    // Fallback for unknown error types
+    if (typeof error === 'object' && error !== null && 'status' in error) {
+      const fetchError = error as FetchBaseQueryError;
+      if (typeof fetchError.status === 'number') {
+        // HTTP status code error
+        return `Error ${fetchError.status}: ${JSON.stringify(fetchError.data)}`;
+      } else {
+        console.log('error: 5');
+        // Fetch, parsing, or custom error with an error string
+        return `Error: ${fetchError.error}`;
+      }
+    } // Check if it's a SerializedError
+
+    if (typeof error === 'object' && error !== null && 'message' in error) {
+      console.log('error: 6');
+      const serializedError = error as SerializedError;
+      return `Error: ${serializedError.message}`;
+    } // Fallback for unknown error types
+
+    return 'An unknown error occurred.';
+  };
+
+  const displayMessage = getDisplayMessage(message);
 
   return (
     <AnimatePresence>
@@ -77,7 +117,7 @@ const ErrorMessageComponent: React.FC<ErrorMessageProps> = ({
           <div className="flex items-start">
             {showIcon && <motion.div className={`mr-3 flex-shrink-0 ${colorScheme[type].icon}`}>{icons[type]}</motion.div>}
             <div className="flex-grow">
-              <motion.div className={`text-sm md:text-base ${colorScheme[type].text}`}>{`${message}`}</motion.div>
+              <motion.div className={`text-sm md:text-base ${colorScheme[type].text}`}>{displayMessage}</motion.div>
             </div>
             {dismissible && (
               <button onClick={handleDismiss} className={`ml-3 flex-shrink-0 ${colorScheme[type].button} transition-colors duration-200`} aria-label="Dismiss">

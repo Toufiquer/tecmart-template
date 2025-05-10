@@ -9,6 +9,7 @@
 import { NextResponse } from 'next/server';
 
 import connectDB from '@/lib/mongoose';
+import { verifyJwt } from './jwt-utils';
 
 export const RATE_LIMIT = 100; // 50 requests
 export const TIME_WINDOW = 60 * 1000; // 1 minute
@@ -60,3 +61,22 @@ export async function withDB(handler: () => Promise<IResponse>): Promise<IRespon
     return { data: null, message: (error as Error).message, status: 400 };
   }
 }
+
+export const handleTokenVerify = (req: Request) => {
+  const authorizationToken = req.headers.get('authorization');
+  console.log('');
+  console.log('');
+  console.log('log:value: token : ', authorizationToken?.split(' ')[1]);
+  const token = authorizationToken?.split(' ')[1];
+  if (!token) {
+    return NextResponse.json({ data: null, message: 'Please provide a token', status: 430 }, { status: 430 });
+  } else if (token) {
+    const result = verifyJwt(token);
+    if (result.isValid) {
+      return null;
+    } else {
+      return NextResponse.json({ data: null, message: 'token is expire', status: 432 }, { status: 432 });
+    }
+  }
+  return NextResponse.json({ data: null, message: 'Please provide a valid token', status: 433 }, { status: 433 });
+};

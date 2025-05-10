@@ -32,9 +32,9 @@ const ClientComponent = () => {
     renderData = <p>Status : {status}</p>;
   }
   const handleLogout = async () => {
+    sessionStorage.removeItem(process.env.NEXTAUTH_SECRET || '_');
     await signOut({ redirect: true, callbackUrl: '/' });
   };
- 
 
   return (
     <main className="min-w-[400px] min-h-[200px] flex items-center justify-start flex-col border-1 pb-12">

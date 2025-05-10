@@ -1,4 +1,4 @@
-import { formatResponse, handleRateLimit, IResponse } from '../../utils';
+import { formatResponse, handleRateLimit, IResponse } from '@/app/api/utils';
 import { invokeAuth } from './verify-controller';
 
 export async function PUT(req: Request) {

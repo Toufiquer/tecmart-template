@@ -1,6 +1,7 @@
-import { IResponse, withDB } from '../../utils';
+import { IResponse, withDB } from '@/app/api/utils';
 import { checkEmail } from '../[...nextauth]/google-auth-controller';
-import { createJwt } from './jwt-token';
+import { createJwt } from '@/app/api/jwt-utils';
+
 let formatResponse = { data: 'try-again', message: 'try-again', status: 202 };
 
 export async function invokeAuth(req: Request): Promise<IResponse> {

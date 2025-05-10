@@ -8,12 +8,15 @@ import {
   bulkDeleteUsers_101__,
 } from './Controller';
 
-import { formatResponse, handleRateLimit, IResponse } from './utils';
+import { formatResponse, handleRateLimit, handleTokenVerify, IResponse } from '@/app/api/utils';
 
 // GET all Users_101__
 export async function GET(req: Request) {
   const rateLimitResponse = handleRateLimit(req);
   if (rateLimitResponse) return rateLimitResponse;
+  
+  const tokenResponse = handleTokenVerify(req);
+  if (tokenResponse) return tokenResponse;
 
   const id = new URL(req.url).searchParams.get('id');
   const result: IResponse = id ? await getUser_103__ById(req) : await getUsers_101__(req);
