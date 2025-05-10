@@ -42,6 +42,8 @@ export const getClientIp = (req: Request) => {
 };
 
 export const handleRateLimit = (req: Request) => {
+  const reqToken = req.headers.get('authorization');
+  console.log('log:token:rtk-api: reqToken ', reqToken);
   const ip = getClientIp(req);
   if (!rateLimit(ip, RATE_LIMIT, TIME_WINDOW)) {
     return NextResponse.json({ data: null, message: 'Too many requests. Please try again later.', status: 429 }, { status: 429 });
