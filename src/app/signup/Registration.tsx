@@ -64,7 +64,7 @@ const RegistrationPage: React.FC = () => {
     }
 
     if (!hasError) {
-      console.log('Sign up attempt with:', { name, email, password });
+      console.log('Error: Sign up attempt with:', { name, email, password });
       // Here you would typically call your registration service
     }
 

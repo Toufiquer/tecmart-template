@@ -34,10 +34,6 @@ const handler = NextAuth({
         const name = token.name as string;
         const expires = convertUnixTimestampToISO(account.expires_at as number);
         manageIGAuth(email, name, expires);
-        console.log(' ** ** ** ** *** **  ** ** ** ** *** **  ** ** ** ** *** **  ** ** ** ** *** ** ');
-        console.log('');
-        console.log('JWT Callback - Account:', account.provider);
-        console.log('JWT Callback - Token  :', token.name);
       }
       return token;
     },

@@ -34,8 +34,7 @@ const ClientComponent = () => {
   const handleLogout = async () => {
     await signOut({ redirect: true, callbackUrl: '/' });
   };
-
-  console.log('--client sessionData', sessionData);
+ 
 
   return (
     <main className="min-w-[400px] min-h-[200px] flex items-center justify-start flex-col border-1 pb-12">

@@ -21,11 +21,10 @@ interface ApiResponse {
 
 const getDataById = async (id: string): Promise<ApiResponse> => {
   const backendUrl = `http://localhost:3000/a__1001_users__/api/v1?id=${id}`;
-  console.log('id : ', backendUrl);
+
   try {
     const res = await fetch(backendUrl, { next: { revalidate: 3600 } }); // 60 minutes (3600 seconds)
     const responseData: ApiResponse = await res.json();
-    console.log('responseData', responseData);
     const data = responseData;
     if (!data) notFound();
     return data;

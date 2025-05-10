@@ -50,8 +50,6 @@ const SignInForm: React.FC = () => {
         setIsLoading(false);
         return;
       }
-
-      console.log('Sign in attempt with:', result.data);
     } catch (error) {
       console.log(error);
       setFormError('An unexpected error occurred');

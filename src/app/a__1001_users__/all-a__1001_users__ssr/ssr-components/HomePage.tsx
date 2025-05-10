@@ -46,7 +46,6 @@ const HomePageRender = async () => {
 
   // Filter as you want
   const filterData = allData.filter(i => i.name);
-  console.log('filterData', filterData);
 
   return (
     <main className="w-full flex flex-col pb-12 md:px-4 lg:mx-0">

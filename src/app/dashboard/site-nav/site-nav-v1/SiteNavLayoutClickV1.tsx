@@ -15,8 +15,7 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { IoSettingsOutline } from 'react-icons/io5';
 import { X } from 'lucide-react';
 
-const SiteNavLayoutClickV1 = ({ children = null as React.ReactNode }) => {
-  console.log('children', children);
+const SiteNavLayoutClickV1 = () => {
   const [toggle, setToggle] = useState(false);
   const [mobileToggle, setMobileToggle] = useState(false);
   const handleToggle = () => setToggle(pre => !pre);

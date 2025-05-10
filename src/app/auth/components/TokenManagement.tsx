@@ -14,20 +14,16 @@ import { useState } from 'react';
 const TokenManagement = () => {
   const [token, setToken] = useState(false);
   const { data: session, status } = useSession();
-  console.log('session', session, status);
   let tokenFromSessionStorage: string | null = '';
   if (status === 'authenticated' && session) {
     tokenFromSessionStorage = sessionStorage.getItem(process.env.NEXTAUTH_SECRET || '_');
-    console.log('--tokenFromSessionStorage: ', tokenFromSessionStorage); // Optional: reduce noise
     if (tokenFromSessionStorage) {
-      console.log('--Token found in sessionStorage, doing nothing.'); // Optional: reduce noise
     }
   }
   const handleLogout = async () => {
     await signOut({ redirect: true, callbackUrl: '/' });
   };
-  const handleVerify = async () => {
-    console.log('handleVerify');
+  const handleVerify = async () => { 
     if (tokenFromSessionStorage) {
       try {
         const res = await fetch('/api/auth/verify', {
@@ -37,11 +33,9 @@ const TokenManagement = () => {
         });
         const data = await res.json();
         if (data.data === 'not valid') {
-          sessionStorage.removeItem(process.env.NEXTAUTH_SECRET || '_');
-          console.log('Token is not valid, removing it from sessionStorage');
+          sessionStorage.removeItem(process.env.NEXTAUTH_SECRET || '_'); 
           handleLogout();
-        }
-        console.log('data', data);
+        } 
         setToken(true);
       } catch (e) {
         console.log('e', e);

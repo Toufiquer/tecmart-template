@@ -25,11 +25,9 @@ const GoogleAuthButton = () => {
 
   const callbackUrlPath = useSearchParams().get('callbackUrl');
 
-  console.log('params ', callbackUrlPath);
   // Log the token whenever the session changes
   useEffect(() => {
     if (sessionData?.accessToken) {
-      console.log('Access Token:', sessionData.accessToken);
     }
   }, [sessionData]);
 

@@ -7,32 +7,21 @@ let formatResponse = { data: 'try-again', message: 'try-again', status: 202 };
 export async function invokeAuth(req: Request): Promise<IResponse> {
   return withDB(async () => {
     try {
-      console.log('');
-      console.log('');
-      console.log('');
-      console.log('');
-      console.log('');
-      console.log('');
       const result = await req.json();
-      console.log('result ', result);
 
       let token;
       if (result.authType === 'google') {
-        console.log(' inside google auth checking ');
         const email = result.email;
         const isEmailValid = await checkEmail(email);
-        console.log('isEmailValid ', isEmailValid);
         if (isEmailValid) {
           token = createJwt(email);
           formatResponse = { data: token, message: 'login Success', status: 201 };
-          console.log('');
-          console.log('formatResponse ', formatResponse);
         } else {
           formatResponse = { data: 'not valid', message: 'not valid', status: 502 };
         }
       } else if (result.authType === 'verify-token') {
         const reqToken = req.headers.get('authorization');
-        console.log('reqToken ', reqToken);
+        console.log('log:value: reqToken ', reqToken);
         // ! -- false
         // ! 4. check is there token or not
         //! 5. check is token is valid or not

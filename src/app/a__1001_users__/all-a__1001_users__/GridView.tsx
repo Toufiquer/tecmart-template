@@ -20,8 +20,7 @@ const GridView: React.FC = () => {
   const { data: getResponseData, isLoading, isError, error } = useGetUsers_101__Query({ page, limit });
 
   const getAllUsers_101__Data = useMemo(() => getResponseData?.data?.users_102__ || [], [getResponseData]);
-  console.log('getResponseData : ', getResponseData);
-  console.log('getAllUsers_101__Data : ', getAllUsers_101__Data);
+
   if (isLoading) return <LoadingComponent />;
   if (isError) return <ErrorMessageComponent message={error || 'An error occurred'} />;
   if (getAllUsers_101__Data.length === 0) return <div className="py-12 text-2xl text-slate-500">Ops! Nothing was found.</div>;

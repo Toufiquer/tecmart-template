@@ -50,7 +50,6 @@ const Filename8Table: React.FC = () => {
   const handleSearch = (query: string) => {
     if (query !== hashSearchText) {
       setHashSearchText(query);
-      console.log('Searching for:', query);
       setQueryPramsPage(1);
       setQueryPramsQ(query);
     }
