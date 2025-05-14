@@ -22,8 +22,7 @@ export async function addOrUpdateEmail(email: string, name: string, expires: str
 export async function manageIGAuth(email: string, name: string, expires: string) {
   try {
     await connectDB();
-    const updatedRecord = await addOrUpdateEmail(email, name, expires);
-    console.log('log:const: updatedRecord : ', updatedRecord);
+    await addOrUpdateEmail(email, name, expires);
   } catch (err: unknown) {
     console.log('err : ', err);
   }

@@ -8,6 +8,8 @@ export async function PUT(req: Request) {
     const data = await invokeAuth(req);
     if (data.message === 'login Success' && data.status === 201) {
       return formatResponse(data.data, data.message, data.status);
+    } else if (data.data === 'token is valid' && data.message === 'token is valid' && data.status === 203) {
+      return formatResponse(data.data, data.message, data.status);
     } else if (data.message === 'not valid' && data.status === 205) {
       return formatResponse(data.data, data.message, data.status);
     } else {
