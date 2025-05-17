@@ -29,6 +29,12 @@ export type SIDEBARTYPE = {
 
 export const sidebarDataHome: SIDEBARTYPE[] = [
   {
+    id: 10001,
+    name: 'Test Case',
+    icon: iconBiPieChartAlt,
+    content: [{ id: 1000101, name: 'All Text Case', link: '/dashboard/test-case/all', icon: iconBiPieChartAlt }],
+  },
+  {
     id: 1,
     name: 'Users',
     icon: iconBiPieChartAlt,
