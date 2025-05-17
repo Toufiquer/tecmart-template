@@ -5,7 +5,14 @@
 | @copyright: tecmart-template, May, 2025
 |-----------------------------------------
 */
+
+import HomePageRender from './ssr-components/HomePage';
+
 const Page = () => {
-  return <main>Post Page</main>;
+  return (
+    <main>
+      <HomePageRender />
+    </main>
+  );
 };
 export default Page;

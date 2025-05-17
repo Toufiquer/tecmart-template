@@ -8,7 +8,6 @@ import 'react-toastify/dist/ReactToastify.css';
 import NextAuthProvider from '@/provider/SessionProvider';
 import Nav from '@/app/components/nav/Template-Nav/nav';
 import MainFooter from '@/components/common/footer/MainFooter';
-import SessionAuth from './components/auth/Session';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -40,7 +39,6 @@ export default function RootLayout({
         <NextAuthProvider>
           <ReduxProvider>
             <div className="w-full flex flex-col">
-              <SessionAuth />
               <Nav />
               {children}
               <MainFooter />
