@@ -16,7 +16,7 @@ export const users__1_102__Api = apiSlice.injectEndpoints({
   endpoints: builder => ({
     getUsers__1_101__: builder.query({
       query: ({ page, limit, q }) => {
-        let url = `/dashboard/test-case/all/api/v1?page=${page || 1}&limit=${limit || 10}`;
+        let url = `/dashboard/a__1_1001_users__/all/api/v1?page=${page || 1}&limit=${limit || 10}`;
         if (q) {
           url += `&q=${encodeURIComponent(q)}`;
         }
@@ -32,11 +32,11 @@ export const users__1_102__Api = apiSlice.injectEndpoints({
       },
     }),
     get__103_Users__ById: builder.query({
-      query: id => `/dashboard/test-case/all/api/v1?id=${id}`,
+      query: id => `/dashboard/a__1_1001_users__/all/api/v1?id=${id}`,
     }),
     add__103_Users__: builder.mutation({
       query: new__103_Users__ => ({
-        url: '/dashboard/test-case/all/api/v1',
+        url: '/dashboard/a__1_1001_users__/all/api/v1',
         method: 'POST',
         body: new__103_Users__,
       }),
@@ -53,7 +53,7 @@ export const users__1_102__Api = apiSlice.injectEndpoints({
     }),
     update__103_Users__: builder.mutation({
       query: ({ id, ...data }) => ({
-        url: `/dashboard/test-case/all/api/v1`,
+        url: `/dashboard/a__1_1001_users__/all/api/v1`,
         method: 'PUT',
         body: { id: id, ...data },
       }),
@@ -69,7 +69,7 @@ export const users__1_102__Api = apiSlice.injectEndpoints({
     }),
     delete__103_Users__: builder.mutation({
       query: ({ id }) => ({
-        url: `/dashboard/test-case/all/api/v1`,
+        url: `/dashboard/a__1_1001_users__/all/api/v1`,
         method: 'DELETE',
         body: { id },
       }),
@@ -85,7 +85,7 @@ export const users__1_102__Api = apiSlice.injectEndpoints({
     }),
     bulkUpdateUsers__1_101__: builder.mutation({
       query: bulkData => ({
-        url: `/dashboard/test-case/all/api/v1?bulk=true`,
+        url: `/dashboard/a__1_1001_users__/all/api/v1?bulk=true`,
         method: 'PUT',
         body: bulkData,
       }),
@@ -101,7 +101,7 @@ export const users__1_102__Api = apiSlice.injectEndpoints({
     }),
     bulkDeleteUsers__1_101__: builder.mutation({
       query: bulkData => ({
-        url: `/dashboard/test-case/all/api/v1?bulk=true`,
+        url: `/dashboard/a__1_1001_users__/all/api/v1?bulk=true`,
         method: 'DELETE',
         body: bulkData,
       }),

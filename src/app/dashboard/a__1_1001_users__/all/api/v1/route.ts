@@ -14,10 +14,6 @@ import { formatResponse, handleRateLimit, handleTokenVerify, IResponse } from '@
 export async function GET(req: Request) {
   const rateLimitResponse = handleRateLimit(req);
   if (rateLimitResponse) return rateLimitResponse;
-  console.log('');
-  console.log('');
-  console.log('');
-  console.log('hit get from test-case ');
 
   const tokenResponse = handleTokenVerify(req);
   if (tokenResponse) return tokenResponse;
@@ -30,6 +26,8 @@ export async function GET(req: Request) {
 export async function POST(req: Request) {
   const rateLimitResponse = handleRateLimit(req);
   if (rateLimitResponse) return rateLimitResponse;
+  const tokenResponse = handleTokenVerify(req);
+  if (tokenResponse) return tokenResponse;
 
   const result = await createUser__1_103__(req);
   return formatResponse(result.data, result.message, result.status);
@@ -39,6 +37,8 @@ export async function POST(req: Request) {
 export async function PUT(req: Request) {
   const rateLimitResponse = handleRateLimit(req);
   if (rateLimitResponse) return rateLimitResponse;
+  const tokenResponse = handleTokenVerify(req);
+  if (tokenResponse) return tokenResponse;
 
   const isBulk = new URL(req.url).searchParams.get('bulk') === 'true';
   const result = isBulk ? await bulkUpdateUsers__1_101__(req) : await updateUser__1_103__(req);
@@ -48,8 +48,12 @@ export async function PUT(req: Request) {
 
 // DELETE User__1_103__
 export async function DELETE(req: Request) {
+  
   const rateLimitResponse = handleRateLimit(req);
   if (rateLimitResponse) return rateLimitResponse;
+
+  const tokenResponse = handleTokenVerify(req);
+  if (tokenResponse) return tokenResponse;
 
   const isBulk = new URL(req.url).searchParams.get('bulk') === 'true';
   const result = isBulk ? await bulkDeleteUsers__1_101__(req) : await deleteUser__1_103__(req);

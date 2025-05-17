@@ -10,7 +10,7 @@ async function withDB(handler: () => Promise<IResponse>): Promise<IResponse> {
     return await handler();
   } catch (error) {
     console.error(error);
-    return { data: null, message: (error as Error).message, status: 400 };
+    return { data: null, message: (error as Error).message, status: 500 };
   }
 }
 

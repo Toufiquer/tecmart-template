@@ -1,3 +1,7 @@
 # Redux
  1. add [tagTypes] in [src\redux\api\apiSlice.ts]
  2. 
+
+ # how to update
+ 1. update model [/dashboard/{folder-name}/api/Model.ts]
+ 2. 
