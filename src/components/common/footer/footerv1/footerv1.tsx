@@ -195,16 +195,20 @@ const FooterV1 = () => {
         <div className="flex w-full flex-col items-start justify-between gap-4 border-t py-4 md:flex-row md:items-center">
           <div className="flex h-auto items-center justify-start gap-4">
             <h2 className="text-sm font-semibold text-slate-600">Payment Partners</h2>
-            <Image src="https://i.ibb.co/YWYchGk/amazonpay.png" width={100} height={100} alt="Sign in" className="h-auto w-[35px]" />
-            <Image src="https://i.ibb.co/Fhjmzxy/american-express.png" width={100} height={100} alt="Sign in" className="h-auto w-[35px]" />
-            <Image src="https://i.ibb.co/jVQX8RN/mastercard.png" width={100} height={100} alt="Sign in" className="h-auto w-[35px]" />
+
+            <Image src="https://i.ibb.co/YWYchGk/amazonpay.png" width={200} height={75} alt="Amazon Pay" className="h-auto w-[35px]" />
+            <Image src="https://i.ibb.co/Fhjmzxy/american-express.png" width={150} height={94} alt="American Express" className="h-auto w-[35px]" />
+            <Image src="https://i.ibb.co/jVQX8RN/mastercard.png" width={150} height={94} alt="Mastercard" className="h-auto w-[35px]" />
           </div>
           <div className="flex h-auto items-center justify-end gap-4">
             <h2 className="text-sm font-semibold text-slate-600">Get deliveries with FreshCart</h2>
-            <Image src="https://i.ibb.co/K0wmb8Z/appstore-btn.png" width={100} height={100} alt="Sign in" className="h-auto w-[100px]" />
-            <Image src="https://i.ibb.co/k1svBvr/googleplay-btn.png" width={100} height={100} alt="Sign in" className="h-auto w-[100px]" />
+
+            <Image src="https://i.ibb.co/K0wmb8Z/appstore-btn.png" width={250} height={84} alt="Download on the App Store" className="h-auto w-[100px]" />
+
+            <Image src="https://i.ibb.co/k1svBvr/googleplay-btn.png" width={294} height={87} alt="Get it on Google Play" className="h-auto w-[100px]" />
           </div>
         </div>
+
         <div className="flex w-full flex-col items-start justify-between gap-4 border-t py-4 text-xs md:flex-row md:items-center">
           <p className=" text-slate-500">
             &copy; 2022 - {new Date().getFullYear()} FreshCart eCommerce HTML Template. All rights reserved. Powered by{' '}
