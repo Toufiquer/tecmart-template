@@ -3,6 +3,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SerializedError } from '@reduxjs/toolkit';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
+import { signOut } from 'next-auth/react';
 
 type CustomErrorType = {
   data: unknown;
@@ -103,7 +104,10 @@ const ErrorMessageComponent: React.FC<ErrorMessageProps> = ({
   };
 
   const displayMessage = getDisplayMessage(message);
-
+  if (displayMessage.includes('432') || displayMessage.includes('token is expire')) {
+    sessionStorage.removeItem(process.env.NEXTAUTH_SECRET || '_');
+    signOut();
+  }
   return (
     <AnimatePresence>
       {isVisible && (

@@ -8,7 +8,7 @@
 
 'use client';
 
-import { useSession } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 import { useEffect } from 'react';
 
 const SessionAuth = () => {
@@ -41,8 +41,8 @@ const SessionAuth = () => {
               sessionStorage.setItem(process.env.NEXTAUTH_SECRET || '_', data.data);
             } else {
               console.error('Failed to get token from API response:', data);
-              // sessionStorage.removeItem(process.env.NEXTAUTH_SECRET || '_');
-              // signOut();
+              sessionStorage.removeItem(process.env.NEXTAUTH_SECRET || '_');
+              signOut();
             }
           })
           .catch(error => {
@@ -55,7 +55,7 @@ const SessionAuth = () => {
     } else {
       // User not authenticated, no session data, or session ended
       console.log('Error: User not authenticated or session ended. Clearing token from sessionStorage.');
-      // sessionStorage.removeItem(process.env.NEXTAUTH_SECRET || '_');
+      sessionStorage.removeItem(process.env.NEXTAUTH_SECRET || '_');
     }
   }, [status, session]); // Dependencies
 
