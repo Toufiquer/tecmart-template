@@ -1,7 +1,7 @@
 import mongoose, { Schema, Document } from 'mongoose';
 import { __custom_selector_arr__, __default_selector__ } from '../../store/StoreConstants';
 
-const user_104__Schema = new Schema(
+const user__1_104__Schema = new Schema(
   {
     name: { type: String, required: true },
     email: {
@@ -21,9 +21,9 @@ const user_104__Schema = new Schema(
   { timestamps: true },
 );
 
-export default mongoose.models.User_103__ || mongoose.model('User_103__', user_104__Schema);
+export default mongoose.models.User__1_103__ || mongoose.model('User__1_103__', user__1_104__Schema);
 
-export interface IUsers_101__ extends Document, Pick<mongoose.SchemaDefinition, 'name' | 'email' | 'passCode' | 'alias' | 'role'> {
+export interface IUsers__1_101__ extends Document, Pick<mongoose.SchemaDefinition, 'name' | 'email' | 'passCode' | 'alias' | 'role'> {
   createdAt?: Date;
   updatedAt?: Date;
   img?: string;

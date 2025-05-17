@@ -7,27 +7,27 @@ import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '
 
 import { use__103_Users__Store } from '../store/Store';
 import { __custom_selector_arr__ } from '../store/StoreConstants';
-import { IUsers_101__ } from '../api/v1/Model';
-import { useBulkUpdateUsers_101__Mutation } from '../redux/rtk-Api';
+import { IUsers__1_101__ } from '../api/v1/Model';
+import { useBulkUpdateUsers__1_101__Mutation } from '../redux/rtk-Api';
 
 const BulkEdit__103_Users__: React.FC = () => {
   const { isBulkEditModalOpen, toggleBulkEditModal, bulkData, setBulkData } = use__103_Users__Store();
-  const [bulkUpdateUsers_101__, { isLoading }] = useBulkUpdateUsers_101__Mutation();
+  const [bulkUpdateUsers__1_101__, { isLoading }] = useBulkUpdateUsers__1_101__Mutation();
 
   const handleBulkEdit__103_Users__ = async () => {
     if (!bulkData.length) return;
     try {
       const newBulkData = bulkData.map(({ _id, ...rest }) => ({ id: _id, updateData: rest }));
-      await bulkUpdateUsers_101__(newBulkData).unwrap();
+      await bulkUpdateUsers__1_101__(newBulkData).unwrap();
       toggleBulkEditModal(false);
       setBulkData([]);
     } catch (error) {
-      console.error('Failed to edit users_102__:', error);
+      console.error('Failed to edit users__1_102__:', error);
     }
   };
 
   const handleRoleChange = (__104_Users__Id: string, role: string) => {
-    setBulkData(bulkData.map(__104_Users__ => (__104_Users__._id === __104_Users__Id ? { ...__104_Users__, role } : __104_Users__)) as IUsers_101__[]);
+    setBulkData(bulkData.map(__104_Users__ => (__104_Users__._id === __104_Users__Id ? { ...__104_Users__, role } : __104_Users__)) as IUsers__1_101__[]);
   };
 
   return (
@@ -38,7 +38,7 @@ const BulkEdit__103_Users__: React.FC = () => {
         </DialogHeader>
         {bulkData.length > 0 && (
           <p className="pt-4">
-            You are about to update <span className="font-semibold">({bulkData.length})</span> users_102__
+            You are about to update <span className="font-semibold">({bulkData.length})</span> users__1_102__
           </p>
         )}
         <ScrollArea className="h-[400px] w-full rounded-md border p-4">

@@ -3,9 +3,9 @@ import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 
 import { use__103_Users__Store } from '../store/Store';
-import { baseIUsers_101__ } from '../store/StoreConstants';
+import { baseIUsers__1_101__ } from '../store/StoreConstants';
 import { useDelete__103_Users__Mutation } from '../redux/rtk-Api';
-import { IUsers_101__ } from '../api/v1/Model';
+import { IUsers__1_101__ } from '../api/v1/Model';
 
 const Delete__103_Users__: React.FC = () => {
   const { toggleDeleteModal, isDeleteModalOpen, selected__103_Users__, setSelected__103_Users__ } = use__103_Users__Store();
@@ -24,7 +24,7 @@ const Delete__103_Users__: React.FC = () => {
 
   const handleCancel = () => {
     toggleDeleteModal(false);
-    setSelected__103_Users__({ ...baseIUsers_101__ } as IUsers_101__);
+    setSelected__103_Users__({ ...baseIUsers__1_101__ } as IUsers__1_101__);
   };
 
   const { name = '' } = selected__103_Users__ || {};

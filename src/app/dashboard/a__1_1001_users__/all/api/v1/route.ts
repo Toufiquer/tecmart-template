@@ -1,52 +1,58 @@
 import {
-  getUsers_101__,
-  createUser_103__,
-  updateUser_103__,
-  deleteUser_103__,
-  getUser_103__ById,
-  bulkUpdateUsers_101__,
-  bulkDeleteUsers_101__,
+  getUsers__1_101__,
+  createUser__1_103__,
+  updateUser__1_103__,
+  deleteUser__1_103__,
+  getUser__1_103__ById,
+  bulkUpdateUsers__1_101__,
+  bulkDeleteUsers__1_101__,
 } from './Controller';
 
-import { formatResponse, handleRateLimit, IResponse } from '@/app/api/utils';
+import { formatResponse, handleRateLimit, handleTokenVerify, IResponse } from '@/app/api/utils';
 
-// GET all Users_101__
+// GET all Users__1_101__
 export async function GET(req: Request) {
   const rateLimitResponse = handleRateLimit(req);
   if (rateLimitResponse) return rateLimitResponse;
+  console.log('');
+  console.log('');
+  console.log('');
+  console.log('hit get from test-case ');
 
+  const tokenResponse = handleTokenVerify(req);
+  if (tokenResponse) return tokenResponse;
   const id = new URL(req.url).searchParams.get('id');
-  const result: IResponse = id ? await getUser_103__ById(req) : await getUsers_101__(req);
+  const result: IResponse = id ? await getUser__1_103__ById(req) : await getUsers__1_101__(req);
   return formatResponse(result.data, result.message, result.status);
 }
 
-// CREATE User_103__
+// CREATE User__1_103__
 export async function POST(req: Request) {
   const rateLimitResponse = handleRateLimit(req);
   if (rateLimitResponse) return rateLimitResponse;
 
-  const result = await createUser_103__(req);
+  const result = await createUser__1_103__(req);
   return formatResponse(result.data, result.message, result.status);
 }
 
-// UPDATE User_103__
+// UPDATE User__1_103__
 export async function PUT(req: Request) {
   const rateLimitResponse = handleRateLimit(req);
   if (rateLimitResponse) return rateLimitResponse;
 
   const isBulk = new URL(req.url).searchParams.get('bulk') === 'true';
-  const result = isBulk ? await bulkUpdateUsers_101__(req) : await updateUser_103__(req);
+  const result = isBulk ? await bulkUpdateUsers__1_101__(req) : await updateUser__1_103__(req);
 
   return formatResponse(result.data, result.message, result.status);
 }
 
-// DELETE User_103__
+// DELETE User__1_103__
 export async function DELETE(req: Request) {
   const rateLimitResponse = handleRateLimit(req);
   if (rateLimitResponse) return rateLimitResponse;
 
   const isBulk = new URL(req.url).searchParams.get('bulk') === 'true';
-  const result = isBulk ? await bulkDeleteUsers_101__(req) : await deleteUser_103__(req);
+  const result = isBulk ? await bulkDeleteUsers__1_101__(req) : await deleteUser__1_103__(req);
 
   return formatResponse(result.data, result.message, result.status);
 }

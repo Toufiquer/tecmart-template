@@ -30,7 +30,7 @@ const InputField: React.FC<{
 );
 
 const Add__103_Users__: React.FC = () => {
-  const { toggleAddModal, isAddModalOpen, users_102__, new__103_Users__, setNew__103_Users__, setUsers_101__ } = use__103_Users__Store();
+  const { toggleAddModal, isAddModalOpen, users__1_102__, new__103_Users__, setNew__103_Users__, setUsers__1_101__ } = use__103_Users__Store();
   const [add__103_Users__, { isLoading, isError, error }] = useAdd__103_Users__Mutation();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -65,7 +65,7 @@ const Add__103_Users__: React.FC = () => {
 
     try {
       const added__103_Users__ = await add__103_Users__(__104_Users__).unwrap(); // Get the returned data
-      setUsers_101__([...users_102__, added__103_Users__]); // Use the returned data instead of the local `__104_Users__` object
+      setUsers__1_101__([...users__1_102__, added__103_Users__]); // Use the returned data instead of the local `__104_Users__` object
       toggleAddModal(false);
       setNew__103_Users__(default__103_Users__Data);
     } catch (error) {

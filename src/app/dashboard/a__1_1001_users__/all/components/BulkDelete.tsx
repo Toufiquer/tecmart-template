@@ -4,17 +4,17 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 
 import { use__103_Users__Store } from '../store/Store';
-import { useBulkDeleteUsers_101__Mutation } from '../redux/rtk-Api';
+import { useBulkDeleteUsers__1_101__Mutation } from '../redux/rtk-Api';
 
 const BulkDelete__103_Users__: React.FC = () => {
   const { isBulkDeleteModalOpen, toggleBulkDeleteModal, bulkData, setBulkData } = use__103_Users__Store();
-  const [bulkDeleteUsers_101__, { isLoading }] = useBulkDeleteUsers_101__Mutation();
+  const [bulkDeleteUsers__1_101__, { isLoading }] = useBulkDeleteUsers__1_101__Mutation();
 
   const handleBulkDelete__103_Users__ = async () => {
     if (!bulkData?.length) return;
     try {
       const ids = bulkData.map(__104_Users__ => __104_Users__._id);
-      await bulkDeleteUsers_101__({ ids }).unwrap();
+      await bulkDeleteUsers__1_101__({ ids }).unwrap();
       toggleBulkDeleteModal(false);
       setBulkData([]);
     } catch (error) {
@@ -31,7 +31,7 @@ const BulkDelete__103_Users__: React.FC = () => {
         {bulkData?.length > 0 && (
           <div className="pt-4">
             <p>
-              You are about to delete <span className="font-semibold">({bulkData.length})</span> users_102__
+              You are about to delete <span className="font-semibold">({bulkData.length})</span> users__1_102__
             </p>
           </div>
         )}

@@ -65,6 +65,7 @@ export async function withDB(handler: () => Promise<IResponse>): Promise<IRespon
 export const handleTokenVerify = (req: Request) => {
   const authorizationToken = req.headers.get('authorization');
   const token = authorizationToken?.split(' ')[1];
+  console.log('token found from verify token : ', token);
   if (!token) {
     return NextResponse.json({ data: null, message: 'Please provide a token', status: 430 }, { status: 430 });
   } else if (token) {

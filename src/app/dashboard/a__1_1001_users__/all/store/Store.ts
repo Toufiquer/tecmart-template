@@ -1,15 +1,15 @@
 import { create } from 'zustand';
-import { IUsers_101__ } from '../api/v1/Model';
+import { IUsers__1_101__ } from '../api/v1/Model';
 import { __103_Users__Store } from './StoreTypes';
-import { baseIUsers_101__, queryParams } from './StoreConstants';
+import { baseIUsers__1_101__, queryParams } from './StoreConstants';
 
 export const use__103_Users__Store = create<__103_Users__Store>(set => ({
   queryPramsLimit: queryParams.limit,
   queryPramsPage: queryParams.page,
   queryPramsQ: queryParams.q,
-  users_102__: [],
+  users__1_102__: [],
   selected__103_Users__: null,
-  new__103_Users__: baseIUsers_101__,
+  new__103_Users__: baseIUsers__1_101__,
   isBulkEditModalOpen: false,
   isBulkDeleteModalOpen: false,
   isAddModalOpen: false,
@@ -20,8 +20,8 @@ export const use__103_Users__Store = create<__103_Users__Store>(set => ({
   setQueryPramsLimit: (payload: number) => set({ queryPramsLimit: payload }),
   setQueryPramsPage: (payload: number) => set({ queryPramsPage: payload }),
   setQueryPramsQ: (payload: string) => set({ queryPramsQ: payload }),
-  setBulkData: (bulkData: IUsers_101__[]) => set({ bulkData }),
-  setUsers_101__: (users_102__: IUsers_101__[]) => set({ users_102__ }),
+  setBulkData: (bulkData: IUsers__1_101__[]) => set({ bulkData }),
+  setUsers__1_101__: (users__1_102__: IUsers__1_101__[]) => set({ users__1_102__ }),
   setSelected__103_Users__: __104_Users__ => set({ selected__103_Users__: __104_Users__ }),
   setNew__103_Users__: __104_Users__ =>
     set(state => ({

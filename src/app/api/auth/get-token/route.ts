@@ -12,12 +12,11 @@ export async function PUT(req: Request) {
     if (result.authType === 'google') {
       const email = result.email;
       const isEmailValid = await checkEmail(email);
-      console.log('email : ', isEmailValid);
       if (isEmailValid) {
         token = createJwt(email);
-        return formatResponse(result.data, result.message, result.status);
+        return formatResponse(token, result.message, result.status);
       } else {
-        return formatResponse(result.data, result.message, result.status);
+        return formatResponse('', 'Email not valid', result.status);
       }
     }
   } catch (err) {

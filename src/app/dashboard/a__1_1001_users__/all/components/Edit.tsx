@@ -9,8 +9,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 
 import { use__103_Users__Store } from '../store/Store';
 import { useUpdate__103_Users__Mutation } from '../redux/rtk-Api';
-import { IUsers_101__ } from '../api/v1/Model';
-import { __I_custom_selector_Type__, __custom_selector_arr__, baseIUsers_101__ } from '../store/StoreConstants';
+import { IUsers__1_101__ } from '../api/v1/Model';
+import { __I_custom_selector_Type__, __custom_selector_arr__, baseIUsers__1_101__ } from '../store/StoreConstants';
 
 const Edit__103_Users__: React.FC = () => {
   const { toggleEditModal, isEditModalOpen, new__103_Users__, selected__103_Users__, setNew__103_Users__, setSelected__103_Users__ } = use__103_Users__Store();
@@ -113,7 +113,7 @@ const Edit__103_Users__: React.FC = () => {
             variant="outline"
             onClick={() => {
               toggleEditModal(false);
-              setSelected__103_Users__({ ...baseIUsers_101__ } as IUsers_101__);
+              setSelected__103_Users__({ ...baseIUsers__1_101__ } as IUsers__1_101__);
             }}
           >
             Cancel

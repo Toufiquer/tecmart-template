@@ -1,6 +1,6 @@
 import connectDB from '@/lib/mongoose';
 
-import User_103__ from './Model';
+import User__1_103__ from './Model';
 import { IResponse } from '@/app/api/utils';
 
 // Helper to handle database connection and errors
@@ -17,13 +17,13 @@ async function withDB(handler: () => Promise<IResponse>): Promise<IResponse> {
 // Helper to format responses
 const formatResponse = (data: unknown, message: string, status: number) => ({ data, message, status });
 
-// CREATE User_103__
-export async function createUser_103__(req: Request): Promise<IResponse> {
+// CREATE User__1_103__
+export async function createUser__1_103__(req: Request): Promise<IResponse> {
   return withDB(async () => {
     try {
-      const user_104__Data = await req.json();
-      const newUser_103__ = await User_103__.create({ ...user_104__Data });
-      return formatResponse(newUser_103__, 'User_103__ created successfully', 201);
+      const user__1_104__Data = await req.json();
+      const newUser__1_103__ = await User__1_103__.create({ ...user__1_104__Data });
+      return formatResponse(newUser__1_103__, 'User__1_103__ created successfully', 201);
     } catch (error: unknown) {
       if ((error as { code?: number }).code === 11000) {
         const err = error as { keyValue?: Record<string, unknown> };
@@ -34,21 +34,21 @@ export async function createUser_103__(req: Request): Promise<IResponse> {
   });
 }
 
-// GET single User_103__ by ID
-export async function getUser_103__ById(req: Request) {
+// GET single User__1_103__ by ID
+export async function getUser__1_103__ById(req: Request) {
   return withDB(async () => {
     const id = new URL(req.url).searchParams.get('id');
-    if (!id) return formatResponse(null, 'User_103__ ID is required', 400);
+    if (!id) return formatResponse(null, 'User__1_103__ ID is required', 400);
 
-    const user_104__ = await User_103__.findById(id);
-    if (!user_104__) return formatResponse(null, 'User_103__ not found', 404);
+    const user__1_104__ = await User__1_103__.findById(id);
+    if (!user__1_104__) return formatResponse(null, 'User__1_103__ not found', 404);
 
-    return formatResponse(user_104__, 'User_103__ fetched successfully', 200);
+    return formatResponse(user__1_104__, 'User__1_103__ fetched successfully', 200);
   });
 }
 
-// GET all Users_101__ with pagination
-export async function getUsers_101__(req: Request) {
+// GET all Users__1_101__ with pagination
+export async function getUsers__1_101__(req: Request) {
   return withDB(async () => {
     const url = new URL(req.url);
     const page = parseInt(url.searchParams.get('page') || '1', 10);
@@ -70,24 +70,24 @@ export async function getUsers_101__(req: Request) {
       };
     }
 
-    const users_102__ = await User_103__.find(searchFilter).sort({ updatedAt: -1, createdAt: -1 }).skip(skip).limit(limit);
+    const users__1_102__ = await User__1_103__.find(searchFilter).sort({ updatedAt: -1, createdAt: -1 }).skip(skip).limit(limit);
 
-    const totalUsers_101__ = await User_103__.countDocuments(searchFilter);
+    const totalUsers__1_101__ = await User__1_103__.countDocuments(searchFilter);
 
-    return formatResponse({ users_102__: users_102__ || [], total: totalUsers_101__, page, limit }, 'Users_101__ fetched successfully', 200);
+    return formatResponse({ users__1_102__: users__1_102__ || [], total: totalUsers__1_101__, page, limit }, 'Users__1_101__ fetched successfully', 200);
   });
 }
 
-// UPDATE single User_103__ by ID
+// UPDATE single User__1_103__ by ID
 
-export async function updateUser_103__(req: Request) {
+export async function updateUser__1_103__(req: Request) {
   return withDB(async () => {
     try {
       const { id, ...updateData } = await req.json();
-      const updatedUser_103__ = await User_103__.findByIdAndUpdate(id, updateData, { new: true, runValidators: true });
+      const updatedUser__1_103__ = await User__1_103__.findByIdAndUpdate(id, updateData, { new: true, runValidators: true });
 
-      if (!updatedUser_103__) return formatResponse(null, 'User_103__ not found', 404);
-      return formatResponse(updatedUser_103__, 'User_103__ updated successfully', 200);
+      if (!updatedUser__1_103__) return formatResponse(null, 'User__1_103__ not found', 404);
+      return formatResponse(updatedUser__1_103__, 'User__1_103__ updated successfully', 200);
     } catch (error: unknown) {
       if ((error as { code?: number }).code === 11000) {
         const err = error as { keyValue?: Record<string, unknown> };
@@ -98,35 +98,35 @@ export async function updateUser_103__(req: Request) {
   });
 }
 
-// BULK UPDATE Users_101__
-export async function bulkUpdateUsers_101__(req: Request) {
+// BULK UPDATE Users__1_101__
+export async function bulkUpdateUsers__1_101__(req: Request) {
   return withDB(async () => {
     const updates = await req.json();
     const results = await Promise.allSettled(
       updates.map(({ id, updateData }: { id: string; updateData: Record<string, unknown> }) =>
-        User_103__.findByIdAndUpdate(id, updateData, { new: true, runValidators: true }),
+        User__1_103__.findByIdAndUpdate(id, updateData, { new: true, runValidators: true }),
       ),
     );
 
-    const successfulUpdates = results.filter(r => r.status === 'fulfilled' && r.value).map(r => (r as PromiseFulfilledResult<typeof User_103__>).value);
+    const successfulUpdates = results.filter(r => r.status === 'fulfilled' && r.value).map(r => (r as PromiseFulfilledResult<typeof User__1_103__>).value);
     const failedUpdates = results.filter(r => r.status === 'rejected' || !r.value).map((_, i) => updates[i].id);
 
     return formatResponse({ updated: successfulUpdates, failed: failedUpdates }, 'Bulk update completed', 200);
   });
 }
 
-// DELETE single User_103__ by ID
-export async function deleteUser_103__(req: Request) {
+// DELETE single User__1_103__ by ID
+export async function deleteUser__1_103__(req: Request) {
   return withDB(async () => {
     const { id } = await req.json();
-    const deletedUser_103__ = await User_103__.findByIdAndDelete(id);
-    if (!deletedUser_103__) return formatResponse(deletedUser_103__, 'User_103__ not found', 404);
-    return formatResponse({ deletedCount: 1 }, 'User_103__ deleted successfully', 200);
+    const deletedUser__1_103__ = await User__1_103__.findByIdAndDelete(id);
+    if (!deletedUser__1_103__) return formatResponse(deletedUser__1_103__, 'User__1_103__ not found', 404);
+    return formatResponse({ deletedCount: 1 }, 'User__1_103__ deleted successfully', 200);
   });
 }
 
-// BULK DELETE Users_101__
-export async function bulkDeleteUsers_101__(req: Request) {
+// BULK DELETE Users__1_101__
+export async function bulkDeleteUsers__1_101__(req: Request) {
   return withDB(async () => {
     const { ids } = await req.json();
     const deletedIds: string[] = [];
@@ -134,10 +134,10 @@ export async function bulkDeleteUsers_101__(req: Request) {
 
     for (const id of ids) {
       try {
-        const user_104__ = await User_103__.findById(id);
-        if (user_104__) {
-          const deletedUser_103__ = await User_103__.findByIdAndDelete(id);
-          if (deletedUser_103__) deletedIds.push(id);
+        const user__1_104__ = await User__1_103__.findById(id);
+        if (user__1_104__) {
+          const deletedUser__1_103__ = await User__1_103__.findByIdAndDelete(id);
+          if (deletedUser__1_103__) deletedIds.push(id);
         } else {
           invalidIds.push(id);
         }

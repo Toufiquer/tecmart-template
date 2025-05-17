@@ -6,9 +6,9 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 
 import { use__103_Users__Store } from '../store/Store';
-import { baseIUsers_101__ } from '../store/StoreConstants';
+import { baseIUsers__1_101__ } from '../store/StoreConstants';
 import { useGet__103_Users__ByIdQuery } from '../redux/rtk-Api';
-import { IUsers_101__ } from '../api/v1/Model';
+import { IUsers__1_101__ } from '../api/v1/Model';
 
 const View__103_Users__: React.FC = () => {
   const { isViewModalOpen, selected__103_Users__, toggleViewModal, setSelected__103_Users__ } = use__103_Users__Store();
@@ -74,7 +74,7 @@ const View__103_Users__: React.FC = () => {
             className="cursor-pointer border-1 border-slate-400 hover:border-slate-500"
             onClick={() => {
               toggleViewModal(false);
-              setSelected__103_Users__({ ...baseIUsers_101__ } as IUsers_101__);
+              setSelected__103_Users__({ ...baseIUsers__1_101__ } as IUsers__1_101__);
             }}
           >
             Close
