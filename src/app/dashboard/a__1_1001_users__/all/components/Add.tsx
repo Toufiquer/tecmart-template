@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -12,6 +12,7 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 
 import { default__103_Users__Data, __default_selector__, __I_custom_selector_Type__, __custom_selector_arr__ } from '../store/StoreConstants';
 import { handleError } from './utils';
+import DataSelect from './DataSelect';
 
 const InputField: React.FC<{
   id: string;
@@ -32,6 +33,8 @@ const InputField: React.FC<{
 const Add__103_Users__: React.FC = () => {
   const { toggleAddModal, isAddModalOpen, users__1_102__, new__103_Users__, setNew__103_Users__, setUsers__1_101__ } = use__103_Users__Store();
   const [add__103_Users__, { isLoading, isError, error }] = useAdd__103_Users__Mutation();
+
+  const [newItemTags, setNewItemTags] = useState<string[]>([]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -54,6 +57,7 @@ const Add__103_Users__: React.FC = () => {
 
   const handleAdd__103_Users__ = async () => {
     const __104_Users__ = {
+      dataArr: newItemTags || [],
       name: new__103_Users__.name || '',
       email: new__103_Users__.email || '',
       passCode: new__103_Users__.passCode || '',
@@ -101,7 +105,7 @@ const Add__103_Users__: React.FC = () => {
                 <SelectTrigger className="col-span-3">
                   <SelectValue placeholder="Select a role" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-slate-50">
                   {__custom_selector_arr__?.map((i, index) => (
                     <SelectItem key={i + index} className="cursor-pointer hover:bg-slate-200" value={i}>
                       {i}
@@ -110,6 +114,7 @@ const Add__103_Users__: React.FC = () => {
                 </SelectContent>
               </Select>
             </div>
+            <DataSelect newItemTags={newItemTags as string[]} setNewItemTags={setNewItemTags} />
           </div>
         </ScrollArea>
 

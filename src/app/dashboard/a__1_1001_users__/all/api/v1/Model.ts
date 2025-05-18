@@ -4,6 +4,7 @@ import { __custom_selector_arr__, __default_selector__ } from '../../store/Store
 const user__1_104__Schema = new Schema(
   {
     name: { type: String, required: true },
+    dataArr: [{ type: String, required: true }],
     email: {
       type: String,
       required: true,
@@ -23,7 +24,7 @@ const user__1_104__Schema = new Schema(
 
 export default mongoose.models.User__1_103__ || mongoose.model('User__1_103__', user__1_104__Schema);
 
-export interface IUsers__1_101__ extends Document, Pick<mongoose.SchemaDefinition, 'name' | 'email' | 'passCode' | 'alias' | 'role'> {
+export interface IUsers__1_101__ extends Document, Pick<mongoose.SchemaDefinition, 'name' | 'email' | 'passCode' | 'alias' | 'role' | 'dataArr'> {
   createdAt?: Date;
   updatedAt?: Date;
   img?: string;

@@ -34,6 +34,12 @@ const View__103_Users__: React.FC = () => {
       <div className="col-span-2">{value || 'N/A'}</div>
     </div>
   );
+  const DetailRowArray = ({ label, values }: { label: string; values: string[] }) => (
+    <div className="grid grid-cols-3 gap-2">
+      <div className="font-semibold">{label}:</div>
+      <div className="col-span-2">{values?.join(', ')}</div>
+    </div>
+  );
 
   return (
     <Dialog open={isViewModalOpen} onOpenChange={toggleViewModal}>
@@ -64,6 +70,8 @@ const View__103_Users__: React.FC = () => {
                   </span>
                 }
               />
+
+              <DetailRowArray label="Data Array" values={selected__103_Users__.dataArr as string[]} />
               <DetailRow label="Created At" value={formatDate(selected__103_Users__.createdAt)} />
               <DetailRow label="Updated At" value={formatDate(selected__103_Users__.updatedAt)} />
             </div>

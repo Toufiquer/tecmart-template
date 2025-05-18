@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -11,14 +11,17 @@ import { use__103_Users__Store } from '../store/Store';
 import { useUpdate__103_Users__Mutation } from '../redux/rtk-Api';
 import { IUsers__1_101__ } from '../api/v1/Model';
 import { __I_custom_selector_Type__, __custom_selector_arr__, baseIUsers__1_101__ } from '../store/StoreConstants';
+import DataSelect from './DataSelect';
 
 const Edit__103_Users__: React.FC = () => {
+  const [newItemTags, setNewItemTags] = useState<string[]>([]);
   const { toggleEditModal, isEditModalOpen, new__103_Users__, selected__103_Users__, setNew__103_Users__, setSelected__103_Users__ } = use__103_Users__Store();
   const [update__103_Users__] = useUpdate__103_Users__Mutation(); // RTK mutation hook
 
   useEffect(() => {
     if (selected__103_Users__) {
       setNew__103_Users__(selected__103_Users__);
+      setNewItemTags(selected__103_Users__.dataArr as string[]);
     }
   }, [selected__103_Users__, setNew__103_Users__]);
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -33,7 +36,8 @@ const Edit__103_Users__: React.FC = () => {
     if (!selected__103_Users__) return;
 
     try {
-      await update__103_Users__({ id: selected__103_Users__._id, ...new__103_Users__ }).unwrap(); // Call RTK mutation
+      const updateData = { ...new__103_Users__, dataArr: newItemTags };
+      await update__103_Users__({ id: selected__103_Users__._id, ...updateData }).unwrap(); // Call RTK mutation
       toggleEditModal(false);
     } catch (error) {
       console.error('Failed to update __104_Users__:', error);
@@ -104,6 +108,7 @@ const Edit__103_Users__: React.FC = () => {
                 </SelectContent>
               </Select>
             </div>
+            <DataSelect newItemTags={newItemTags as string[]} setNewItemTags={setNewItemTags} />
           </div>
           <div className="mt-12 pt-12" />
         </ScrollArea>
