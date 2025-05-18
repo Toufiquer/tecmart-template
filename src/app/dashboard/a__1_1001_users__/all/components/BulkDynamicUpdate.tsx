@@ -6,7 +6,7 @@ import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '
 import { use__103_Users__Store } from '../store/Store';
 import { __custom_selector_arr__ } from '../store/StoreConstants';
 import { useBulkUpdateUsers__1_101__Mutation } from '../redux/rtk-Api';
-import DataSelect from './DataSelect';
+import DynamicDataSelect from './DynamicDataSelect';
 
 const BulkDynamicUpdate__103_Users__: React.FC = () => {
   const [newItemTags, setNewItemTags] = useState<string[]>([]);
@@ -16,7 +16,8 @@ const BulkDynamicUpdate__103_Users__: React.FC = () => {
   const handleBulkEdit__103_Users__ = async () => {
     if (!bulkData.length) return;
     try {
-      const newBulkData = bulkData.map(({ _id, ...rest }) => ({ id: _id, updateData: rest, dataArr: newItemTags }));
+      const newBulkData = bulkData.map(({ _id, ...rest }) => ({ id: _id, updateData: { ...rest, dataArr: newItemTags } }));
+      console.log('newBulkData', newBulkData);
       await bulkUpdateUsers__1_101__(newBulkData).unwrap();
       toggleBulkDynamicUpdateModal(false);
       setBulkData([]);
@@ -37,19 +38,21 @@ const BulkDynamicUpdate__103_Users__: React.FC = () => {
               You are about to update <span className="font-semibold">({bulkData.length})</span> users__1_102__
             </p>
             <div className="w-full flex items-center justify-between pt-2">
-              <p>Update all data as</p>
-              <DataSelect newItemTags={newItemTags as string[]} setNewItemTags={setNewItemTags} />
+              <DynamicDataSelect label="Update all data as" newItemTags={newItemTags as string[]} setNewItemTags={setNewItemTags} />
             </div>
           </div>
         )}
         <ScrollArea className="h-[400px] w-full rounded-md border p-4">
           <div className="flex flex-col gap-2">
             {bulkData.map((__104_Users__, idx) => (
-              <div key={(__104_Users__._id as string) || idx} className="flex items-center justify-between">
-                <span>
-                  {idx + 1}. {(__104_Users__.name as string) || ''}
-                </span>
-                <span>{__104_Users__.role as string}</span>
+              <div key={(__104_Users__._id as string) || idx} className="flex items-start mb-2 justify-between flex-col">
+                <div className="flex flex-col">
+                  <span>
+                    {idx + 1}. {(__104_Users__.name as string) || ''}
+                  </span>
+                  {/* <span className="text-xs mt-0">{Array.isArray(__104_Users__.dataArr) ? __104_Users__.dataArr.join(', ') : ''}</span> */}
+                  <span className="text-xs mt-0">{newItemTags.join(', ') || ''}</span>
+                </div>
               </div>
             ))}
           </div>

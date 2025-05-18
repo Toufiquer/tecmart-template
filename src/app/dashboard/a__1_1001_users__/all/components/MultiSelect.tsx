@@ -11,7 +11,7 @@
 import { useEffect, useState } from 'react';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
 import { X } from 'lucide-react';
 
@@ -105,29 +105,33 @@ const MultiSelect = ({
 
   return (
     <div className="space-y-4">
-      <div className="grid grid-cols-4 items-center gap-4">
-        <Label htmlFor="multiselect" className="text-right">
-          {label}
-        </Label>
-        <div className="col-span-3">
-          <Select onValueChange={handleSelect} disabled={readOnly || isLoading || getAvailableOptions().length === 0}>
+      <div className="flex items-center gap-4 justify-between">
+        <div className="w-full">
+          <Label htmlFor="multiselect" className="text-right">
+            {label}
+          </Label>
+        </div>
+        <div className="w-full">
+          <Select onValueChange={handleSelect} disabled={readOnly || isLoading || getAvailableOptions().length === 0} defaultValue={'Please select an option'}>
             <SelectTrigger className="w-full">
-              <SelectValue placeholder={placeholder} />
+              <SelectValue placeholder={placeholder || 'Please select an option'} />
             </SelectTrigger>
             <SelectContent className="bg-slate-50 max-h-60">
-              {isLoading ? (
-                <div className="p-2 text-center text-gray-500">Loading options...</div>
-              ) : error ? (
-                <div className="p-2 text-center text-red-500">{error}</div>
-              ) : getAvailableOptions().length === 0 ? (
-                <div className="p-2 text-center text-gray-500">No options available</div>
-              ) : (
-                getAvailableOptions().map((item, index) => (
-                  <SelectItem key={`${item}-${index}`} className="cursor-pointer hover:bg-slate-200" value={item}>
-                    {item}
-                  </SelectItem>
-                ))
-              )}
+              <SelectGroup>
+                {isLoading ? (
+                  <SelectLabel className="p-2 text-center text-gray-500">Loading options...</SelectLabel>
+                ) : error ? (
+                  <SelectLabel className="p-2 text-center text-red-500">{error}</SelectLabel>
+                ) : getAvailableOptions().length === 0 ? (
+                  <SelectLabel className="p-2 text-center text-gray-500">No options available</SelectLabel>
+                ) : (
+                  getAvailableOptions().map((item, index) => (
+                    <SelectItem key={`${item}-${index}`} className="cursor-pointer hover:bg-slate-200" value={item}>
+                      {item}
+                    </SelectItem>
+                  ))
+                )}
+              </SelectGroup>
             </SelectContent>
           </Select>
         </div>
@@ -135,11 +139,10 @@ const MultiSelect = ({
 
       {/* Display selected items */}
       {selectedItems.length > 0 && (
-        <div className="grid grid-cols-4 items-start gap-4">
-          <div className="text-right text-sm text-gray-500 pt-1">Selected</div>
+        <div className="flex flex-wrap items-start gap-4 -ml-2">
           <div className="col-span-3 flex flex-wrap gap-2">
             {selectedItems.map((item, index) => (
-              <Badge key={`selected-${item}-${index}`} variant="secondary" className="px-2 py-1">
+              <Badge key={`selected-${item}-${index}`} variant="secondary">
                 {item}
                 {!readOnly && (
                   <Button type="button" variant="ghost" size="sm" className="h-4 w-4 p-0 ml-1 cursor-pointer" onClick={() => handleRemove(item)}>
