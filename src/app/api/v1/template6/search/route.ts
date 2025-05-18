@@ -1,6 +1,7 @@
 import _3_template_ from '../filename7Model';
 import connectDB from '@/lib/mongoose';
-import { formatResponse, handleRateLimit } from '../../../utils';
+import { formatResponse } from '@/app/api/utils/jwt-verify';
+import { handleRateLimit } from '@/app/api/utils/rate-limit';
 
 // Search functionality
 export async function GET(req: Request) {

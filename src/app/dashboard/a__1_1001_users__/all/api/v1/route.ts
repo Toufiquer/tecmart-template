@@ -1,3 +1,4 @@
+import { handleRateLimit } from '@/app/api/utils/rate-limit';
 import {
   getUsers__1_101__,
   createUser__1_103__,
@@ -8,7 +9,7 @@ import {
   bulkDeleteUsers__1_101__,
 } from './Controller';
 
-import { formatResponse, handleRateLimit, handleTokenVerify, IResponse } from '@/app/api/utils';
+import { formatResponse, handleTokenVerify, IResponse } from '@/app/api/utils/jwt-verify';
 
 // GET all Users__1_101__
 export async function GET(req: Request) {
@@ -48,7 +49,6 @@ export async function PUT(req: Request) {
 
 // DELETE User__1_103__
 export async function DELETE(req: Request) {
-  
   const rateLimitResponse = handleRateLimit(req);
   if (rateLimitResponse) return rateLimitResponse;
 

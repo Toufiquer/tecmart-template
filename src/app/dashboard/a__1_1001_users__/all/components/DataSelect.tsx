@@ -38,7 +38,7 @@ export default function DataSelect({
     }
     // We only want this effect to run when newItemTags (from parent) changes.
     // Adding currentSelection to dependencies could cause issues if not handled carefully.
-  }, [newItemTags]);
+  }, [newItemTags, currentSelection]);
 
   const handleSelectionChange = (newSelectionFromMultiSelect: string[]) => {
     // Check if the new selection from MultiSelect is actually different from our current local state.

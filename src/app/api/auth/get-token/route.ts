@@ -1,6 +1,7 @@
-import { formatResponse, handleRateLimit, IResponse } from '@/app/api/utils';
+import { formatResponse, IResponse } from '@/app/api/utils/jwt-verify';
 import { checkEmail } from '../[...nextauth]/google-auth-controller';
-import { createJwt } from '../../jwt-utils';
+import { createJwt } from '@/app/api/utils/jwt-utils';
+import { handleRateLimit } from '@/app/api/utils/rate-limit';
 
 export async function PUT(req: Request) {
   const rateLimitResponse = handleRateLimit(req);

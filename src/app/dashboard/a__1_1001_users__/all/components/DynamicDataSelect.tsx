@@ -25,7 +25,7 @@ export default function DynamicDataSelect({ newItemTags, setNewItemTags, label }
     if (JSON.stringify(newItemTags) !== JSON.stringify(currentSelection)) {
       setCurrentSelection(newItemTags);
     }
-  }, [newItemTags]);
+  }, [newItemTags, currentSelection]);
 
   const handleSelectionChange = (newSelectionFromMultiSelect: string[]) => {
     if (JSON.stringify(newSelectionFromMultiSelect) !== JSON.stringify(currentSelection)) {

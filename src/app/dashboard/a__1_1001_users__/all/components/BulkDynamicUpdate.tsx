@@ -4,7 +4,6 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 
 import { use__103_Users__Store } from '../store/Store';
-import { __custom_selector_arr__ } from '../store/StoreConstants';
 import { useBulkUpdateUsers__1_101__Mutation } from '../redux/rtk-Api';
 import DynamicDataSelect from './DynamicDataSelect';
 
@@ -17,7 +16,7 @@ const BulkDynamicUpdate__103_Users__: React.FC = () => {
     if (!bulkData.length) return;
     try {
       const newBulkData = bulkData.map(({ _id, ...rest }) => ({ id: _id, updateData: { ...rest, dataArr: newItemTags } }));
-      console.log('newBulkData', newBulkData);
+
       await bulkUpdateUsers__1_101__(newBulkData).unwrap();
       toggleBulkDynamicUpdateModal(false);
       setBulkData([]);

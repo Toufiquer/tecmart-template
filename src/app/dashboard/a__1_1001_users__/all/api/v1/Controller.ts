@@ -1,18 +1,7 @@
-import connectDB from '@/lib/mongoose';
+import { IResponse } from '@/app/api/utils/jwt-verify';
 
 import User__1_103__ from './Model';
-import { IResponse } from '@/app/api/utils';
-
-// Helper to handle database connection and errors
-async function withDB(handler: () => Promise<IResponse>): Promise<IResponse> {
-  try {
-    await connectDB();
-    return await handler();
-  } catch (error) {
-    console.error(error);
-    return { data: null, message: (error as Error).message, status: 500 };
-  }
-}
+import { withDB } from '@/app/api/utils/db';
 
 // Helper to format responses
 const formatResponse = (data: unknown, message: string, status: number) => ({ data, message, status });

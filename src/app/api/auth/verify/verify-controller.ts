@@ -1,6 +1,7 @@
-import { handleTokenVerify, IResponse, withDB } from '@/app/api/utils';
+import { handleTokenVerify, IResponse } from '@/app/api/utils/jwt-verify';
 import { checkEmail } from '../[...nextauth]/google-auth-controller';
-import { createJwt } from '@/app/api/jwt-utils';
+import { createJwt } from '@/app/api/utils/jwt-utils';
+import { withDB } from '@/app/api/utils/db';
 
 let formatResponse = { data: 'try-again', message: 'try-again', status: 202 };
 
@@ -13,7 +14,7 @@ export async function invokeAuth(req: Request): Promise<IResponse> {
       if (result.authType === 'google') {
         const email = result.email;
         const isEmailValid = await checkEmail(email);
-        console.log('email : ', isEmailValid);
+
         if (isEmailValid) {
           token = createJwt(email);
           formatResponse = { data: token, message: 'login Success', status: 201 };

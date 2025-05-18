@@ -8,7 +8,8 @@ import {
   bulkDelete_1_template_,
 } from './filename7Controller';
 
-import { formatResponse, handleRateLimit, IResponse } from '../../utils';
+import { formatResponse, IResponse } from '../../utils/jwt-verify';
+import { handleRateLimit } from '@/app/api/utils/rate-limit';
 
 // GET all _1_template_
 export async function GET(req: Request) {

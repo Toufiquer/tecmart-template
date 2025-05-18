@@ -1,5 +1,6 @@
-import { formatResponse, handleRateLimit, IResponse } from '@/app/api/utils';
+import { formatResponse, IResponse } from '@/app/api/utils/jwt-verify';
 import { invokeAuth } from './verify-controller';
+import { handleRateLimit } from '@/app/api/utils/rate-limit';
 
 export async function PUT(req: Request) {
   const rateLimitResponse = handleRateLimit(req);

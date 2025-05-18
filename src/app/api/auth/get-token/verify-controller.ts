@@ -1,6 +1,7 @@
-import { handleTokenVerify, IResponse, withDB } from '@/app/api/utils';
+import { handleTokenVerify, IResponse } from '@/app/api/utils/jwt-verify';
 import { checkEmail } from '../[...nextauth]/google-auth-controller';
-import { createJwt } from '@/app/api/jwt-utils';
+import { createJwt } from '@/app/api/utils/jwt-utils';
+import { withDB } from '@/app/api/utils/db';
 
 let formatResponse = { data: 'try-again', message: 'try-again', status: 202 };
 
