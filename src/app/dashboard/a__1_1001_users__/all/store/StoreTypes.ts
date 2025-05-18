@@ -14,6 +14,8 @@ export interface __103_Users__Store {
   isDeleteModalOpen: boolean;
   setNew__103_Users__: React.Dispatch<React.SetStateAction<Partial<IUsers__1_101__>>>;
   isBulkEditModalOpen: boolean;
+  isBulkUpdateModalOpen: boolean;
+  isBulkDynamicUpdateModal: boolean;
   isBulkDeleteModalOpen: boolean;
   bulkData: IUsers__1_101__[];
   setQueryPramsLimit: (payload: number) => void;
@@ -26,6 +28,8 @@ export interface __103_Users__Store {
   toggleEditModal: (isOpen: boolean) => void;
   toggleDeleteModal: (isOpen: boolean) => void;
   toggleBulkEditModal: (__104_Users__: boolean) => void;
+  toggleBulkUpdateModal: (__104_Users__: boolean) => void;
+  toggleBulkDynamicUpdateModal: (__104_Users__: boolean) => void;
   toggleBulkDeleteModal: (__104_Users__: boolean) => void;
   setBulkData: (bulkData: IUsers__1_101__[]) => void;
 }

@@ -11,6 +11,8 @@ export const use__103_Users__Store = create<__103_Users__Store>(set => ({
   selected__103_Users__: null,
   new__103_Users__: baseIUsers__1_101__,
   isBulkEditModalOpen: false,
+  isBulkDynamicUpdateModal: false,
+  isBulkUpdateModalOpen: false,
   isBulkDeleteModalOpen: false,
   isAddModalOpen: false,
   isViewModalOpen: false,
@@ -32,5 +34,7 @@ export const use__103_Users__Store = create<__103_Users__Store>(set => ({
   toggleEditModal: data => set({ isEditModalOpen: data }),
   toggleDeleteModal: data => set({ isDeleteModalOpen: data }),
   toggleBulkEditModal: data => set({ isBulkEditModalOpen: data }),
+  toggleBulkUpdateModal: data => set({ isBulkUpdateModalOpen: data }),
+  toggleBulkDynamicUpdateModal: data => set({ isBulkDynamicUpdateModal: data }),
   toggleBulkDeleteModal: data => set({ isBulkDeleteModalOpen: data }),
 }));

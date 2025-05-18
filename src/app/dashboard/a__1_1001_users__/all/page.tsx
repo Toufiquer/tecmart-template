@@ -18,6 +18,8 @@ import BulkEditFilename8 from './components/BulkEdit';
 import BulkDeleteFilename8 from './components/BulkDelete';
 import ViewUsers__1_101__Table from './components/ViewTable';
 import SearchBox from './components/SearchBox';
+import BulkUpdate__103_Users__ from './components/BulkUpdate';
+import BulkDynamicUpdate__103_Users__ from './components/BulkDynamicUpdate';
 
 const Filename8Table: React.FC = () => {
   const [hashSearchText, setHashSearchText] = useState('');
@@ -47,7 +49,16 @@ const Filename8Table: React.FC = () => {
     }
   };
 
-  const modals = [AddFilename8, ViewFilename8, BulkDeleteFilename8, BulkEditFilename8, EditFilename8, DeleteFilename8];
+  const modals = [
+    AddFilename8,
+    ViewFilename8,
+    BulkDeleteFilename8,
+    BulkEditFilename8,
+    EditFilename8,
+    DeleteFilename8,
+    BulkUpdate__103_Users__,
+    BulkDynamicUpdate__103_Users__,
+  ];
 
   let renderUI = (
     <div className="container mx-auto p-4">

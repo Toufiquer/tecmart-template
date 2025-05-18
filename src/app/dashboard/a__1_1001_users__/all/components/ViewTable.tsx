@@ -22,8 +22,10 @@ const ViewUsers__1_101__Table: React.FC = () => {
   const {
     setSelected__103_Users__,
     toggleBulkEditModal,
+    toggleBulkUpdateModal,
     toggleViewModal,
     queryPramsLimit,
+    toggleBulkDynamicUpdateModal,
     queryPramsPage,
     queryPramsQ,
     toggleEditModal,
@@ -147,6 +149,12 @@ const ViewUsers__1_101__Table: React.FC = () => {
             Total Selected <span className="text-xs text-slate-500">({bulkData.length})</span>
           </div>
           <div className="px-2 gap-2 flex items-center justify-end w-full">
+            <Button className="cursor-pointer " variant="outline" size="sm" onClick={() => toggleBulkDynamicUpdateModal(true)} disabled={bulkData.length === 0}>
+              <PencilIcon className="w-4 h-4 mr-1" /> B. Update
+            </Button>
+            <Button className="cursor-pointer " variant="outline" size="sm" onClick={() => toggleBulkUpdateModal(true)} disabled={bulkData.length === 0}>
+              <PencilIcon className="w-4 h-4 mr-1" /> B. Edit
+            </Button>
             <Button className="cursor-pointer " variant="outline" size="sm" onClick={() => toggleBulkEditModal(true)} disabled={bulkData.length === 0}>
               <PencilIcon className="w-4 h-4 mr-1" /> Edit
             </Button>
