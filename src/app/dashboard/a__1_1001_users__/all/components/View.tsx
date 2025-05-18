@@ -10,7 +10,7 @@ import { baseIUsers__1_101__ } from '../store/StoreConstants';
 import { useGet__103_Users__ByIdQuery } from '../redux/rtk-Api';
 import { IUsers__1_101__ } from '../api/v1/Model';
 
-const View__103_Users__: React.FC = () => {
+const ViewNextComponents: React.FC = () => {
   const { isViewModalOpen, selected__103_Users__, toggleViewModal, setSelected__103_Users__ } = use__103_Users__Store();
   const { data: __104_Users__Data, refetch } = useGet__103_Users__ByIdQuery(selected__103_Users__?._id, { skip: !selected__103_Users__?._id });
 
@@ -93,4 +93,4 @@ const View__103_Users__: React.FC = () => {
   );
 };
 
-export default View__103_Users__;
+export default ViewNextComponents;

@@ -21,7 +21,7 @@ import SearchBox from './components/SearchBox';
 import BulkUpdate__103_Users__ from './components/BulkUpdate';
 import BulkDynamicUpdate__103_Users__ from './components/BulkDynamicUpdate';
 
-const Filename8Table: React.FC = () => {
+const MainNextPage: React.FC = () => {
   const [hashSearchText, setHashSearchText] = useState('');
   const { toggleAddModal, queryPramsLimit, queryPramsPage, queryPramsQ, setQueryPramsPage, setQueryPramsQ } = use__103_Users__Store();
 
@@ -88,4 +88,4 @@ const Filename8Table: React.FC = () => {
   return renderUI;
 };
 
-export default Filename8Table;
+export default MainNextPage;

@@ -6,11 +6,11 @@ import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from '
 import { use__103_Users__Store } from '../store/Store';
 import { useBulkDeleteUsers__1_101__Mutation } from '../redux/rtk-Api';
 
-const BulkDelete__103_Users__: React.FC = () => {
+const BulkDeleteNextComponents: React.FC = () => {
   const { isBulkDeleteModalOpen, toggleBulkDeleteModal, bulkData, setBulkData } = use__103_Users__Store();
   const [bulkDeleteUsers__1_101__, { isLoading }] = useBulkDeleteUsers__1_101__Mutation();
 
-  const handleBulkDelete__103_Users__ = async () => {
+  const handleBulkDeleteNextComponents = async () => {
     if (!bulkData?.length) return;
     try {
       const ids = bulkData.map(__104_Users__ => __104_Users__._id);
@@ -52,7 +52,7 @@ const BulkDelete__103_Users__: React.FC = () => {
             disabled={isLoading}
             variant="outline"
             className="cursor-pointer text-rose-500 border-rose-400 hover:border-rose-500"
-            onClick={handleBulkDelete__103_Users__}
+            onClick={handleBulkDeleteNextComponents}
           >
             Delete Selected
           </Button>
@@ -62,4 +62,4 @@ const BulkDelete__103_Users__: React.FC = () => {
   );
 };
 
-export default BulkDelete__103_Users__;
+export default BulkDeleteNextComponents;

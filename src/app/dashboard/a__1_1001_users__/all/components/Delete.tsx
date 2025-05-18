@@ -7,7 +7,7 @@ import { baseIUsers__1_101__ } from '../store/StoreConstants';
 import { useDelete__103_Users__Mutation } from '../redux/rtk-Api';
 import { IUsers__1_101__ } from '../api/v1/Model';
 
-const Delete__103_Users__: React.FC = () => {
+const DeleteNextComponents: React.FC = () => {
   const { toggleDeleteModal, isDeleteModalOpen, selected__103_Users__, setSelected__103_Users__ } = use__103_Users__Store();
   const [delete__103_Users__] = useDelete__103_Users__Mutation();
 
@@ -55,4 +55,4 @@ const Delete__103_Users__: React.FC = () => {
   );
 };
 
-export default Delete__103_Users__;
+export default DeleteNextComponents;

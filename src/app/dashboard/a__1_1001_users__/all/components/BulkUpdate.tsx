@@ -9,7 +9,7 @@ import { __custom_selector_arr__ } from '../store/StoreConstants';
 import { IUsers__1_101__ } from '../api/v1/Model';
 import { useBulkUpdateUsers__1_101__Mutation } from '../redux/rtk-Api';
 
-const BulkUpdate__103_Users__: React.FC = () => {
+const BulkUpdateNextComponents: React.FC = () => {
   const { toggleBulkUpdateModal, isBulkUpdateModalOpen, bulkData, setBulkData } = use__103_Users__Store();
   const [bulkUpdateUsers__1_101__, { isLoading }] = useBulkUpdateUsers__1_101__Mutation();
 
@@ -87,4 +87,4 @@ const BulkUpdate__103_Users__: React.FC = () => {
   );
 };
 
-export default BulkUpdate__103_Users__;
+export default BulkUpdateNextComponents;

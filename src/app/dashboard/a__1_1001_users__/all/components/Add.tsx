@@ -30,7 +30,7 @@ const InputField: React.FC<{
   </div>
 );
 
-const Add__103_Users__: React.FC = () => {
+const AddNextComponents: React.FC = () => {
   const { toggleAddModal, isAddModalOpen, users__1_102__, new__103_Users__, setNew__103_Users__, setUsers__1_101__ } = use__103_Users__Store();
   const [add__103_Users__, { isLoading, isError, error }] = useAdd__103_Users__Mutation();
 
@@ -136,4 +136,4 @@ const Add__103_Users__: React.FC = () => {
   );
 };
 
-export default Add__103_Users__;
+export default AddNextComponents;

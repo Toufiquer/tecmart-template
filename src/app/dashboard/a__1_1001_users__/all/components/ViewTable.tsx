@@ -17,7 +17,7 @@ import { useGetUsers__1_101__Query } from '../redux/rtk-Api';
 import { use__103_Users__Store } from '../store/Store';
 import { pageLimitArr } from '../store/StoreConstants';
 
-const ViewUsers__1_101__Table: React.FC = () => {
+const ViewTableNextComponents: React.FC = () => {
   const [sortConfig, setSortConfig] = useState<{ key: keyof IUsers__1_101__; direction: 'asc' | 'desc' } | null>(null);
   const {
     setSelected__103_Users__,
@@ -223,4 +223,4 @@ const ViewUsers__1_101__Table: React.FC = () => {
   );
 };
 
-export default ViewUsers__1_101__Table;
+export default ViewTableNextComponents;

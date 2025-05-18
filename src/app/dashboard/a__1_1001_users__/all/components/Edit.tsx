@@ -13,7 +13,7 @@ import { IUsers__1_101__ } from '../api/v1/Model';
 import { __I_custom_selector_Type__, __custom_selector_arr__, baseIUsers__1_101__ } from '../store/StoreConstants';
 import DataSelect from './DataSelect';
 
-const Edit__103_Users__: React.FC = () => {
+const EditNextComponents: React.FC = () => {
   const [newItemTags, setNewItemTags] = useState<string[]>([]);
   const { toggleEditModal, isEditModalOpen, new__103_Users__, selected__103_Users__, setNew__103_Users__, setSelected__103_Users__ } = use__103_Users__Store();
   const [update__103_Users__] = useUpdate__103_Users__Mutation(); // RTK mutation hook
@@ -32,7 +32,7 @@ const Edit__103_Users__: React.FC = () => {
     setNew__103_Users__({ ...new__103_Users__, role: value as __I_custom_selector_Type__ });
   };
 
-  const handleEdit__103_Users__ = async () => {
+  const handleEditNextComponents = async () => {
     if (!selected__103_Users__) return;
 
     try {
@@ -123,7 +123,7 @@ const Edit__103_Users__: React.FC = () => {
           >
             Cancel
           </Button>
-          <Button onClick={handleEdit__103_Users__} className="cursor-pointer border-1 border-slate-400 hover:border-slate-500">
+          <Button onClick={handleEditNextComponents} className="cursor-pointer border-1 border-slate-400 hover:border-slate-500">
             Save Changes
           </Button>
         </DialogFooter>
@@ -132,4 +132,4 @@ const Edit__103_Users__: React.FC = () => {
   );
 };
 
-export default Edit__103_Users__;
+export default EditNextComponents;

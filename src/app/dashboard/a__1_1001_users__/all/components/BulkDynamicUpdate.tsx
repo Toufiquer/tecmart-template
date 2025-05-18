@@ -7,7 +7,7 @@ import { use__103_Users__Store } from '../store/Store';
 import { useBulkUpdateUsers__1_101__Mutation } from '../redux/rtk-Api';
 import DynamicDataSelect from './DynamicDataSelect';
 
-const BulkDynamicUpdate__103_Users__: React.FC = () => {
+const BulkDynamicUpdateNextComponents: React.FC = () => {
   const [newItemTags, setNewItemTags] = useState<string[]>([]);
   const { toggleBulkDynamicUpdateModal, isBulkDynamicUpdateModal, bulkData, setBulkData } = use__103_Users__Store();
   const [bulkUpdateUsers__1_101__, { isLoading }] = useBulkUpdateUsers__1_101__Mutation();
@@ -74,4 +74,4 @@ const BulkDynamicUpdate__103_Users__: React.FC = () => {
   );
 };
 
-export default BulkDynamicUpdate__103_Users__;
+export default BulkDynamicUpdateNextComponents;
