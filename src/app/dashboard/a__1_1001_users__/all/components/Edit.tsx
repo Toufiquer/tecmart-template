@@ -99,7 +99,7 @@ const EditNextComponents: React.FC = () => {
                 <SelectTrigger className="col-span-3">
                   <SelectValue placeholder="Select a role" />
                 </SelectTrigger>
-                <SelectContent>
+                <SelectContent className="bg-slate-50">
                   {__custom_selector_arr__?.map((i, index) => (
                     <SelectItem key={i + index} className="cursor-pointer hover:bg-slate-200" value={i}>
                       {i}
