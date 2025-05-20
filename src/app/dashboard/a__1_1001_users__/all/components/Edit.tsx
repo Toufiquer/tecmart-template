@@ -12,9 +12,11 @@ import { useUpdate__103_Users__Mutation } from '../redux/rtk-Api';
 import { IUsers__1_101__ } from '../api/v1/Model';
 import { __I_custom_selector_Type__, __custom_selector_arr__, baseIUsers__1_101__ } from '../store/StoreConstants';
 import DataSelect from './DataSelect';
+import ImagesSelect from './ImagesSelect';
 
 const EditNextComponents: React.FC = () => {
   const [newItemTags, setNewItemTags] = useState<string[]>([]);
+  const [newImages, setNewImages] = useState<string[]>([]);
   const { toggleEditModal, isEditModalOpen, new__103_Users__, selected__103_Users__, setNew__103_Users__, setSelected__103_Users__ } = use__103_Users__Store();
   const [update__103_Users__] = useUpdate__103_Users__Mutation(); // RTK mutation hook
 
@@ -22,6 +24,7 @@ const EditNextComponents: React.FC = () => {
     if (selected__103_Users__) {
       setNew__103_Users__(selected__103_Users__);
       setNewItemTags(selected__103_Users__.dataArr as string[]);
+      setNewImages(selected__103_Users__.images as string[]);
     }
   }, [selected__103_Users__, setNew__103_Users__]);
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,7 +39,7 @@ const EditNextComponents: React.FC = () => {
     if (!selected__103_Users__) return;
 
     try {
-      const updateData = { ...new__103_Users__, dataArr: newItemTags };
+      const updateData = { ...new__103_Users__, dataArr: newItemTags, images: newImages };
       await update__103_Users__({ id: selected__103_Users__._id, ...updateData }).unwrap(); // Call RTK mutation
       toggleEditModal(false);
     } catch (error) {
@@ -110,6 +113,7 @@ const EditNextComponents: React.FC = () => {
             </div>
             <DataSelect newItemTags={newItemTags as string[]} setNewItemTags={setNewItemTags} />
           </div>
+          <ImagesSelect newImages={newImages as string[]} setNewImages={setNewImages} />
           <div className="mt-12 pt-12" />
         </ScrollArea>
         <DialogFooter>
