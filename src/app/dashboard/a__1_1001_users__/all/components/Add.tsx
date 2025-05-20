@@ -13,6 +13,7 @@ import { ScrollArea } from '@/components/ui/scroll-area';
 import { default__103_Users__Data, __default_selector__, __I_custom_selector_Type__, __custom_selector_arr__ } from '../store/StoreConstants';
 import { handleError } from './utils';
 import DataSelect from './DataSelect';
+import ImagesSelect from './ImagesSelect';
 
 const InputField: React.FC<{
   id: string;
@@ -35,6 +36,7 @@ const AddNextComponents: React.FC = () => {
   const [add__103_Users__, { isLoading, isError, error }] = useAdd__103_Users__Mutation();
 
   const [newItemTags, setNewItemTags] = useState<string[]>([]);
+  const [newImages, setNewImages] = useState<string[]>([]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -115,6 +117,7 @@ const AddNextComponents: React.FC = () => {
               </Select>
             </div>
             <DataSelect newItemTags={newItemTags as string[]} setNewItemTags={setNewItemTags} />
+            <ImagesSelect newImages={newImages as string[]} setNewImages={setNewImages} />
           </div>
         </ScrollArea>
 

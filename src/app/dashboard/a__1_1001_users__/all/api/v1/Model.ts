@@ -18,13 +18,17 @@ const user__1_104__Schema = new Schema(
       enum: __custom_selector_arr__,
       default: __default_selector__,
     },
+    images: [{ type: String }],
+    descriptions: [{ type: String }],
   },
   { timestamps: true },
 );
 
 export default mongoose.models.User__1_103__ || mongoose.model('User__1_103__', user__1_104__Schema);
 
-export interface IUsers__1_101__ extends Document, Pick<mongoose.SchemaDefinition, 'name' | 'email' | 'passCode' | 'alias' | 'role' | 'dataArr'> {
+export interface IUsers__1_101__
+  extends Document,
+    Pick<mongoose.SchemaDefinition, 'name' | 'email' | 'passCode' | 'alias' | 'role' | 'dataArr' | 'images' | 'descriptions'> {
   createdAt?: Date;
   updatedAt?: Date;
   img?: string;
