@@ -72,6 +72,13 @@ const MainNextPage: React.FC = () => {
         <div className="w-full flex gap-2 item-center justify-end">
           <Button
             className="border-slate-500 hover:border-slate-600 border-1 cursor-pointer"
+            onClick={() => router.push('/dashboard/a__1_1001_users__/ssr-view')}
+          >
+            <BiRightArrowAlt className="w-4 h-4" />
+            SSR View
+          </Button>
+          <Button
+            className="border-slate-500 hover:border-slate-600 border-1 cursor-pointer"
             onClick={() => router.push('/dashboard/a__1_1001_users__/client-view')}
           >
             <BiRightArrowAlt className="w-4 h-4" />
