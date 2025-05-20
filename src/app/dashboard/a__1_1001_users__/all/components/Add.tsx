@@ -65,6 +65,7 @@ const AddNextComponents: React.FC = () => {
       passCode: new__103_Users__.passCode || '',
       alias: new__103_Users__.alias || '',
       role: (new__103_Users__.role as __I_custom_selector_Type__) || __default_selector__,
+      images: newImages || [],
       createdAt: new Date(),
       updatedAt: new Date(),
     };
