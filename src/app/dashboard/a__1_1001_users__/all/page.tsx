@@ -20,6 +20,8 @@ import ViewUsers__1_101__Table from './components/ViewTable';
 import SearchBox from './components/SearchBox';
 import BulkUpdate__103_Users__ from './components/BulkUpdate';
 import BulkDynamicUpdate__103_Users__ from './components/BulkDynamicUpdate';
+import { BiRightArrowAlt } from 'react-icons/bi';
+import { useRouter } from 'next/navigation';
 
 const MainNextPage: React.FC = () => {
   const [hashSearchText, setHashSearchText] = useState('');
@@ -59,6 +61,7 @@ const MainNextPage: React.FC = () => {
     BulkUpdate__103_Users__,
     BulkDynamicUpdate__103_Users__,
   ];
+  const router = useRouter();
 
   let renderUI = (
     <div className="container mx-auto p-4">
@@ -67,8 +70,15 @@ const MainNextPage: React.FC = () => {
           User__1_103__ Management {isSuccess && <sup className="text-xs">(total:{getResponseData?.data?.total || '00'})</sup>}
         </h1>
         <div className="w-full flex gap-2 item-center justify-end">
+          <Button
+            className="border-slate-500 hover:border-slate-600 border-1 cursor-pointer"
+            onClick={() => router.push('/dashboard/a__1_1001_users__/client-view')}
+          >
+            <BiRightArrowAlt className="w-4 h-4" />
+            Client View
+          </Button>
           <Button className="border-slate-500 hover:border-slate-600 border-1 cursor-pointer" onClick={() => toggleAddModal(true)}>
-            <PlusIcon className="w-4 h-4 mr-2" />
+            <PlusIcon className="w-4 h-4" />
             Add User__1_103__
           </Button>
         </div>
