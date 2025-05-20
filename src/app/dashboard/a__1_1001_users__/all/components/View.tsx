@@ -10,6 +10,7 @@ import { baseIUsers__1_101__ } from '../store/StoreConstants';
 import { useGet__103_Users__ByIdQuery } from '../redux/rtk-Api';
 import { IUsers__1_101__ } from '../api/v1/Model';
 import Image from 'next/image';
+import { ViewRichText } from './view-rich-text/ViewRichText';
 
 const ViewNextComponents: React.FC = () => {
   const [allImages, setAllImages] = useState<string[]>([]);
@@ -95,6 +96,8 @@ const ViewNextComponents: React.FC = () => {
                   </div>
                 )}
               </div>
+              <div className="w-full m-2" />
+              <ViewRichText data={selected__103_Users__.descriptions || ''} />
             </div>
           </ScrollArea>
         )}

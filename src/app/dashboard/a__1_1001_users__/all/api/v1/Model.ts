@@ -19,7 +19,7 @@ const user__1_104__Schema = new Schema(
       default: __default_selector__,
     },
     images: [{ type: String }],
-    descriptions: [{ type: String }],
+    descriptions: { type: String },
   },
   { timestamps: true },
 );
@@ -34,7 +34,7 @@ export interface IUsers__1_101__ {
   alias: string;
   role: string;
   images?: string[];
-  descriptions?: string[];
+  descriptions?: string;
   createdAt: Date;
   updatedAt: Date;
   _id: string;

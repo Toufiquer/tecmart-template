@@ -14,6 +14,7 @@ import { default__103_Users__Data, __default_selector__, __I_custom_selector_Typ
 import { handleError } from './utils';
 import DataSelect from './DataSelect';
 import ImagesSelect from './ImagesSelect';
+import RichTextEditor from './rich-text-editor';
 
 const InputField: React.FC<{
   id: string;
@@ -37,6 +38,13 @@ const AddNextComponents: React.FC = () => {
 
   const [newItemTags, setNewItemTags] = useState<string[]>([]);
   const [newImages, setNewImages] = useState<string[]>([]);
+
+  const [descriptions, setDescriptions] = useState('');
+
+  const onChange = (content: string) => {
+    setDescriptions(content);
+    console.log(content);
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -66,6 +74,7 @@ const AddNextComponents: React.FC = () => {
       alias: new__103_Users__.alias || '',
       role: (new__103_Users__.role as __I_custom_selector_Type__) || __default_selector__,
       images: newImages || [],
+      descriptions: descriptions || '',
       createdAt: new Date(),
       updatedAt: new Date(),
     };
@@ -119,6 +128,8 @@ const AddNextComponents: React.FC = () => {
             </div>
             <DataSelect newItemTags={newItemTags as string[]} setNewItemTags={setNewItemTags} />
             <ImagesSelect newImages={newImages as string[]} setNewImages={setNewImages} />
+
+            <RichTextEditor content={descriptions} onChange={onChange} />
           </div>
         </ScrollArea>
 

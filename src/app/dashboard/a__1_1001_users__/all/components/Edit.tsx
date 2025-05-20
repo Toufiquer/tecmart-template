@@ -13,13 +13,19 @@ import { IUsers__1_101__ } from '../api/v1/Model';
 import { __I_custom_selector_Type__, __custom_selector_arr__, baseIUsers__1_101__ } from '../store/StoreConstants';
 import DataSelect from './DataSelect';
 import ImagesSelect from './ImagesSelect';
+import RichTextEditor from './rich-text-editor';
 
 const EditNextComponents: React.FC = () => {
   const [newItemTags, setNewItemTags] = useState<string[]>([]);
   const [newImages, setNewImages] = useState<string[]>([]);
   const { toggleEditModal, isEditModalOpen, new__103_Users__, selected__103_Users__, setNew__103_Users__, setSelected__103_Users__ } = use__103_Users__Store();
-  const [update__103_Users__] = useUpdate__103_Users__Mutation(); // RTK mutation hook
+  const [update__103_Users__] = useUpdate__103_Users__Mutation();
+  const [descriptions, setDescriptions] = useState('');
 
+  const onChange = (content: string) => {
+    setDescriptions(content);
+    console.log(content);
+  };
   useEffect(() => {
     if (selected__103_Users__) {
       setNew__103_Users__(selected__103_Users__);
@@ -114,6 +120,9 @@ const EditNextComponents: React.FC = () => {
             <DataSelect newItemTags={newItemTags as string[]} setNewItemTags={setNewItemTags} />
           </div>
           <ImagesSelect newImages={newImages as string[]} setNewImages={setNewImages} />
+          <div className="w-full mt-2" />
+
+          <RichTextEditor content={descriptions} onChange={onChange} />
           <div className="mt-12 pt-12" />
         </ScrollArea>
         <DialogFooter>
