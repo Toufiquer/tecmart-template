@@ -107,12 +107,12 @@ const ImageDialog = ({ handleAddImages }: { handleAddImages: (newImage: string) 
         ) : (
           <div>
             {allImages.length > 0 ? (
-              <div className="w-full flex flex-wrap gap-1">
+              <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-1">
                 {allImages.map((i, index) => (
                   <div
                     onClick={() => handleSelect(i)}
                     key={index + i}
-                    className={`relative w-[150px] h-[150px] border-1 border-slate-400 rounded-lg flex items-center justify-center ${i === selectImg && ' opacity-50 '}`}
+                    className={`relative w-full h-[150px] border-1 border-slate-300 shadow-xl hover:shadow-2xl cursor-pointer hover:border-slate-600 flex items-center justify-center rounded-lg overflow-hidden`}
                   >
                     <Image src={i} fill alt="Media" objectFit="cover" />
                   </div>

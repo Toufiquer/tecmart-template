@@ -13,7 +13,7 @@ import React, { useState, useEffect } from 'react';
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import ImageDialog from './ImageDialog';
 import Image from 'next/image';
-import { ImagePlay, Plus } from 'lucide-react';
+import { ImagePlay, Plus, X } from 'lucide-react';
 
 interface ImagesSelectProps {
   newImages: string[];
@@ -63,6 +63,9 @@ export default function ImagesSelect({ newImages, setNewImages }: ImagesSelectPr
                 className={`relative w-full h-[150px] border-1 border-slate-300 shadow-xl hover:shadow-2xl cursor-pointer hover:border-slate-600 flex items-center justify-center rounded-lg overflow-hidden`}
               >
                 <Image src={i} alt="Media" objectFit="cover" fill />
+                <div className="absolute top-0 right-0 bg-rose-500 w-6 h-6 flex items-center justify-center rounded-full">
+                  <X className="text-white h-4 w-4" />
+                </div>
               </div>
             ))}
           </div>
