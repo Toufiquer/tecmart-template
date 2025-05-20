@@ -79,6 +79,15 @@ export const sidebarDataHome: SIDEBARTYPE[] = [
     content: [{ id: 601, name: 'All Pickup Points', link: '/dashboard/pickup-points/all', icon: iconBiPieChartAlt }],
   },
   {
+    id: 6001,
+    name: 'Media',
+    icon: iconBiPieChartAlt,
+    content: [
+      { id: 60001, name: 'All', link: '/dashboard/media', icon: iconBiPieChartAlt },
+      { id: 60002, name: 'Trash', link: '/dashboard/media/trash', icon: iconBiPieChartAlt },
+    ],
+  },
+  {
     id: 7,
     name: 'Blogs',
     icon: iconBiPieChartAlt,

@@ -113,30 +113,22 @@ const Media = () => {
   return (
     <div className="p-4 space-y-4">
       <div className="flex justify-between items-center">
-        <h2 className="text-2xl font-bold">Gallery</h2>
-        <Button className="hover:bg-pink-500 border-1-pink-600 rounded-full bg-pink-400 text-white cursor-pointer" onClick={() => setShowUploadModal(true)}>
+        <h1 className="text-2xl font-bold w-full">Gallery</h1>
+        <Button className="border-slate-500 hover:border-slate-600 border-1 cursor-pointer" onClick={() => setShowUploadModal(true)}>
           Upload
         </Button>
       </div>
 
       {showTrashModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div className="fixed inset-0 backdrop-blur-sm min-h-screen bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white p-4 rounded-lg w-96">
             <h3 className="text-lg font-semibold mb-4">Confirm</h3>
             <p>Are you sure?</p>
             <div className="flex justify-end gap-2 mt-4">
-              <Button
-                className="text-sm cursor-pointer bg-green-400 text-white border-green-500 hover:bg-green-600 hover:text-white hover:border-red-600 transition-all duration-300"
-                variant="outline"
-                onClick={() => setShowTrashModal(false)}
-              >
+              <Button className="border-slate-500 hover:border-slate-600 border-1 cursor-pointer" variant="outline" onClick={() => setShowTrashModal(false)}>
                 No
               </Button>
-              <Button
-                variant="destructive"
-                className="text-sm cursor-pointer bg-rose-400 text-white border-rose-500 hover:bg-rose-600 hover:text-white hover:border-red-600 transition-all duration-300"
-                onClick={() => handleMoveToTrash(selectedImageId)}
-              >
+              <Button className="border-slate-500 hover:border-slate-600 border-1 cursor-pointer" onClick={() => handleMoveToTrash(selectedImageId)}>
                 Yes
               </Button>
             </div>
@@ -145,11 +137,11 @@ const Media = () => {
       )}
 
       {showUploadModal ? (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+        <div className="fixed inset-0 backdrop-blur-sm bg-opacity-50 flex items-center justify-center">
           <div className="bg-white p-4 rounded-lg w-96">
             <h3 className="text-lg font-semibold mb-4">Upload</h3>
             <Input type="file" accept="image/*" onChange={handleImageUpload} disabled={loading} />
-            {loading && <p className="text-blue-500 mt-2">Uploading...</p>}
+            {loading && <p className="mt-2">Uploading...</p>}
             <div className="flex justify-end gap-2 mt-4">
               <Button className="cursor-pointer" variant="outline" onClick={() => setShowUploadModal(false)}>
                 Cancel
@@ -161,17 +153,16 @@ const Media = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {images.length === 0 ? (
             <div className="col-span-full flex justify-center items-center h-full">
-              <p className="text-gray-500 min-h-48 border w-full flex items-center justify-center rounded-lg mt-4">No images found</p>
+              <p className="min-h-48 border w-full flex items-center justify-center rounded-lg mt-4">No images found</p>
             </div>
           ) : (
             images.map((imageUrl, index) => (
               <div key={index} className="relative group">
                 <div className="w-full flex flex-col">
                   <Image src={imageUrl} alt={`Image ${index + 1}`} width={300} height={192} className="w-full h-48 object-cover rounded-lg" />
-                  <div className="w-full grid grid-cols-2 items-center justify-between mt-2 gap-2">
+                  <div className="w-full grid grid-cols-2 items-center justify-between mt-1 gap-2">
                     <Button
-                      variant="destructive"
-                      className="text-sm w-full cursor-pointer bg-rose-400 text-white border-rose-500 hover:bg-rose-600 hover:text-white hover:border-red-600 transition-all duration-300"
+                      className="border-slate-500 hover:border-slate-600 border-1 cursor-pointer"
                       onClick={() => {
                         setSelectedImageId(imgFile[index].id);
                         setShowTrashModal(true);
@@ -179,11 +170,7 @@ const Media = () => {
                     >
                       Move to trash
                     </Button>
-                    <Button
-                      variant="outline"
-                      className="text-sm w-full cursor-pointer bg-green-400 text-white border-green-500 hover:bg-green-600 hover:text-white hover:border-green-600 transition-all duration-300"
-                      onClick={() => handleViewImage(imgFile[index].url)}
-                    >
+                    <Button className="border-slate-500 hover:border-slate-600 border-1 cursor-pointer" onClick={() => handleViewImage(imgFile[index].url)}>
                       View
                     </Button>
                   </div>

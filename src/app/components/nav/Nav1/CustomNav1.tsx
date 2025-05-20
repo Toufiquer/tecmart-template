@@ -15,6 +15,7 @@ const CustomNav1 = () => {
   }[];
   const links: links = [
     { name: 'Home', url: '/' },
+    { name: 'Media', url: '/dashboard/media' },
     { name: 'Route Check', url: '/route-check' },
     { name: 'RTK', url: '/a__1001_users__' },
     { name: 'RTK-all', url: '/dashboard/a__1_1001_users__/all' },
