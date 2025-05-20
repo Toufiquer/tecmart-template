@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { format } from 'date-fns';
 
 import { Button } from '@/components/ui/button';
@@ -9,8 +9,10 @@ import { use__103_Users__Store } from '../store/Store';
 import { baseIUsers__1_101__ } from '../store/StoreConstants';
 import { useGet__103_Users__ByIdQuery } from '../redux/rtk-Api';
 import { IUsers__1_101__ } from '../api/v1/Model';
+import Image from 'next/image';
 
 const ViewNextComponents: React.FC = () => {
+  const [allImages, setAllImages] = useState<string[]>([]);
   const { isViewModalOpen, selected__103_Users__, toggleViewModal, setSelected__103_Users__ } = use__103_Users__Store();
   const { data: __104_Users__Data, refetch } = useGet__103_Users__ByIdQuery(selected__103_Users__?._id, { skip: !selected__103_Users__?._id });
 
@@ -49,31 +51,50 @@ const ViewNextComponents: React.FC = () => {
         </DialogHeader>
         {selected__103_Users__ && (
           <ScrollArea className="h-[400px] w-full rounded-md border p-4">
-            <div className="grid gap-2">
-              <DetailRow label="Name" value={selected__103_Users__.name as string} />
-              <DetailRow label="Email" value={selected__103_Users__.email as string} />
-              <DetailRow label="Pass Code" value={selected__103_Users__.passCode as string} />
-              <DetailRow label="Alias" value={selected__103_Users__.alias as string} />
-              <DetailRow
-                label="Role"
-                value={
-                  <span
-                    className={`px-2 py-1 rounded-full text-xs font-medium ${
-                      selected__103_Users__.role === 'admin'
-                        ? 'bg-amber-100 text-amber-700'
-                        : selected__103_Users__.role === 'moderator'
-                          ? 'bg-blue-100 text-blue-700'
-                          : 'bg-green-100 text-green-700'
-                    }`}
-                  >
-                    {selected__103_Users__.role as string}
-                  </span>
-                }
-              />
-
-              <DetailRowArray label="Data Array" values={selected__103_Users__.dataArr as string[]} />
-              <DetailRow label="Created At" value={formatDate(selected__103_Users__.createdAt)} />
-              <DetailRow label="Updated At" value={formatDate(selected__103_Users__.updatedAt)} />
+            <div className="w-full flex flex-col">
+              <div className="grid gap-2">
+                <DetailRow label="Name" value={selected__103_Users__.name as string} />
+                <DetailRow label="Email" value={selected__103_Users__.email as string} />
+                <DetailRow label="Pass Code" value={selected__103_Users__.passCode as string} />
+                <DetailRow label="Alias" value={selected__103_Users__.alias as string} />
+                <DetailRow
+                  label="Role"
+                  value={
+                    <span
+                      className={`px-2 py-1 rounded-full text-xs font-medium ${
+                        selected__103_Users__.role === 'admin'
+                          ? 'bg-amber-100 text-amber-700'
+                          : selected__103_Users__.role === 'moderator'
+                            ? 'bg-blue-100 text-blue-700'
+                            : 'bg-green-100 text-green-700'
+                      }`}
+                    >
+                      {selected__103_Users__.role as string}
+                    </span>
+                  }
+                />
+                <DetailRowArray label="Data Array" values={selected__103_Users__.dataArr as string[]} />
+                <DetailRow label="Created At" value={formatDate(selected__103_Users__.createdAt)} />
+                <DetailRow label="Updated At" value={formatDate(selected__103_Users__.updatedAt)} />
+              </div>
+              <div className="w-full flex items-center justify-center mt-2 min-h-[10vh]">
+                {Array.isArray(selected__103_Users__.images) && selected__103_Users__.images?.length > 0 ? (
+                  <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-1">
+                    {selected__103_Users__.images.map((i, index) => (
+                      <div
+                        key={index + i}
+                        className={`relative w-full h-[150px] border-1 border-slate-300 shadow-xl hover:shadow-2xl cursor-pointer hover:border-slate-600 flex items-center justify-center rounded-lg overflow-hidden`}
+                      >
+                        <Image src={i} fill alt="Media" objectFit="cover" />
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="flex flex-col w-full items-center justify-center">
+                    <p>Ops! there is no Image</p>
+                  </div>
+                )}
+              </div>
             </div>
           </ScrollArea>
         )}
