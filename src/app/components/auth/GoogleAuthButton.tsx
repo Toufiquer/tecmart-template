@@ -27,12 +27,6 @@ const GoogleAuthButtonContent = () => {
   const searchParams = useSearchParams();
   const callbackUrlPath = searchParams.get('callbackUrl');
 
-  // Log the token whenever the session changes
-  useEffect(() => {
-    if (sessionData?.accessToken) {
-    }
-  }, [sessionData]);
-
   const randomToken = generateCryptoToken();
 
   const handleGoogleSignIn = async () => {

@@ -9,6 +9,18 @@ export default function AuthCheckingComponent({ redirectUrl = '/' as string, chi
   const { status } = useSession();
   const router = useRouter();
 
+  const sessionData = useSession();
+
+  console.log('session auth : ', sessionData);
+  const data = {
+    name: sessionData.data?.user.name,
+    email: sessionData.data?.user.email,
+    accessToken1: sessionData.data?.expires,
+    fixedKey: process.env.NEXT_PUBLIC_ACCESS_FIXED_KEY,
+  };
+
+  console.log('session auth : ', data);
+
   useEffect(() => {
     if (status === 'loading') {
       return;
