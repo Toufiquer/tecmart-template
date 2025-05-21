@@ -17,7 +17,7 @@ export async function PUT(req: Request) {
       const isEmailValid = await checkEmail(result.email);
       if (isEmailValid && checkCredential(result, isEmailValid)) {
         token = createJwt(result.email);
-        return formatResponse(token, result.message || 'success', result.status || 200);
+        return formatResponse(token, result.message || 'success', result.status || 210);
       } else {
         return formatResponse('', 'Data not valid', result.status || 503);
       }

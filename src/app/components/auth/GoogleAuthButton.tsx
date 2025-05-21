@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { FcGoogle } from 'react-icons/fc';
 import { signIn, useSession } from 'next-auth/react';
-import { useState, useEffect, Suspense } from 'react';
+import { useState, Suspense } from 'react';
 import { DefaultSession } from 'next-auth';
 import { generateCryptoToken } from '@/lib/cryptoTokenGenerator';
 import { useSearchParams } from 'next/navigation';

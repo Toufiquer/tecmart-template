@@ -15,7 +15,7 @@ export default function AuthCheckingComponent({ redirectUrl = '/' as string, chi
   const data = {
     name: sessionData.data?.user.name,
     email: sessionData.data?.user.email,
-    accessToken1: sessionData.data?.expires,
+    accessToken1: process.env.NEXT_PUBLIC_ACCESS_TOKEN_KEY,
     fixedKey: process.env.NEXT_PUBLIC_ACCESS_FIXED_KEY,
   };
 
@@ -34,7 +34,6 @@ export default function AuthCheckingComponent({ redirectUrl = '/' as string, chi
     return <p>Loading session...</p>;
   }
   if (status === 'authenticated' && children) {
-    
     return children;
   }
 

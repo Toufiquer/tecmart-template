@@ -3,17 +3,6 @@ import GoogleProvider from 'next-auth/providers/google';
 import { createOrUpdateUsers } from './google-auth-controller';
 import { IUsers } from './google-auth-modal';
 
-const convertUnixTimestampToISO = (unixTimestamp: string | number): string => {
-  const timestampInMilliseconds = Number(unixTimestamp) * 1000;
-
-  if (isNaN(timestampInMilliseconds)) {
-    return 'Invalid Date';
-  }
-
-  const dateObject = new Date(timestampInMilliseconds);
-  return dateObject.toISOString();
-};
-
 const handler = NextAuth({
   // Configure authentication providers
   providers: [
@@ -33,11 +22,10 @@ const handler = NextAuth({
         // Call the function with example data
         const email = token.email as string;
         const name = token.name as string;
-        const expires = convertUnixTimestampToISO(account.expires_at as number);
         console.log('');
         console.log('');
         console.log('');
-        const data: IUsers = { email, name, accessToken1: expires, fixedKey: process.env.ACCESS_FIXED_KEY || '' };
+        const data: IUsers = { email, name, accessToken1: process.env.ACCESS_TOKEN_KEY || '', fixedKey: process.env.ACCESS_FIXED_KEY || '' };
         console.log('data: ', data);
         createOrUpdateUsers(data);
       }
