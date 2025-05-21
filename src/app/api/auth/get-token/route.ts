@@ -1,23 +1,25 @@
 import { formatResponse, IResponse } from '@/app/api/utils/jwt-verify';
-import { checkEmail } from '../[...nextauth]/google-auth-controller';
 import { createJwt } from '@/app/api/utils/jwt-utils';
 import { handleRateLimit } from '@/app/api/utils/rate-limit';
+import { checkEmail } from '@/app/api/auth/utils';
+import { IUsers } from '../[...nextauth]/google-auth-modal';
+
+const checkCredential = (reqData: IUsers, dbData: IUsers) =>
+  reqData.email === dbData.email && reqData.accessToken1 === dbData.accessToken1 && reqData.fixedKey && dbData.fixedKey && reqData.name === dbData.name;
 
 export async function PUT(req: Request) {
   const rateLimitResponse = handleRateLimit(req);
   if (rateLimitResponse) return rateLimitResponse;
   try {
     const result = await req.json();
-
     let token;
     if (result.authType === 'google') {
-      const email = result.email;
-      const isEmailValid = await checkEmail(email);
-      if (isEmailValid) {
-        token = createJwt(email);
-        return formatResponse(token, result.message, result.status);
+      const isEmailValid = await checkEmail(result.email);
+      if (isEmailValid && checkCredential(result, isEmailValid)) {
+        token = createJwt(result.email);
+        return formatResponse(token, result.message || 'success', result.status || 200);
       } else {
-        return formatResponse('', 'Email not valid', result.status);
+        return formatResponse('', 'Data not valid', result.status || 503);
       }
     }
   } catch (err) {

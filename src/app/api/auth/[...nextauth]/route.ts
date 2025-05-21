@@ -1,6 +1,7 @@
 import NextAuth from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
-import { manageIGAuth } from './google-auth-controller';
+import { createOrUpdateUsers } from './google-auth-controller';
+import { IUsers } from './google-auth-modal';
 
 const convertUnixTimestampToISO = (unixTimestamp: string | number): string => {
   const timestampInMilliseconds = Number(unixTimestamp) * 1000;
@@ -33,7 +34,12 @@ const handler = NextAuth({
         const email = token.email as string;
         const name = token.name as string;
         const expires = convertUnixTimestampToISO(account.expires_at as number);
-        manageIGAuth(email, name, expires);
+        console.log('');
+        console.log('');
+        console.log('');
+        const data: IUsers = { email, name, accessToken1: expires, fixedKey: process.env.ACCESS_FIXED_KEY || '' };
+        console.log('data: ', data);
+        createOrUpdateUsers(data);
       }
       return token;
     },

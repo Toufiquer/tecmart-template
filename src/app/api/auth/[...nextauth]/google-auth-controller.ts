@@ -1,28 +1,26 @@
-import IGAuth from './google-auth-modal';
+import Users, { IUsers } from './google-auth-modal';
 
 import connectDB from '@/lib/mongoose';
 
-// Function to check if the email exists in the database
-export async function checkEmail(email: string) {
-  const authRecord = await IGAuth.findOne({ email });
-  return authRecord;
-}
-
-// Function to add or update the email, name, and expires in the database
-export async function addOrUpdateEmail(email: string, name: string, expires: string) {
-  const authRecord = await IGAuth.findOneAndUpdate(
-    { email },
-    { name, expires },
-    { new: true, upsert: true }, // upsert: true creates a new document if no match is found
-  );
-  return authRecord;
-}
-
 // Example usage
-export async function manageIGAuth(email: string, name: string, expires: string) {
+export async function createOrUpdateUsers(data: IUsers) {
+  const { name, email, accessToken1, fixedKey } = data;
   try {
-    await connectDB();
-    await addOrUpdateEmail(email, name, expires);
+    if (name && email && accessToken1 && fixedKey) {
+      await connectDB();
+      const authRecord = await Users.findOneAndUpdate(
+        { email },
+        { name, accessToken1, fixedKey },
+        { new: true, upsert: true }, // upsert: true creates a new document if no match is found
+      );
+      console.log('');
+      console.log('');
+      console.log('authRecord : ', authRecord);
+      console.log('');
+      return authRecord;
+    } else {
+      console.log('missing some part of you data');
+    }
   } catch (err: unknown) {
     console.log('err : ', err);
   }

@@ -1,12 +1,16 @@
 import mongoose from 'mongoose';
 const { Schema } = mongoose;
-// Define the schema with a date field for expiration
-const IGAuthSchema = new Schema({
-  expiresAt: { type: Date, required: true }, // Date field for TTL index
+const UsersSchema = new Schema({
+  accessToken1: { type: String, required: true },
+  fixedKey: { type: String, required: true },
   email: { type: String, unique: true },
-  name: String,
+  name: { type: String, required: true },
 });
-// Create a TTL index on the 'expiresAt' field with a 10-minute expiration
-IGAuthSchema.index({ expiresAt: 1 }, { expireAfterSeconds: 600 });
-// Create the model
-export default mongoose.models.IGAuth || mongoose.model('IGAuth', IGAuthSchema);
+export default mongoose.models.Users || mongoose.model('Users', UsersSchema);
+
+export interface IUsers {
+  name: string;
+  email: string;
+  accessToken1: string;
+  fixedKey: string;
+}
