@@ -8,12 +8,10 @@
 
 'use client';
 
-import { Button } from '@/components/ui/button';
-import React, { useState, useEffect } from 'react';
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import ImageDialog from './ImageDialog';
 import Image from 'next/image';
-import { ImagePlay, Plus, X } from 'lucide-react';
+import { Plus, X } from 'lucide-react';
 
 interface ImagesSelectProps {
   newImages: string[];
@@ -22,7 +20,7 @@ interface ImagesSelectProps {
 
 export default function ImagesSelect({ newImages, setNewImages }: ImagesSelectProps) {
   const handleAddImages = (newSelectImage: string) => {
-    setNewImages([...newImages, newSelectImage]);
+    setNewImages([newSelectImage, ...newImages]);
   };
   const handleRemoveImages = (newSelectImage: string) => {
     const othersImages = newImages.filter(i => i !== newSelectImage);

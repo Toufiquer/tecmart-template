@@ -30,6 +30,10 @@ const ImageDialog = ({ handleAddImages }: { handleAddImages: (newImage: string) 
       const response = await fetch(`https://api.imgbb.com/1/upload?key=${process.env.NEXT_PUBLIC_IMGBB_API_KEY}`, {
         method: 'POST',
         body: formData,
+        // mode: 'no-cors',
+        // headers: {
+        //   'Content-Type': 'application/image',
+        // },
       });
 
       const data = await response.json();
@@ -51,7 +55,7 @@ const ImageDialog = ({ handleAddImages }: { handleAddImages: (newImage: string) 
           throw new Error('Error! Cannot save the image.');
         }
         console.log('new upload image url : ', data?.data?.url);
-        setAllImages([...allImages, data?.data?.url]);
+        setAllImages([data?.data?.url, ...allImages]);
         toast.success('Image uploaded successfully!');
         setShowUploadModal(false);
       } else {

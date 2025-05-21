@@ -8,8 +8,8 @@
 
 'use client';
 import RichTextEditor from './rich-text-editor';
-import ViewRichText from './view-rich-text/page';
 import { useState } from 'react';
+import { ViewRichText } from './view-rich-text/ViewRichText';
 
 export default function DemoRichText() {
   const [post, setPost] = useState('');

@@ -17,33 +17,34 @@ const Page = () => {
   const pathname = usePathname();
   console.log('pathname : ', pathname.split('/')[5]);
   const id = pathname.split('/')[5];
-  const fetchData = async () => {
-    const token = process.env.NEXT_PUBLIC_Token;
-    if (!token) {
-      console.error('Authentication token not found. Unable to fetch data.');
-      return;
-    }
 
-    const url = `http://localhost:3000/dashboard/a__1_1001_users__/all/api/v1?id=${id}`;
-    if (url) {
-      try {
-        const response = await fetch(url, {
-          method: 'GET',
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-
-        const responseData = await response.json();
-        console.log(responseData);
-        setData(responseData?.data);
-      } catch (error) {
-        console.error('Failed to fetch data:', error);
-      }
-    }
-  };
   useEffect(() => {
     if (id) {
+      const fetchData = async () => {
+        const token = process.env.NEXT_PUBLIC_Token;
+        if (!token) {
+          console.error('Authentication token not found. Unable to fetch data.');
+          return;
+        }
+
+        const url = `http://localhost:3000/dashboard/a__1_1001_users__/all/api/v1?id=${id}`;
+        if (url) {
+          try {
+            const response = await fetch(url, {
+              method: 'GET',
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            });
+
+            const responseData = await response.json();
+            console.log(responseData);
+            setData(responseData?.data);
+          } catch (error) {
+            console.error('Failed to fetch data:', error);
+          }
+        }
+      };
       fetchData();
     }
   }, [id]);

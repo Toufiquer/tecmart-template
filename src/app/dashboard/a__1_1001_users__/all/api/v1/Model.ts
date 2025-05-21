@@ -1,4 +1,4 @@
-import mongoose, { Schema, Document } from 'mongoose';
+import mongoose, { Schema } from 'mongoose';
 import { __custom_selector_arr__, __default_selector__ } from '../../store/StoreConstants';
 
 const user__1_104__Schema = new Schema(

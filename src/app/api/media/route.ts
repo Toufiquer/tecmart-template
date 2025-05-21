@@ -10,7 +10,7 @@ export async function GET(req: Request) {
     if (rateLimitResponse) return rateLimitResponse;
 
     await connectDB();
-    const mediaItems = await Media.find({});
+    const mediaItems = await Media.find({}).sort({ updatedAt: -1, createdAt: -1 });
     return NextResponse.json({ data: mediaItems, message: 'Media loaded successfully' });
   } catch {
     // Removed unused 'error' variable

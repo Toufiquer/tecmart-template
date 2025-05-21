@@ -71,6 +71,10 @@ const Media = () => {
       const response = await fetch(`https://api.imgbb.com/1/upload?key=${process.env.NEXT_PUBLIC_IMGBB_API_KEY}`, {
         method: 'POST',
         body: formData,
+        // mode: 'no-cors',
+        // headers: {
+        //   'Content-Type': 'application/image',
+        // },
       });
 
       const data = await response.json();
@@ -92,8 +96,8 @@ const Media = () => {
           throw new Error('Problem saving image to server');
         }
 
-        setImages(prev => [...prev, data.data.url]);
-        setImgFiles(prev => [...prev, data.data]);
+        setImages(prev => [data.data.url, ...prev]);
+        setImgFiles(prev => [data.data, ...prev]);
         toast.success('Image uploaded successfully!');
         setShowUploadModal(false);
       } else {

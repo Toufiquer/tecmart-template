@@ -18,6 +18,7 @@ export async function GET(req: Request) {
 
   const tokenResponse = handleTokenVerify(req);
   if (tokenResponse) return tokenResponse;
+
   const id = new URL(req.url).searchParams.get('id');
   const result: IResponse = id ? await getUser__1_103__ById(req) : await getUsers__1_101__(req);
   return formatResponse(result.data, result.message, result.status);

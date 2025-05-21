@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { format } from 'date-fns';
 
 import { Button } from '@/components/ui/button';
@@ -13,7 +13,6 @@ import Image from 'next/image';
 import { ViewRichText } from './view-rich-text/ViewRichText';
 
 const ViewNextComponents: React.FC = () => {
-  const [allImages, setAllImages] = useState<string[]>([]);
   const { isViewModalOpen, selected__103_Users__, toggleViewModal, setSelected__103_Users__ } = use__103_Users__Store();
   const { data: __104_Users__Data, refetch } = useGet__103_Users__ByIdQuery(selected__103_Users__?._id, { skip: !selected__103_Users__?._id });
 
