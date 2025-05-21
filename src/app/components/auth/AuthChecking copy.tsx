@@ -1,4 +1,4 @@
-look at the code ```'use client'; // This directive makes the component a Client Component
+'use client'; // This directive makes the component a Client Component
 
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
@@ -40,10 +40,3 @@ export default function AuthCheckingComponent({ redirectUrl = '/' as string, chi
 
   return null;
 }
-``` write a function inside  if (status === 'authenticated' && children) block, and do the flowing thing. 
-
-1. it check is there are a custom token named user_custom_token  inside sessionData.
-2. if found do nothing
-3. if not found then generate random token and save it to user_custom_token  inside sessionData.
-
-and remember render loop for this NextJs component. some time it throw error or infinity loop. make sure there is no error or infinity loop.
