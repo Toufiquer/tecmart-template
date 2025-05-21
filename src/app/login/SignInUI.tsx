@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import ContinuousSvgAnimation from './ContinuousSvgAnimationProps';
 import GoogleAuthButton from '../components/auth/GoogleAuthButton';
-import SignInForm from './components/SignInForm';
+// import SignInForm from './components/SignInForm';
 
 const SignInPage: React.FC = () => {
   return (
@@ -26,24 +26,24 @@ const SignInPage: React.FC = () => {
           <motion.div initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.6, delay: 0.3 }}>
             <h1 className="text-3xl font-bold mb-8 text-gray-800">Welcome Back</h1>
 
-            <SignInForm />
+            {/* <SignInForm /> */}
 
             {/* OR Separator */}
-            <div className="mt-6 relative">
+            {/* <div className="mt-6 relative">
               <div className="absolute inset-0 flex items-center">
                 <div className="w-full border-t border-gray-300"></div>
               </div>
               <div className="relative flex justify-center text-sm">
                 <span className="px-2 bg-white text-gray-500">OR</span>
               </div>
-            </div>
+            </div> */}
 
             <GoogleAuthButton />
 
             {/* Sign Up Link */}
             <div className="mt-6 text-center">
               <p className="text-sm text-gray-600">
-                Don`&lsquo;`t have an account?{' '}
+                Don&lsquo;t have an account?
                 <Link href="/signup" className="font-medium text-indigo-600 hover:text-indigo-500">
                   Sign up
                 </Link>
