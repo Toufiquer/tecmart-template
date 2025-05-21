@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import Link from 'next/link';
+// import Link from 'next/link';
 import ContinuousSvgAnimation from './ContinuousSvgAnimationProps';
 import GoogleAuthButton from '../components/auth/GoogleAuthButton';
 // import SignInForm from './components/SignInForm';
@@ -41,14 +41,14 @@ const SignInPage: React.FC = () => {
             <GoogleAuthButton />
 
             {/* Sign Up Link */}
-            <div className="mt-6 text-center">
+            {/* <div className="mt-6 text-center">
               <p className="text-sm text-gray-600">
                 Don&lsquo;t have an account?
                 <Link href="/signup" className="font-medium text-indigo-600 hover:text-indigo-500">
                   Sign up
                 </Link>
               </p>
-            </div>
+            </div> */}
           </motion.div>
         </div>
       </div>
