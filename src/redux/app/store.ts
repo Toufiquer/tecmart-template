@@ -14,6 +14,7 @@ import { TypedUseSelectorHook, useSelector } from 'react-redux';
 import { apiSlice } from '@/redux/api/apiSlice';
 
 import _2_template_Slice from '@/redux/features/template6/filename7Slice';
+import blogsApi from '@/app/dashboard/blogs/all/redux/rtk-Api';
 
 export const store = configureStore({
   reducer: {

@@ -70,10 +70,7 @@ const MainNextPage: React.FC = () => {
           User_3_000___ Management {isSuccess && <sup className="text-xs">(total:{getResponseData?.data?.total || '00'})</sup>}
         </h1>
         <div className="w-full flex gap-2 item-center justify-end">
-          <Button
-            className="border-slate-500 hover:border-slate-600 border-1 cursor-pointer"
-            onClick={() => router.push('/dashboard/users_2_000___/ssr-view')}
-          >
+          <Button className="border-slate-500 hover:border-slate-600 border-1 cursor-pointer" onClick={() => router.push('/dashboard/users_2_000___/ssr-view')}>
             <BiRightArrowAlt className="w-4 h-4" />
             SSR View
           </Button>
