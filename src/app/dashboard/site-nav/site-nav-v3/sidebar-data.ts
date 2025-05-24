@@ -30,9 +30,9 @@ export type SIDEBARTYPE = {
 export const sidebarDataHome: SIDEBARTYPE[] = [
   {
     id: 10001,
-    name: 'a__1_1001_users__',
+    name: 'users_2_000___',
     icon: iconBiPieChartAlt,
-    content: [{ id: 1000101, name: 'a__1_1001_users__', link: '/dashboard/a__1_1001_users__/all', icon: iconBiPieChartAlt }],
+    content: [{ id: 1000101, name: 'users_2_000___', link: '/dashboard/users_2_000___/all', icon: iconBiPieChartAlt }],
   },
   {
     id: 1,

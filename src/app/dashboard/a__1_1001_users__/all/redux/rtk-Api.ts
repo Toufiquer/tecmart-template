@@ -1,6 +1,6 @@
 /*
 |-----------------------------------------
-| setting up Users__1_101__Api for the App
+| setting up Users_1_000___Api for the App
 | @author: Toufiquer Rahman<toufiquer.0@gmail.com>
 | @copyright: Toufiquer, February, 2024
 |-----------------------------------------
@@ -8,21 +8,21 @@
 
 // This file is use for rest api
 import { apiSlice } from '@/redux/api/apiSlice';
-import { IUsers__1_101__ } from '../api/v1/Model';
+import { IUsers_1_000___ } from '../api/v1/Model';
 import { handleError, handleSuccess } from '../components/utils';
 
 // Use absolute paths with leading slash to ensure consistent behavior
-export const users__1_102__Api = apiSlice.injectEndpoints({
+export const users_2_000___Api = apiSlice.injectEndpoints({
   endpoints: builder => ({
-    getUsers__1_101__: builder.query({
+    getUsers_1_000___: builder.query({
       query: ({ page, limit, q }) => {
-        let url = `/dashboard/a__1_1001_users__/all/api/v1?page=${page || 1}&limit=${limit || 10}`;
+        let url = `/dashboard/users_2_000___/all/api/v1?page=${page || 1}&limit=${limit || 10}`;
         if (q) {
           url += `&q=${encodeURIComponent(q)}`;
         }
         return url;
       },
-      providesTags: [{ type: '__tag_type_users__1_102__', id: 'LIST' }],
+      providesTags: [{ type: 'tagTypeUsers_1_000___', id: 'LIST' }],
       async onQueryStarted() {
         try {
           // You can add any additional logic here
@@ -31,33 +31,33 @@ export const users__1_102__Api = apiSlice.injectEndpoints({
         }
       },
     }),
-    get__103_Users__ById: builder.query({
-      query: id => `/dashboard/a__1_1001_users__/all/api/v1?id=${id}`,
+    getUsers_1_000___ById: builder.query({
+      query: id => `/dashboard/users_2_000___/all/api/v1?id=${id}`,
     }),
-    add__103_Users__: builder.mutation({
-      query: new__103_Users__ => ({
-        url: '/dashboard/a__1_1001_users__/all/api/v1',
+    addUsers_1_000___: builder.mutation({
+      query: newUsers_1_000___ => ({
+        url: '/dashboard/users_2_000___/all/api/v1',
         method: 'POST',
-        body: new__103_Users__,
+        body: newUsers_1_000___,
       }),
-      invalidatesTags: [{ type: '__tag_type_users__1_102__' }],
+      invalidatesTags: [{ type: 'tagTypeUsers_1_000___' }],
       async onQueryStarted(arg, { queryFulfilled, dispatch }) {
         try {
-          const { data }: { data: { data: IUsers__1_101__; message: string } } = await queryFulfilled;
+          const { data }: { data: { data: IUsers_1_000___; message: string } } = await queryFulfilled;
           handleSuccess(data.message);
-          dispatch(users__1_102__Api.util.invalidateTags([{ type: '__tag_type_users__1_102__' }]));
+          dispatch(users_2_000___Api.util.invalidateTags([{ type: 'tagTypeUsers_1_000___' }]));
         } catch (e: unknown) {
           handleError(e);
         }
       },
     }),
-    update__103_Users__: builder.mutation({
+    updateUsers_1_000___: builder.mutation({
       query: ({ id, ...data }) => ({
-        url: `/dashboard/a__1_1001_users__/all/api/v1`,
+        url: `/dashboard/users_2_000___/all/api/v1`,
         method: 'PUT',
         body: { id: id, ...data },
       }),
-      invalidatesTags: [{ type: '__tag_type_users__1_102__' }],
+      invalidatesTags: [{ type: 'tagTypeUsers_1_000___' }],
       async onQueryStarted(arg, { queryFulfilled }) {
         try {
           const { data }: { data: { message: string } } = await queryFulfilled;
@@ -67,13 +67,13 @@ export const users__1_102__Api = apiSlice.injectEndpoints({
         }
       },
     }),
-    delete__103_Users__: builder.mutation({
+    deleteUsers_1_000___: builder.mutation({
       query: ({ id }) => ({
-        url: `/dashboard/a__1_1001_users__/all/api/v1`,
+        url: `/dashboard/users_2_000___/all/api/v1`,
         method: 'DELETE',
         body: { id },
       }),
-      invalidatesTags: [{ type: '__tag_type_users__1_102__' }],
+      invalidatesTags: [{ type: 'tagTypeUsers_1_000___' }],
       async onQueryStarted(arg, { queryFulfilled }) {
         try {
           const { data }: { data: { message: string } } = await queryFulfilled;
@@ -83,13 +83,13 @@ export const users__1_102__Api = apiSlice.injectEndpoints({
         }
       },
     }),
-    bulkUpdateUsers__1_101__: builder.mutation({
+    bulkUpdateUsers_1_000___: builder.mutation({
       query: bulkData => ({
-        url: `/dashboard/a__1_1001_users__/all/api/v1?bulk=true`,
+        url: `/dashboard/users_2_000___/all/api/v1?bulk=true`,
         method: 'PUT',
         body: bulkData,
       }),
-      invalidatesTags: [{ type: '__tag_type_users__1_102__' }],
+      invalidatesTags: [{ type: 'tagTypeUsers_1_000___' }],
       async onQueryStarted(arg, { queryFulfilled }) {
         try {
           const { data }: { data: { message: string } } = await queryFulfilled;
@@ -99,13 +99,13 @@ export const users__1_102__Api = apiSlice.injectEndpoints({
         }
       },
     }),
-    bulkDeleteUsers__1_101__: builder.mutation({
+    bulkDeleteUsers_1_000___: builder.mutation({
       query: bulkData => ({
-        url: `/dashboard/a__1_1001_users__/all/api/v1?bulk=true`,
+        url: `/dashboard/users_2_000___/all/api/v1?bulk=true`,
         method: 'DELETE',
         body: bulkData,
       }),
-      invalidatesTags: [{ type: '__tag_type_users__1_102__' }],
+      invalidatesTags: [{ type: 'tagTypeUsers_1_000___' }],
       async onQueryStarted(arg, { queryFulfilled }) {
         try {
           const { data }: { data: { message: string } } = await queryFulfilled;
@@ -119,11 +119,11 @@ export const users__1_102__Api = apiSlice.injectEndpoints({
 });
 
 export const {
-  useGetUsers__1_101__Query,
-  useAdd__103_Users__Mutation,
-  useUpdate__103_Users__Mutation,
-  useDelete__103_Users__Mutation,
-  useBulkUpdateUsers__1_101__Mutation,
-  useBulkDeleteUsers__1_101__Mutation,
-  useGet__103_Users__ByIdQuery,
-} = users__1_102__Api;
+  useGetUsers_1_000___Query,
+  useAddUsers_1_000___Mutation,
+  useUpdateUsers_1_000___Mutation,
+  useDeleteUsers_1_000___Mutation,
+  useBulkUpdateUsers_1_000___Mutation,
+  useBulkDeleteUsers_1_000___Mutation,
+  useGetUsers_1_000___ByIdQuery,
+} = users_2_000___Api;

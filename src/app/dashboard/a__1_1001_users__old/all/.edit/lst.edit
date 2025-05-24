@@ -1,0 +1,105 @@
+-------------------------------------------------------------
+Base data
+-------------------------------------------------------------
+01 -> use__103_Users__Store
+02 -> useGetUsers__1_101__Query
+03 -> ViewUsers__1_101__Table
+04 -> BulkUpdate__103_Users__
+05 -> BulkDynamicUpdate__103_Users__
+06 -> User__1_103__
+07 -> a__1_1001_users__
+08 -> Users__1_101__
+09 -> users__1_102__
+10 -> user__1_104__
+11 -> __1_201_users__
+12 -> __default_selector__
+13 -> useAdd__103_Users__Mutation
+14 -> default__103_Users__Data
+15 -> __I_custom_selector_Type__
+16 -> new__103_Users__
+17 -> add__103_Users__
+18 -> __104_Users__
+19 -> added__103_Users__
+20 -> __103_Users__
+21 -> __tag_type__9_
+22 -> __role9__
+23 -> a__1001_rtk_template__
+24 -> User_103__
+
+-------------------------------------------------------------
+Updated data 
+-------------------------------------------------------------
+out put ----------------------------------
+01 -> use__103_Users__Store                 | useUsers_1_000___Store
+02 -> useGetUsers__1_101__Query             | useGetUsers_1_000___Query
+03 -> ViewUsers__1_101__Table               | ViewUsers_1_000___Table
+04 -> BulkUpdate__103_Users__               | BulkUpdateUsers_1_000___
+05 -> BulkDynamicUpdate__103_Users__        | BulkDynamicUpdateUsers_1_000___
+06 -> User__1_103__                         | User_3_000___
+07 -> a__1_1001_users__                     | users_2_000___
+08 -> Users__1_101__                        | Users_1_000___
+09 -> users__1_102__                        | users_2_000___
+10 -> user__1_104__                         | user_4_000___
+11 -> __1_201_users__                       | users_2_000___
+12 -> __default_selector__                  | select_5_000___
+13 -> useAdd__103_Users__Mutation           | useAddUsers_1_000___Mutation
+14 -> default__103_Users__Data              | defaultUsers_1_000___Data
+15 -> __I_custom_selector_Type__            | ISelect_6_000___
+16 -> new__103_Users__                      | newUsers_1_000___
+17 -> add__103_Users__                      | addUsers_1_000___
+18 -> __104_Users__                         | Users_1_000___
+19 -> added__103_Users__                    | addedUsers_1_000___
+20 -> __103_Users__                         | Users_1_000___
+21 -> __tag_type__9_                        | users_2_000___rtk_tag
+22 -> __role9__                             | select_5_000___
+23 -> a__1001_rtk_template__                | users_2_000___
+24 -> User_103__                            | User_3_000___
+
+
+
+2500*25
+
+-------------------------------------------------------------
+Documentation  
+-------------------------------------------------------------
+-------------------------------------------------------------
+unique-name/unique-id/global-id/global-check/
+-------------------------------------------------------------
+1.Users   /  _1_     / 000     /    ___     /
+-------------------------------------------------------------
+unique-name -> unique name to identify database
+unique-id   -> unique id to change secure
+global-id   -> global id to change secure
+global-check-> checking is all data editing finish or not
+-------------------------------------------------------------
+you have to change
+1. Users_1_000___
+2. users_2_000___
+3. User_3_000___
+4. user_4_000___
+6. ISelect_6_000___
+5. select_5_000___
+
+
+---------------------------------------------------------------
+found error 
+---------------------------------------------------------------
+1. __custom_selector_arr__ --> UsersSelectorArr
+2. __tag_type_posts --> tagTypeUsers
+
+
+
+6. __custom_selector_arr__ --> users_2_000___SelectorArr
+7. tagTypeUsers_1_000___ -->> tagTypeUsers_1_000___
+8. __tag_type_blogs
+
+---------------------------------------------------------------
+---------------------------------------------------------------
+---------------------------------------------------------------
+you have to change
+1. Users_1_000___ --> Blogs
+2. users_2_000___ --> blogs
+3. User_3_000___ --> Blog
+4. user_4_000___ --> blogs
+6. ISelect_6_000___ --> ISelect
+5. select_5_000___ -->> select

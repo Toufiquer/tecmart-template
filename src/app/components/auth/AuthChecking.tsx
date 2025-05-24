@@ -12,15 +12,20 @@ export default function AuthCheckingComponent({ redirectUrl = '/' as string, chi
 
   useEffect(() => {
     const getToken = localStorage.getItem('token');
+    console.log('');
+    console.log('');
+    console.log('');
+    console.log('getToken', getToken);
     if (getToken) {
-      const token = JSON.parse(getToken);
+      const token = getToken;
+      console.log('token', token.replaceAll('"', ''));
+      const freshToken = token.replaceAll('"', '');
       const fetchToken = async () => {
-        console.log('token', token);
         const response = await fetch('http://localhost:3000/api/auth/verify', {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',
-            authorization: 'Bearer ' + token,
+            authorization: 'Bearer ' + freshToken,
           },
         });
         const data = await response.json();
@@ -29,6 +34,11 @@ export default function AuthCheckingComponent({ redirectUrl = '/' as string, chi
           console.log('token valid found and verify by api');
         } else {
           console.log('token is expired or invalid');
+          console.log('');
+          console.log('');
+          console.log('----');
+          console.log('data : ', data);
+          console.log('token : ', token);
           localStorage.removeItem('token');
           signOut();
         }
