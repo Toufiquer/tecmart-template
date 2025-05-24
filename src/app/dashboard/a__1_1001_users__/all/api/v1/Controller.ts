@@ -2,6 +2,7 @@ import { IResponse } from '@/app/api/utils/jwt-verify';
 
 import User__1_103__ from './Model';
 import { withDB } from '@/app/api/utils/db';
+import { connectRedis, getRedisData } from '@/app/api/utils/redis';
 
 // Helper to format responses
 const formatResponse = (data: unknown, message: string, status: number) => ({ data, message, status });
@@ -38,33 +39,40 @@ export async function getUser__1_103__ById(req: Request) {
 
 // GET all Users__1_101__ with pagination
 export async function getUsers__1_101__(req: Request) {
-  return withDB(async () => {
-    const url = new URL(req.url);
-    const page = parseInt(url.searchParams.get('page') || '1', 10);
-    const limit = parseInt(url.searchParams.get('limit') || '10', 10);
-    const skip = (page - 1) * limit;
-
-    const searchQuery = url.searchParams.get('q');
-
-    let searchFilter = {};
-
-    // Apply search filter only if search query is provided
-    if (searchQuery) {
-      searchFilter = {
-        $or: [
-          { name: { $regex: searchQuery, $options: 'i' } },
-          { email: { $regex: searchQuery, $options: 'i' } },
-          { alias: { $regex: searchQuery, $options: 'i' } },
-        ],
-      };
-    }
-
-    const users__1_102__ = await User__1_103__.find(searchFilter).sort({ updatedAt: -1, createdAt: -1 }).skip(skip).limit(limit);
-
-    const totalUsers__1_101__ = await User__1_103__.countDocuments(searchFilter);
-
+  await connectRedis();
+  const getValue = await getRedisData('myKey');
+  if (getValue) {
+    const { users__1_102__, totalUsers__1_101__, page, limit } = JSON.parse(getValue);
     return formatResponse({ users__1_102__: users__1_102__ || [], total: totalUsers__1_101__, page, limit }, 'Users__1_101__ fetched successfully', 200);
-  });
+  } else {
+    return withDB(async () => {
+      const url = new URL(req.url);
+      const page = parseInt(url.searchParams.get('page') || '1', 10);
+      const limit = parseInt(url.searchParams.get('limit') || '10', 10);
+      const skip = (page - 1) * limit;
+
+      const searchQuery = url.searchParams.get('q');
+
+      let searchFilter = {};
+
+      // Apply search filter only if search query is provided
+      if (searchQuery) {
+        searchFilter = {
+          $or: [
+            { name: { $regex: searchQuery, $options: 'i' } },
+            { email: { $regex: searchQuery, $options: 'i' } },
+            { alias: { $regex: searchQuery, $options: 'i' } },
+          ],
+        };
+      }
+
+      const users__1_102__ = await User__1_103__.find(searchFilter).sort({ updatedAt: -1, createdAt: -1 }).skip(skip).limit(limit);
+
+      const totalUsers__1_101__ = await User__1_103__.countDocuments(searchFilter);
+
+      return formatResponse({ users__1_102__: users__1_102__ || [], total: totalUsers__1_101__, page, limit }, 'Users__1_101__ fetched successfully', 200);
+    });
+  }
 }
 
 // UPDATE single User__1_103__ by ID
